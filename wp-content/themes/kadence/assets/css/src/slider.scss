@@ -94,7 +94,7 @@
 					height: 10px;
 					position: relative;
 					top: 0px;
-					left: 4px;
+					left: 6px;
 					transform: rotate(-135deg);
 					vertical-align: top;
 					width: 10px;
@@ -117,7 +117,7 @@
 				}
 			}
 		}
-		&:focus button {
+		&:focus button, button:focus {
 			opacity: 1;
 			outline: -webkit-focus-ring-color auto 1px;
 		}

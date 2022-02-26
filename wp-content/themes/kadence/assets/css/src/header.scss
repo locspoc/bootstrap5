@@ -182,6 +182,18 @@ a.social-button.has-custom-image {
 		border-color: currentColor;
 	}
 }
+.social-icon-custom-svg {
+    display: inline-flex;
+    align-self: center;
+}
+.social-icon-custom-svg svg {
+    fill: currentcolor;
+    width: 1em;
+    height: 1em;
+}
+.social-icon-custom-svg svg * {
+    fill: currentColor;
+}
 // Search
 .search-toggle-open {
 	display: flex;

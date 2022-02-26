@@ -67,6 +67,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function initialize() {
 		add_filter( 'body_class', array( $this, 'filter_body_classes' ) );
 		add_action( 'widgets_init', array( $this, 'action_register_sidebars' ) );
+		add_filter( 'register_sidebar_defaults', array( $this, 'change_sidebar_default_args' ) );
 	}
 
 	/**
@@ -100,6 +101,25 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Registers the sidebars.
+	 *
+	 * @param array $defaults the default args.
+	 */
+	public function change_sidebar_default_args( $defaults ) {
+		$args = apply_filters(
+			'kadence_widget_area_args',
+			array(
+				'before_widget' => '<section id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			)
+		);
+		$args = wp_parse_args( $args, $defaults );
+		return $args;
 	}
 
 	/**

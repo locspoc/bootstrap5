@@ -133,6 +133,13 @@ add_action( 'kadence_entry_archive_header', 'Kadence\kadence_entry_archive_heade
 add_action( 'kadence_single', 'Kadence\single_markup' );
 
 /**
+ * Singular Inner Content
+ *
+ * @see Kadence\single_content();
+ */
+add_action( 'kadence_single_content', 'Kadence\single_content' );
+
+/**
  * 404 Content
  *
  * @see Kadence\get_404_content();
@@ -162,6 +169,13 @@ add_action( 'kadence_comments', 'Kadence\check_comments_form_order', 1 );
  * @see Kadence\archive_markup();
  */
 add_action( 'kadence_archive', 'Kadence\archive_markup' );
+
+/**
+ * Archive Entry Content.
+ *
+ * @see Kadence\loop_entry();
+ */
+add_action( 'kadence_loop_entry', 'Kadence\loop_entry' );
 
 /**
  * Archive Entry thumbnail.

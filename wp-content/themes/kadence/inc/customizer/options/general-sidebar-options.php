@@ -193,6 +193,33 @@ Theme_Customizer::add_settings(
 				'id' => 'sidebar_widget_content',
 			),
 		),
+		'sidebar_link_style' => array(
+			'control_type' => 'kadence_select_control',
+			'section'      => 'sidebar_design',
+			'default'      => kadence()->default( 'sidebar_link_style' ),
+			'label'        => esc_html__( 'Link Style', 'kadence' ),
+			'input_attrs'  => array(
+				'options' => array(
+					'normal' => array(
+						'name' => __( 'Underline on Hover', 'kadence' ),
+					),
+					'underline' => array(
+						'name' => __( 'Underline', 'kadence' ),
+					),
+					'plain' => array(
+						'name' => __( 'No Underline', 'kadence' ),
+					),
+				),
+			),
+			'live_method'     => array(
+				array(
+					'type'     => 'class',
+					'selector' => '.primary-sidebar',
+					'pattern'  => 'sidebar-link-style-$',
+					'key'      => '',
+				),
+			),
+		),
 		'sidebar_link_colors' => array(
 			'control_type' => 'kadence_color_control',
 			'section'      => 'sidebar_design',

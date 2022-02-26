@@ -28,6 +28,7 @@ class SocialComponent extends Component {
 		this.onChangeURL = this.onChangeURL.bind( this );
 		this.onChangeAttachment = this.onChangeAttachment.bind( this );
 		this.onChangeWidth = this.onChangeWidth.bind( this );
+		this.onChangeSVG = this.onChangeSVG.bind( this );
 		this.onChangeSource = this.onChangeSource.bind( this );
 		this.addItem = this.addItem.bind( this );
 		let value = this.props.control.setting.get();
@@ -42,6 +43,7 @@ class SocialComponent extends Component {
 					'width': 24,
 					'icon': 'facebook',
 					'label': 'Facebook',
+					'svg': '',
 				},
 				{
 					'id': 'twitter',
@@ -52,6 +54,7 @@ class SocialComponent extends Component {
 					'width': 24,
 					'icon': 'twitter',
 					'label': 'Twitter',
+					'svg': '',
 				}
 			],
 		};
@@ -102,6 +105,9 @@ class SocialComponent extends Component {
 				{ value: '500px', label: __( '500PX', 'kadence' ) },
 				{ value: 'bandcamp', label: __( 'Bandcamp', 'kadence' ) },
 				{ value: 'anchor', label: __( 'Anchor', 'kadence' ) },
+				{ value: 'custom1', label: __( 'Custom 1', 'kadence' ) },
+				{ value: 'custom2', label: __( 'Custom 2', 'kadence' ) },
+				{ value: 'custom3', label: __( 'Custom 3', 'kadence' ) },
 			],
 		};
 		this.controlParams = this.props.control.params.input_attrs ? {
@@ -167,6 +173,9 @@ class SocialComponent extends Component {
 	onChangeWidth( value, itemIndex ) {
 		this.saveArrayUpdate( { width: value }, itemIndex );
 	}
+	onChangeSVG( value, itemIndex ) {
+		this.saveArrayUpdate( { svg: value }, itemIndex );
+	}
 	onChangeSource( value, itemIndex ) {
 		this.saveArrayUpdate( { source: value }, itemIndex );
 	}
@@ -201,6 +210,7 @@ class SocialComponent extends Component {
 				'width': 24,
 				'icon': itemControl,
 				'label': itemLabel[0].label,
+				'svg': '',
 			};
 			update.push( newItem );
 			updateState.items = update;
@@ -273,7 +283,7 @@ class SocialComponent extends Component {
 					<ReactSortable animation={100} onStart={ () => this.onDragStop() } onEnd={ () => this.onDragStop() } group={ this.controlParams.group } className={ `kadence-sorter-drop kadence-sorter-sortable-panel kadence-sorter-drop-${ this.controlParams.group }` } handle={ '.kadence-sorter-item-panel-header' } list={ theItems } setList={ ( newState ) => this.onDragEnd( newState ) } >
 						{ currentList.length > 0 && (
 							currentList.map( ( item, index ) => {
-								return <ItemComponent removeItem={ ( remove ) => this.removeItem( remove ) } toggleEnabled={ ( enable, itemIndex ) => this.toggleEnableItem( enable, itemIndex ) } onChangeLabel={ ( label, itemIndex ) => this.onChangeLabel( label, itemIndex ) } onChangeSource={ ( source, itemIndex ) => this.onChangeSource( source, itemIndex ) } onChangeWidth={ ( width, itemIndex ) => this.onChangeWidth( width, itemIndex ) } onChangeURL={ ( url, itemIndex ) => this.onChangeURL( url, itemIndex ) } onChangeAttachment={ ( imageid, itemIndex ) => this.onChangeAttachment( imageid, itemIndex ) } onChangeIcon={ ( icon, itemIndex ) => this.onChangeIcon( icon, itemIndex ) } key={ item.id } index={ index } item={ item } controlParams={ this.controlParams } />;
+								return <ItemComponent removeItem={ ( remove ) => this.removeItem( remove ) } toggleEnabled={ ( enable, itemIndex ) => this.toggleEnableItem( enable, itemIndex ) } onChangeLabel={ ( label, itemIndex ) => this.onChangeLabel( label, itemIndex ) } onChangeSource={ ( source, itemIndex ) => this.onChangeSource( source, itemIndex ) } onChangeWidth={ ( width, itemIndex ) => this.onChangeWidth( width, itemIndex ) } onChangeSVG={ ( svg, itemIndex ) => this.onChangeSVG( svg, itemIndex ) } onChangeURL={ ( url, itemIndex ) => this.onChangeURL( url, itemIndex ) } onChangeAttachment={ ( imageid, itemIndex ) => this.onChangeAttachment( imageid, itemIndex ) } onChangeIcon={ ( icon, itemIndex ) => this.onChangeIcon( icon, itemIndex ) } key={ item.id } index={ index } item={ item } controlParams={ this.controlParams } />;
 							} )
 						) }
 					</ReactSortable>

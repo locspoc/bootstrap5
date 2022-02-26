@@ -112,8 +112,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		// Add the dropdown for items that have children.
 		if ( ! empty( $item->classes ) && in_array( 'menu-item-has-children', $item->classes ) ) {
-			$title = '<span class="nav-drop-title-wrap">' . $title . '<span class="dropdown-nav-toggle" aria-label="' . esc_attr__( 'Expand child menu', 'kadence' ) . '">' . kadence()->get_icon( 'arrow-down' ) . '</span></span>';
+			$title = '<span class="nav-drop-title-wrap">' . $title . '<span class="dropdown-nav-toggle">' . kadence()->get_icon( 'arrow-down' ) . '</span></span>';
 		}
+		//aria-label="' . esc_attr__( 'Expand child menu', 'kadence' ) . '"
 
 		return $title;
 	}

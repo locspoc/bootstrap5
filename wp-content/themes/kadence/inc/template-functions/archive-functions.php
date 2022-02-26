@@ -24,7 +24,30 @@ function archive_markup() {
  * @return array $classes for the archive header.
  */
 function get_archive_hero_classes() {
-	$slug      = ( is_search() && ! is_post_type_archive( 'product' ) ? 'search' : get_post_type() );
+	$slug      = get_archive_post_type_slug();
+	$classes   = array();
+	$classes[] = 'entry-hero';
+	$classes[] = $slug . '-archive-hero-section';
+	$classes[] = 'entry-hero-layout-' . ( kadence()->option( $slug . '_archive_title_inner_layout' ) ? kadence()->option( $slug . '_archive_title_inner_layout' ) : 'inherit' );
+
+	return apply_filters( 'kadence_archive_hero_classes', $classes );
+}
+
+/**
+ * Get Archive post type slug.
+ *
+ * @return string $slug for the archive header.
+ */
+function get_archive_post_type_slug() {
+	if ( is_search() ) {
+		if ( is_post_type_archive( 'product' ) ) {
+			$slug = 'product';
+		} else {
+			$slug = 'search';
+		}
+	} else {
+		$slug = get_post_type();
+	}
 	if ( empty( $slug ) ) {
 		$queried_object = get_queried_object();
 		if ( property_exists( $queried_object, 'taxonomy' ) ) {
@@ -35,12 +58,7 @@ function get_archive_hero_classes() {
 			}
 		}
 	}
-	$classes   = array();
-	$classes[] = 'entry-hero';
-	$classes[] = $slug . '-archive-hero-section';
-	$classes[] = 'entry-hero-layout-' . ( kadence()->option( $slug . '_archive_title_inner_layout' ) ? kadence()->option( $slug . '_archive_title_inner_layout' ) : 'inherit' );
-
-	return apply_filters( 'kadence_archive_hero_classes', $classes );
+	return apply_filters( 'kadence_archive_post_type_slug', $slug );
 }
 
 /**
@@ -49,7 +67,7 @@ function get_archive_hero_classes() {
  * @return array $classes for the archive header.
  */
 function get_archive_title_classes() {
-	$slug      = ( is_search() && ! is_post_type_archive( 'product' ) ? 'search' : get_post_type() );
+	$slug      = get_archive_post_type_slug();
 	$classes   = array();
 	$classes[] = 'entry-header';
 	$classes[] = $slug . '-archive-title';
@@ -147,6 +165,12 @@ function get_archive_container_classes() {
 function get_archive_infinite_attributes() {
 	$attributes = '';
 	return apply_filters( 'kadence_archive_infinite_attributes', $attributes );
+}
+/**
+ * Get loop entry template.
+ */
+function loop_entry() {
+	get_template_part( 'template-parts/content/entry', get_post_type() );
 }
 
 /**

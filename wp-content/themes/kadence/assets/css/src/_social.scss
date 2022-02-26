@@ -38,3 +38,6 @@ $socials: (
 body.social-brand-colors .social-show-brand-until .social-button:not(:hover):not(.skip):not(.ignore), body.social-brand-colors .social-show-brand-hover .social-button:not(.ignore-brand):not(.skip):not(.ignore):hover, body.social-brand-colors .social-show-brand-always .social-button:not(.ignore-brand):not(.skip):not(.ignore) {
 	color:white;
 }
+body.social-brand-colors .social-show-brand-until.social-style-outline .social-button:not(:hover):not(.skip):not(.ignore), body.social-brand-colors .social-show-brand-hover.social-style-outline .social-button:not(.ignore-brand):not(.skip):not(.ignore):hover, body.social-brand-colors .social-show-brand-always.social-style-outline .social-button:not(.ignore-brand):not(.skip):not(.ignore) {
+	border-color:currentColor;
+}

@@ -25,6 +25,15 @@
 		text-decoration: underline;
 	}
 }
+.sidebar-link-style-underline.widget-area a:not(.button) {
+    text-decoration: underline;
+}
+.sidebar-link-style-plain.widget-area a:not(.button) {
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
 .widget-area .widget {
 	margin-left: 0;
 	margin-right: 0;

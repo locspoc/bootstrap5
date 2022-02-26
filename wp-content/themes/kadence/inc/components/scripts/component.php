@@ -100,6 +100,17 @@ class Component implements Component_Interface {
 		);
 		wp_script_add_data( 'kadence-slide-init', 'async', true );
 		wp_script_add_data( 'kadence-slide-init', 'precache', true );
+		wp_localize_script(
+			'kadence-slide-init',
+			'kadenceSlideConfig',
+			array(
+				'of'    => __( 'of', 'kadence' ),
+				'to'    => __( 'to', 'kadence' ),
+				'slide' => __( 'Slide', 'kadence' ),
+				'next'  => __( 'Next', 'kadence' ),
+				'prev'  => __( 'Previous', 'kadence' ),
+			)
+		);
 		if ( kadence()->option( 'lightbox' ) ) {
 			// Enqueue the lightbox script.
 			wp_enqueue_script(

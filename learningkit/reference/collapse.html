@@ -71,6 +71,7 @@
                   <a href="navbar.html" class="dropdown-item">Navbar</a>
                   <a href="offcanvas.html" class="dropdown-item">Offcanvas</a>
                   <a href="pagination.html" class="dropdown-item">Pagination</a>
+                  <a href="placeholders.html" class="dropdown-item">Placeholders</a>
                   <a href="popovers.html" class="dropdown-item">Popovers</a>
                   <a href="progress.html" class="dropdown-item">Progress</a>
                   <a href="scrollspy.html" class="dropdown-item">Scrollspy</a>
@@ -86,9 +87,11 @@
                   <a href="colored-links.html" class="dropdown-item">Colored links</a>
                   <a href="ratio.html" class="dropdown-item">Ratio</a>
                   <a href="position-helpers.html" class="dropdown-item">Position</a>
+                  <a href="stacks.html" class="dropdown-item">Stacks</a>
                   <a href="visually-hidden.html" class="dropdown-item">Visually hidden</a>
                   <a href="stretched-link.html" class="dropdown-item">Stretched link</a>
                   <a href="text-truncation.html" class="dropdown-item">Text truncation</a>
+                  <a href="vertical-rule.html" class="dropdown-item">Vertical rule</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -101,6 +104,7 @@
                   <a href="flex.html" class="dropdown-item">Flex</a>
                   <a href="float.html" class="dropdown-item">Float</a>
                   <a href="interactions.html" class="dropdown-item">Interactions</a>
+                  <a href="opacity.html" class="dropdown-item">Opacity</a>
                   <a href="overflow.html" class="dropdown-item">Overflow</a>
                   <a href="position-utilities.html" class="dropdown-item">Position</a>
                   <a href="shadows.html" class="dropdown-item">Shadows</a>
@@ -141,7 +145,7 @@
               <h3 class="component-variation text-muted">Link</h3>
               <p>Show and hide other content with link using the "href" attribute</p>
               <div class="code-live">
-                <a href="#hrefCollapse" class="btn btn-primary" data-bs-toggle="collapse" aria-expanded="false" aria-controls="hrefCollapse">Link with href</a>
+                <a href="#hrefCollapse" class="btn btn-primary" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="hrefCollapse">Link with href</a>
                 <div class="collapse" id="hrefCollapse">
                   <div class="alert alert-success">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis posuere consequat. Nulla fermentum sodales augue, vitae ornare eros ornare quis. Donec lectus est, congue eu risus quis, tempus sagittis nunc.</div>
                 </div>
@@ -160,14 +164,37 @@
             </div>
 
             <div class="code-example mb-5">
+              <h3 class="component-variation text-muted">Horizontal</h3>
+              <p>Set width on the immediate child of the collapsed element</p>
+              <div class="code-live">
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#horizontalCollapse" aria-expanded="false" aria-controls="horizontalCollapse">Button with data-bs-target</button>
+                <div  style="min-height: 170px;">
+                  <div class="collapse collapse-horizontal" id="horizontalCollapse">
+                    <div class="alert alert-success" style="width: 400px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis posuere consequat. Nulla fermentum sodales augue, vitae ornare eros ornare quis. Donec lectus est, congue eu risus quis, tempus sagittis nunc.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-example mb-5">
               <h3 class="component-variation text-muted">Multiple targets</h3>
               <div class="code-live">
-                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target=".multiple-collapse" aria-expanded="false" aria-controls="multipleCollapse1 multipleCollapse2">Button with data-bs-target</button>
-                <div class="collapse multiple-collapse" id="multipleCollapse1">
-                  <div class="alert alert-success">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis posuere consequat. Nulla fermentum sodales augue, vitae ornare eros ornare quis. Donec lectus est, congue eu risus quis, tempus sagittis nunc.</div>
-                </div>
-                <div class="collapse multiple-collapse" id="multipleCollapse2">
-                  <div class="alert alert-success">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis posuere consequat. Nulla fermentum sodales augue, vitae ornare eros ornare quis. Donec lectus est, congue eu risus quis, tempus sagittis nunc.</div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target=".multiple-collapse" aria-expanded="false" aria-controls="multipleCollapse1 multipleCollapse2">Toggle both</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#multipleCollapse1" aria-expanded="false" aria-controls="multipleCollapse1">Toggle first</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#multipleCollapse2" aria-expanded="false" aria-controls="multipleCollapse2">Toggle second</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#multipleCollapse1" aria-expanded="false" aria-controls="multipleCollapse1">Toggle first</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#multipleCollapse2" aria-expanded="false" aria-controls="multipleCollapse2">Toggle second</button>
+                <div class="row">
+                  <div class="col">
+                    <div class="collapse multiple-collapse" id="multipleCollapse1">
+                      <div class="alert alert-success">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis posuere consequat. Nulla fermentum sodales augue, vitae ornare eros ornare quis. Donec lectus est, congue eu risus quis, tempus sagittis nunc.</div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="collapse multiple-collapse" id="multipleCollapse2">
+                      <div class="alert alert-success">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis posuere consequat. Nulla fermentum sodales augue, vitae ornare eros ornare quis. Donec lectus est, congue eu risus quis, tempus sagittis nunc.</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

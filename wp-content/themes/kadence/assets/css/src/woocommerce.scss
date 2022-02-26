@@ -1348,6 +1348,15 @@
          }
      }
  }
+.rtl #cart-drawer dl.variation {
+    display: flex;
+}
+.rtl .woocommerce ul.product_list_widget li dl dd {
+    margin: 0 4px 0 0;
+}
+.rtl .woocommerce ul.product_list_widget li dl dt {
+    margin: 0;
+}
 .rtl .woocommerce .woocommerce-customer-details address {
 	text-align: right;
 }

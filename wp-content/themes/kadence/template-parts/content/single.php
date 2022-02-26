@@ -28,8 +28,10 @@ do_action( 'kadence_hero_header' );
 				} elseif ( have_posts() ) {
 					while ( have_posts() ) {
 						the_post();
-
-						get_template_part( 'template-parts/content/single-entry', get_post_type() );
+						/**
+						 * Hook in content single entry template.
+						 */
+						do_action( 'kadence_single_content' );
 					}
 				} else {
 					get_template_part( 'template-parts/content/error' );

@@ -456,6 +456,12 @@
 .ft-ro-lstyle-normal a:not(.button) {
     text-decoration: underline;
 }
+.ft-ro-lstyle-noline a:not(.button) {
+    text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
 .site-footer-section {
 	position: relative;
 	&:not(:last-child):after {

@@ -29,8 +29,10 @@ do_action( 'kadence_hero_header' );
 					<?php
 					while ( have_posts() ) {
 						the_post();
-
-						get_template_part( 'template-parts/content/entry', get_post_type() );
+						/**
+						 * Hook in loop entry template.
+						 */
+						do_action( 'kadence_loop_entry' );
 					}
 					?>
 				</div>

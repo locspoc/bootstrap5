@@ -70,7 +70,7 @@ function footer_html() {
 		kadence()->customizer_quick_link();
 		echo '<div class="footer-html-inner">';
 		$content = str_replace( '{copyright}', '&copy;', $content );
-		$content = str_replace( '{year}', date_i18n( _x( 'Y', 'copyright date format; check date() on php.net', 'kadence' ) ), $content );
+		$content = str_replace( '{year}', date_i18n( 'Y' ), $content );
 		$content = str_replace( '{site-title}', get_bloginfo( 'name' ), $content );
 		// translators: %s is link to Kadence WP.
 		$content = str_replace( '{theme-credit}', sprintf( __( '- WordPress Theme by %s', 'kadence' ), '<a href="https://www.kadencewp.com/" rel="nofollow noopener" target="_blank">Kadence WP</a>' ), $content );
@@ -134,12 +134,16 @@ function footer_social() {
 						$link = 'mailto:' . $link;
 					}
 				}
-				echo '<a href="' . esc_attr( $link ) . '"' . esc_attr( $show_label ? '' : ' aria-label="' . $item['label'] . '"' ) . ' ' . ( 'phone' === $item['id'] || 'email' === $item['id'] || apply_filters( 'kadence_social_link_target', false, $item ) ? '' : 'target="_blank" rel="noopener noreferrer"  ' ) . 'class="social-button footer-social-item social-link-' . esc_attr( $item['id'] ) . esc_attr( 'image' === $item['source'] ? ' has-custom-image' : '' ) . '">';
+				echo '<a href="' . esc_attr( $link ) . '"' . ( $show_label ? '' : ' aria-label="' . esc_attr( $item['label'] ) . '"' ) . ' ' . ( 'phone' === $item['id'] || 'email' === $item['id'] || apply_filters( 'kadence_social_link_target', false, $item ) ? '' : 'target="_blank" rel="noopener noreferrer"  ' ) . 'class="social-button footer-social-item social-link-' . esc_attr( $item['id'] ) . esc_attr( 'image' === $item['source'] ? ' has-custom-image' : '' ) . '">';
 				if ( 'image' === $item['source'] ) {
 					if ( $item['imageid'] && wp_get_attachment_image( $item['imageid'], 'full', true ) ) {
 						echo wp_get_attachment_image( $item['imageid'], 'full', true, array( 'class' => 'social-icon-image', 'style' => 'max-width:' . esc_attr( $item['width'] ) . 'px' ) );
 					} elseif ( ! empty( $item['url'] ) ) {
 						echo '<img src="' . esc_attr( $item['url'] ) . '" alt="' . esc_attr( $item['label'] ) . '" class="social-icon-image" style="max-width:' . esc_attr( $item['width'] ) . 'px"/>';
+					}
+				} elseif ( 'svg' === $item['source'] ) {
+					if ( ! empty( $item['svg'] ) ) {
+						echo '<span class="social-icon-custom-svg" style="max-width:' . esc_attr( $item['width'] ) . 'px">' . $item['svg'] . '</span>';
 					}
 				} else {
 					kadence()->print_icon( $item['icon'], '', false );
@@ -160,8 +164,11 @@ function footer_social() {
  */
 function scroll_up() {
 	if ( kadence()->option( 'scroll_up' ) ) {
-		echo '<a id="kt-scroll-up" href="#wrapper" aria-label="' . esc_attr__( 'Scroll to top', 'kadence' ) . '" class="scroll-up-wrap scroll-ignore scroll-up-side-' . esc_attr( kadence()->option( 'scroll_up_side' ) ) . ' scroll-up-style-' . esc_attr( kadence()->option( 'scroll_up_style' ) ) . ' vs-lg-' . ( kadence()->sub_option( 'scroll_up_visiblity', 'desktop' ) ? 'true' : 'false' ) . ' vs-md-' . ( kadence()->sub_option( 'scroll_up_visiblity', 'tablet' ) ? 'true' : 'false' ) . ' vs-sm-' . ( kadence()->sub_option( 'scroll_up_visiblity', 'mobile' ) ? 'true' : 'false' ) . '">';
+		echo '<a id="kt-scroll-up" tabindex="-1" aria-hidden="true" aria-label="' . esc_attr__( 'Scroll to top', 'kadence' ) . '" href="#wrapper" class="kadence-scroll-to-top scroll-up-wrap scroll-ignore scroll-up-side-' . esc_attr( kadence()->option( 'scroll_up_side' ) ) . ' scroll-up-style-' . esc_attr( kadence()->option( 'scroll_up_style' ) ) . ' vs-lg-' . ( kadence()->sub_option( 'scroll_up_visiblity', 'desktop' ) ? 'true' : 'false' ) . ' vs-md-' . ( kadence()->sub_option( 'scroll_up_visiblity', 'tablet' ) ? 'true' : 'false' ) . ' vs-sm-' . ( kadence()->sub_option( 'scroll_up_visiblity', 'mobile' ) ? 'true' : 'false' ) . '">';
 		kadence()->print_icon( kadence()->option( 'scroll_up_icon' ), esc_attr__( 'Scroll to top', 'kadence' ), false );
 		echo '</a>';
+		echo '<button id="kt-scroll-up-reader" href="#wrapper" aria-label="' . esc_attr__( 'Scroll to top', 'kadence' ) . '" class="kadence-scroll-to-top scroll-up-wrap scroll-ignore scroll-up-side-' . esc_attr( kadence()->option( 'scroll_up_side' ) ) . ' scroll-up-style-' . esc_attr( kadence()->option( 'scroll_up_style' ) ) . ' vs-lg-' . ( kadence()->sub_option( 'scroll_up_visiblity', 'desktop' ) ? 'true' : 'false' ) . ' vs-md-' . ( kadence()->sub_option( 'scroll_up_visiblity', 'tablet' ) ? 'true' : 'false' ) . ' vs-sm-' . ( kadence()->sub_option( 'scroll_up_visiblity', 'mobile' ) ? 'true' : 'false' ) . '">';
+		kadence()->print_icon( kadence()->option( 'scroll_up_icon' ), esc_attr__( 'Scroll to top', 'kadence' ), false );
+		echo '</button>';
 	}
 }

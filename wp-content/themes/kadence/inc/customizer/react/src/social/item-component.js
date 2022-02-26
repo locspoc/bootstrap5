@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import SocialIcons from './icons.js';
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
+import DOMPurify from 'dompurify';
 
 const { __ } = wp.i18n;
 const { MediaUpload } = wp.blockEditor;
@@ -17,6 +17,30 @@ class ItemComponent extends Component {
 		};
 	}
 	render() {
+		const tabOptions = ( ( 'custom1' === this.props.item.id || 'custom2' === this.props.item.id || 'custom3' === this.props.item.id ) ? [
+			{
+				name: 'svg',
+				title: __( 'SVG', 'kadence' ),
+			},
+			{
+				name: 'image',
+				title: __( 'Image', 'kadence' ),
+			},
+		] : [
+			{
+				name: 'icon',
+				title: __( 'Icon', 'kadence' ),
+			},
+			{
+				name: 'svg',
+				title: __( 'SVG', 'kadence' ),
+			},
+			{
+				name: 'image',
+				title: __( 'Image', 'kadence' ),
+			},
+		] );
+		const defaultTab = ( ( 'custom1' === this.props.item.id || 'custom2' === this.props.item.id || 'custom3' === this.props.item.id ) ? 'svg' : 'icon' );
 		return (
 			<div className="kadence-sorter-item" data-id={ this.props.item.id } key={ this.props.item.id }>
 				<div className="kadence-sorter-item-panel-header">
@@ -49,18 +73,9 @@ class ItemComponent extends Component {
 					<div className="kadence-sorter-item-panel-content">
 						<TabPanel className="sortable-style-tabs kadence-social-type"
 							activeClass="active-tab"
-							initialTabName={ ( undefined !== this.props.item.source ? this.props.item.source : 'icon' ) }
+							initialTabName={ ( undefined !== this.props.item.source && '' !== this.props.item.source ? this.props.item.source : defaultTab ) }
 							onSelect={ ( value ) => this.props.onChangeSource( value, this.props.index ) }
-							tabs={ [
-								{
-									name: 'icon',
-									title: __( 'Icon', 'kadence' ),
-								},
-								{
-									name: 'image',
-									title: __( 'Image', 'kadence' ),
-								},
-							] }>
+							tabs={ tabOptions }>
 							{
 								( tab ) => {
 									let tabout;
@@ -102,6 +117,29 @@ class ItemComponent extends Component {
 															</Button>
 														</div>
 													) }
+													<RangeControl
+														label={ __( 'Max Width (px)', 'kadence' ) }
+														value={ ( undefined !== this.props.item.width ? this.props.item.width : 24 ) }
+														onChange={ ( value ) => {
+															this.props.onChangeWidth( value, this.props.index );
+														} }
+														step={ 1 }
+														min={ 2 }
+														max={ 100 }
+													/>
+												</Fragment>
+											);
+										} else if ( 'svg' === tab.name ) {
+											tabout = (
+												<Fragment>
+													<TextControl
+														label={ __( 'SVG HTML', 'kadence' ) }
+														value={ this.props.item.svg ? this.props.item.svg : '' }
+														onChange={ ( value ) => {
+															const newvalue = DOMPurify.sanitize( value, { USE_PROFILES: { svg: true, svgFilters: true } } );
+															this.props.onChangeSVG( newvalue, this.props.index );
+														} }
+													/>
 													<RangeControl
 														label={ __( 'Max Width (px)', 'kadence' ) }
 														value={ ( undefined !== this.props.item.width ? this.props.item.width : 24 ) }

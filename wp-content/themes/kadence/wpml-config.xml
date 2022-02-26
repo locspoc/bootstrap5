@@ -71,6 +71,9 @@
 			<key name="bandcamp_link" />
 			<key name="email_link" />
 			<key name="phone_link" />
+			<key name="custom1_link" />
+			<key name="custom2_link" />
+			<key name="custom3_link" />
         </key>
     </admin-texts>
 </wpml-config>

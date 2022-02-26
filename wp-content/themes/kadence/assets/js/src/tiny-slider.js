@@ -297,7 +297,6 @@ var tns = (function (){
 		if (Object.prototype.toString.call(attrs) !== '[object Object]') { return; }
 		for (var i = els.length; i--;) {
 			var childs = els[i].getElementsByTagName('a');
-			//console.log(childs );
 			for (var n = childs.length; n--;) {
 				for(var key in attrs) {
 					childs[n].setAttribute(key, attrs[key]);
@@ -517,6 +516,9 @@ var tns = (function (){
 		controls: true,
 		controlsPosition: 'top',
 		controlsText: ['prev', 'next'],
+		slideLabel: 'Slide',
+		ofLabel: 'of',
+		toLabel: 'to',
 		controlsContainer: false,
 		prevButton: false,
 		nextButton: false,
@@ -1449,7 +1451,7 @@ var tns = (function (){
 		updateSlideStatus();
 	
 		// == live region ==
-		outerWrapper.insertAdjacentHTML('afterbegin', '<div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">' + getLiveRegionStr() + '</span>  of ' + slideCount + '</div>');
+		outerWrapper.insertAdjacentHTML('afterbegin', '<div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">' + options.slideLabel + ' <span class="current">' + getLiveRegionStr() + '</span>  ' + options.ofLabel + ' ' + slideCount + '</div>');
 		liveregionCurrent = outerWrapper.querySelector('.tns-liveregion .current');
 	
 		// == autoplayInit ==
@@ -1499,7 +1501,7 @@ var tns = (function (){
 			  // hide nav items by default
 			  navHtml += '<button type="button" data-nav="' + i +'" tabindex="-1" aria-controls="' + slideId + '" ' + hiddenStr + ' aria-label="' + navStr + (i + 1) +'"></button>';
 			}
-			navHtml = '<div class="tns-nav" aria-label="Carousel Pagination">' + navHtml + '</div>';
+			navHtml = '<div class="tns-nav" role="toolbar" aria-label="Carousel Pagination">' + navHtml + '</div>';
 			outerWrapper.insertAdjacentHTML(getInsertPosition(options.navPosition), navHtml);
 	
 			navContainer = outerWrapper.querySelector('.tns-nav');
@@ -1533,7 +1535,7 @@ var tns = (function (){
 		// == controlsInit ==
 		if (hasControls) {
 		  if (!controlsContainer && (!prevButton || !nextButton)) {
-			outerWrapper.insertAdjacentHTML(getInsertPosition(options.controlsPosition), '<div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button" data-controls="prev" tabindex="-1" aria-controls="' + slideId +'">' + controlsText[0] + '</button><button type="button" data-controls="next" tabindex="-1" aria-controls="' + slideId +'">' + controlsText[1] + '</button></div>');
+			outerWrapper.insertAdjacentHTML(getInsertPosition(options.controlsPosition), '<div class="tns-controls" aria-label="Carousel Navigation"><button type="button" data-controls="prev" aria-controls="' + slideId +'">' + controlsText[0] + '</button><button type="button" data-controls="next" aria-controls="' + slideId +'">' + controlsText[1] + '</button></div>');
 	
 			controlsContainer = outerWrapper.querySelector('.tns-controls');
 		  }
@@ -1546,14 +1548,12 @@ var tns = (function (){
 		  if (options.controlsContainer) {
 			setAttrs(controlsContainer, {
 			  'aria-label': 'Carousel Navigation',
-			  'tabindex': '0'
 			});
 		  }
 	
 		  if (options.controlsContainer || (options.prevButton && options.nextButton)) {
 			setAttrs([prevButton, nextButton], {
 			  'aria-controls': slideId,
-			  'tabindex': '-1',
 			});
 		  }
 	
@@ -2149,7 +2149,7 @@ var tns = (function (){
 		disabled = false;
 	  }
 	
-	  function updateLiveRegion () {
+	  function updateLiveRegion() {
 		var str = getLiveRegionStr();
 		if (liveregionCurrent.innerHTML !== str) { liveregionCurrent.innerHTML = str; }
 	  }
@@ -2158,7 +2158,25 @@ var tns = (function (){
 		var arr = getVisibleSlideRange(),
 			start = arr[0] + 1,
 			end = arr[1] + 1;
-		return start === end ? start + '' : start + ' to ' + end;
+		// make sure index is in range
+		if (carousel && loop) {
+			if ( ( start + 1 ) > slideCount ) {
+				start = start - slideCount;
+			}
+			if ( ( end + 1 ) > slideCount ) {
+				end = end - slideCount;
+			}
+			// Check Again.
+			if ( ( start + 1 ) > slideCount ) {
+				start = start - slideCount;
+			}
+			if ( ( end + 1 ) > slideCount ) {
+				end = end - slideCount;
+			}
+			start = start + 1;
+			end = end + 1;
+		}
+		return start === end ? start + '' : start + ' ' + options.toLabel + ' ' + end;
 	  }
 	
 	  function getVisibleSlideRange (val) {
@@ -2222,11 +2240,9 @@ var tns = (function (){
 			  end = start + items - 1;
 			}
 		  }
-	
 		  start = Math.max(start, 0);
 		  end = Math.min(end, slideCountNew - 1);
 		}
-	
 		return [start, end];
 	  }
 	

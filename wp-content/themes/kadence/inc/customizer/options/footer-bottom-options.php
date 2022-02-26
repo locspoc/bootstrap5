@@ -513,10 +513,13 @@ Theme_Customizer::add_settings(
 			'label'        => esc_html__( 'Link Style', 'kadence' ),
 			'input_attrs'  => array(
 				'options' => array(
+					'plain' => array(
+						'name' => __( 'Underline on Hover', 'kadence' ),
+					),
 					'normal' => array(
 						'name' => __( 'Underline', 'kadence' ),
 					),
-					'plain' => array(
+					'noline' => array(
 						'name' => __( 'No Underline', 'kadence' ),
 					),
 				),

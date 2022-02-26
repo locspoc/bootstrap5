@@ -1,6 +1,10 @@
 @import "_custom-properties.scss";
 // Change default styling.
 .entry-content {
+	.wp-block-wpzoom-recipe-card-block-jump-to-recipe {
+		margin-bottom: var(--global-md-spacing);
+		display: inline-block;
+	}
 	.wp-block-wpzoom-recipe-card-block-recipe-card.is-style-default {
 		background: var(--global-palette9);
 		border-color: var(--global-gray-400);

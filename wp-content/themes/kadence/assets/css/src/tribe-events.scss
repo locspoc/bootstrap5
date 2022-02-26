@@ -3,8 +3,12 @@
 .tribe-events .tribe-events-c-top-bar__datepicker-button {
     box-shadow: none;
 }
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-c-view-selector--labels .tribe-events-c-view-selector__content {
+    word-break: normal;
+}
 #primary {
 	.tribe-common {
+		word-break: normal;
 		.tribe-events-c-top-bar__datepicker-button,
 		.tribe-common-c-btn-icon,
 		.tribe-events-calendar-list-nav button,
@@ -137,7 +141,7 @@
 		}
 	}
 }
-.tribe-common .tribe-common-c-btn, .tribe-common a.tribe-common-c-btn {
+.tribe-common .tribe-common-c-btn, .tribe-common a.tribe-common-c-btn, .tribe-events .tribe-common-c-btn.tribe-events-c-search__button {
 	background-color: var(--global-palette-btn-bg);
 	color: var(--global-palette-btn);
 	&:hover, &:focus, &:active {

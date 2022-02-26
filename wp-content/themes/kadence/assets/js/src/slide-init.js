@@ -1,4 +1,4 @@
-/* global tns */
+/* global tns, kadenceSlideConfig */
 /**
  * File slide-init.js.
  * Gets slide going when needed.
@@ -12,6 +12,9 @@
 		 */
 		start: function( element ) {
 			var slideRtl = 'ltr',
+			nextLabel = element.getAttribute('data-slider-next-label'),
+			prevLabel = element.getAttribute('data-slider-prev-label'),
+			slideLabel = element.getAttribute('data-slider-slide-label'),
 			sliderType = element.getAttribute('data-slider-type'),
 			sliderSpeed = parseInt( element.getAttribute( 'data-slider-speed' ) ),
 			sliderAnimationSpeed = parseInt( element.getAttribute( 'data-slider-anim-speed' ) ),
@@ -29,6 +32,15 @@
 			gutter = parseInt( element.getAttribute( 'data-slider-gutter' ) ),
 			scroll = parseInt( element.getAttribute( 'data-slider-scroll' ) ),
 			slidercenter = element.getAttribute( 'data-slider-center-mode' );
+			if ( ! nextLabel ) {
+				nextLabel = kadenceSlideConfig.next;
+			}
+			if ( ! prevLabel ) {
+				prevLabel = kadenceSlideConfig.next;
+			}
+			if ( ! slideLabel ) {
+				slideLabel = kadenceSlideConfig.slide;
+			}
 			if ( document.body.classList.contains( 'rtl' ) ) {
 				slideRtl = 'rtl';
 			}
@@ -46,7 +58,13 @@
 				controls: ( 'false' === sliderArrows ? false : true ),
 				nav: ( 'false' === sliderDots ? false : true ),
 				gutter: gutter,
+				slideLabel: slideLabel,
+				ofLabel: kadenceSlideConfig.of,
+				toLabel: kadenceSlideConfig.to,
+				controlsPosition: 'bottom',
+				navPosition: 'bottom',
 				textDirection: slideRtl,
+				controlsText: [prevLabel, nextLabel],
 				loop:( 'false' === sliderLoop ? false : true ),
 				rewind:( 'false' === sliderLoop ? true : false ),
 				responsive: {

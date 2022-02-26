@@ -167,7 +167,7 @@ $post_type_obj = get_post_type_object( get_post_type() );
 				}
 				break;
 			case 'categories':
-				if ( 'post' === get_post_type() ) {
+				if ( has_term( '', 'category' ) ) {
 					/* translators: separator between taxonomy terms */
 					$separator = _x( ', ', 'list item separator', 'kadence' );
 					?>

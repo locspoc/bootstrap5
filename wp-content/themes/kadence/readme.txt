@@ -1,10 +1,10 @@
 === Kadence ===
 Contributors: britner
 Tags: translation-ready, two-columns, right-sidebar, left-sidebar, footer-widgets, blog, custom-logo, custom-background, custom-menu, rtl-language-support, editor-style, threaded-comments, custom-colors, featured-images, wide-blocks, full-width-template, theme-options, e-commerce.
-Requires at least: 5.2
-Tested up to: 5.8
+Requires at least: 5.4
+Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 1.1.10
+Stable tag: 1.1.14
 License: GNU General Public License v3.0 (or later)
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,6 +18,44 @@ Kadence is released under GNU General Public License v3.0 (or later)
 
 
 = Changelog =
+
+== 1.1.14 | 2nd February 2022 ==
+* Fix: Some situations where content was aligned left in editor.
+
+== 1.1.13 | 31st January 2022 ==
+* Add: Lightbox support for wepb files.
+* Update: editor layout for 5.9
+* Fix: Issue with custom Taxonomy meta area.
+* Fix: Issue with Gradient missing in 5.9
+* Fix: Issue with empty product search title color.
+
+== 1.1.12 | 4th January 2022 ==
+* Add: Option to upload custom social svgs.
+* Add: Footer Widget area option for no underline on hover links.
+* Update: Detect if dropdown rendering off screen.
+* Fix: Aria Label with social icons.
+* Fix: Social colors in footer in live preview.
+* Fix: Social brand colors outline style.
+* Fix: Issue with dutch translation.
+* Fix: Breadcrumbs with galleries.
+* Fix: RTL issue with checkout.
+* Fix: Permissions issue with author causing an error in elementor.
+* Fix: Taxonomy Title Custom Color when no posts.
+* Fix: Event CSS.
+* Fix: Role in related posts carousel.
+* Fix: Issue with conditional display using Elementor Header and footer plugin?
+* Fix: Search close when clicking outside modal form.
+
+== 1.1.11 | 30th November 2021 ==
+* Add: Sidebar link style controls.
+* Update: Improve screen reader navigation of menu.
+* Update: Improve touch device menu navigation when in desktop header.
+* Update: Facebook default icon to match facebook's latest guidelines.
+* Update: Scroll to top navigation for screen readers.
+* Update: Related posts carousel options.
+* Update: Breadcrumbs markup.
+* Update: Screenshot.
+* Fix: Various RTL styling issues.
 
 == 1.1.10 | 15th November 2021 ==
 * Fix: Changelog not showing correct date.
@@ -909,6 +947,9 @@ Source: https://github.com/FortAwesome/Font-Awesome
 ** Fashion Hat : https://www.pexels.com/photo/adult-attractive-beautiful-blur-346255/
 ** Jean Jacket : https://stocksnap.io/photo/people-girl-VDJI24CX1X
 ** UC Sunglasses : https://stocksnap.io/photo/stairs-stairway-0FEC8ON5D1
+** Woman at Seashore : https://www.pexels.com/photo/photo-of-woman-standing-on-seashore-1849999/
+** Woman at Seashore 2 : https://www.pexels.com/photo/a-woman-relaxing-at-the-beach-5383858/
+** Surf Board Fin : https://www.pexels.com/photo/black-and-white-butterfly-on-green-surfboard-on-beach-4603876/
 ** Mock Logo 1 : https://www.kadencewp.com/alogo/
 ** Mock Logo 2 : https://www.kadencewp.com/alogo/
 ** Mock Logo 3 : https://www.kadencewp.com/alogo/

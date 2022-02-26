@@ -275,6 +275,27 @@ $settings = array(
 		'default'      => kadence()->default( 'phone_link' ),
 		'label'        => esc_html__( 'Phone', 'kadence' ),
 	),
+	'custom1_link' => array(
+		'control_type' => 'kadence_text_control',
+		'section'      => 'general_social',
+		'sanitize'     => 'esc_url_raw',
+		'default'      => kadence()->default( 'custom1_link' ),
+		'label'        => esc_html__( 'Custom 1', 'kadence' ),
+	),
+	'custom2_link' => array(
+		'control_type' => 'kadence_text_control',
+		'section'      => 'general_social',
+		'sanitize'     => 'esc_url_raw',
+		'default'      => kadence()->default( 'custom2_link' ),
+		'label'        => esc_html__( 'Custom 2', 'kadence' ),
+	),
+	'custom3_link' => array(
+		'control_type' => 'kadence_text_control',
+		'section'      => 'general_social',
+		'sanitize'     => 'esc_url_raw',
+		'default'      => kadence()->default( 'custom3_link' ),
+		'label'        => esc_html__( 'Custom 3', 'kadence' ),
+	),
 );
 
 Theme_Customizer::add_settings( $settings );

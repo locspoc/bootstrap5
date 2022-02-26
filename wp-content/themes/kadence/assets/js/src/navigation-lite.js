@@ -127,24 +127,14 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 				let dropdown = parentMenuItem.querySelector( '.dropdown-nav-toggle' );
 				// If dropdown.
 				if ( dropdown ) {
+					var dropdownBtn = document.createElement( 'BUTTON' ); // Create a <button> element
+					dropdownBtn.setAttribute( 'aria-label', kadenceConfig.screenReader.expand );
+					dropdownBtn.classList.add( 'dropdown-nav-special-toggle' );
+					parentMenuItem.insertBefore( dropdownBtn, parentMenuItem.childNodes[1] );
 					// Toggle the submenu when we click the dropdown button.
-					dropdown.addEventListener( 'click', function( e ) {
+					dropdownBtn.addEventListener( 'click', function( e ) {
 						e.preventDefault();
-						if ( e.target.parentNode.parentNode.parentNode.parentNode.classList.contains( 'menu-item' ) ) {
-							window.kadence.toggleSubMenu( e.target.parentNode.parentNode.parentNode.parentNode );
-						} else {
-							window.kadence.toggleSubMenu( e.target.parentNode.parentNode.parentNode );
-						}
-					} );
-					// Add tabindex.
-					dropdown.tabIndex = 0;
-					// Add role button
-					dropdown.setAttribute( 'role', 'button' );
-					// Toggle the submenu when we press enter on the dropdown button.
-					dropdown.addEventListener( 'keypress', function( e ) {
-						if ( e.key === 'Enter' ) {
-							window.kadence.toggleSubMenu( e.target.parentNode.parentNode.parentNode );
-						}
+						window.kadence.toggleSubMenu( e.target.parentNode );
 					} );
 		
 					// Clean up the toggle if a mouse takes over from keyboard.
@@ -163,7 +153,7 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 					// Handle keyboard accessibility for traversing menu.
 					SUBMENUS[ i ].addEventListener( 'keydown', function( e ) {
 						// These specific selectors help us only select items that are visible.
-						var focusSelector = 'ul.toggle-show > li > a, ul.toggle-show > li > a .dropdown-nav-toggle';
+						var focusSelector = 'ul.toggle-show > li > a, ul.toggle-show > li > .dropdown-nav-special-toggle';
 		
 						// 9 is tab KeyMap
 						if ( 9 === e.keyCode ) {
@@ -190,7 +180,7 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 		 * @return {void}
 		 */
 		 toggleSubMenu: function( parentMenuItem, forceToggle ) {
-			var toggleButton = parentMenuItem.querySelector( '.dropdown-nav-toggle' ),
+			var toggleButton = parentMenuItem.querySelector( '.dropdown-nav-special-toggle' ),
 				subMenu = parentMenuItem.querySelector( 'ul' );
 			let parentMenuItemToggled = parentMenuItem.classList.contains( 'menu-item--toggled-on' );
 			// Will be true if we want to force the toggle on, false if force toggle close.

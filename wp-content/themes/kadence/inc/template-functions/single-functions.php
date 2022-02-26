@@ -21,6 +21,13 @@ function single_markup() {
 }
 
 /**
+ * Single Inner content.
+ */
+function single_content() {
+	get_template_part( 'template-parts/content/single-entry', get_post_type() );
+}
+
+/**
  * Get the related posts args.
  *
  * @param number $post_id the post id.

@@ -322,7 +322,7 @@ $settings = array(
 			),
 			array(
 				'type'     => 'css',
-				'selector' => '.site .site-footer .site-footer-wrap .footer-social-wrap a.social-button:hover',
+				'selector' => '.site .site-footer .site-footer-wrap .site-footer-section .footer-social-wrap .footer-social-inner-wrap .social-button:hover',
 				'property' => 'color',
 				'pattern'  => '$',
 				'key'      => 'hover',

@@ -19,6 +19,14 @@
 .header-navigation ul ul.sub-menu > li:last-child, .header-navigation ul ul.submenu > li:last-child {
 	border-bottom:0;
 }
+.header-navigation ul ul.sub-menu.sub-menu-edge {
+	left: auto;
+	right: 0;
+}
+.header-navigation ul ul ul.sub-menu.sub-menu-edge {
+	left: auto;
+	right: 100%;
+}
 // Handle Reveal Animation
 .header-navigation[class*="header-navigation-dropdown-animation-fade"] {
 	ul ul.sub-menu, ul ul.submenu {
@@ -53,6 +61,33 @@
 /*--------------------------------------------------------------
 ## Submenu Toggles for Header Menus
 --------------------------------------------------------------*/
+.site .nav--toggle-sub .dropdown-nav-special-toggle {
+    position: absolute !important;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 0 !important;
+	margin-right: -0.1em !important;
+    border: 0 !important;
+	width: 0.9em;
+	top:0;
+	bottom: 0;
+    height: auto;
+	border-radius: 0;
+	box-shadow: none !important;
+    background: transparent !important;
+	display: block;
+	left: auto;
+	right:calc( 1.4em / 2 );
+	pointer-events: none;
+}
+.site .nav--toggle-sub .sub-menu .dropdown-nav-special-toggle {
+	width: 2.6em;
+	margin: 0 !important;
+	right:0;
+}
+.nav--toggle-sub .dropdown-nav-special-toggle:focus {
+    z-index: 10;
+}
 .nav--toggle-sub .dropdown-nav-toggle {
 	display: block;
 	background: transparent;
@@ -81,10 +116,6 @@
 .nav--toggle-sub ul ul .dropdown-nav-toggle .kadence-svg-iconset {
 	transform: rotate(-90deg);
 }
-.nav--toggle-sub .dropdown-nav-toggle:hover,
-.nav--toggle-sub .menu-item--has-toggle:hover .dropdown-nav-toggle {
-	pointer-events: none;
-}
 .nav--toggle-sub li.menu-item-has-children {
 	position: relative;
 }
@@ -94,9 +125,9 @@
 	display: block;
 }
 /*
-	* If the dropdown toggle is active with JS, then
-	* we'll take care of showing the submenu with JS.
-	*/
+* If the dropdown toggle is active with JS, then
+* we'll take care of showing the submenu with JS.
+*/
 .nav--toggle-sub li:hover > ul,
 .nav--toggle-sub li.menu-item--toggled-on > ul,
 .nav--toggle-sub li:not(.menu-item--has-toggle):focus > ul {
@@ -116,30 +147,44 @@
 }
 // This makes the dropdowns work a little better on a touch device.
 @media ( hover: none ) {
-	.site .nav--toggle-sub .dropdown-nav-toggle {
+	.site .nav--toggle-sub .menu-item--has-toggle:not(.menu-item--toggled-on) .dropdown-nav-special-toggle {
 		left: 0;
-		bottom: 0;
-		top: 0;
-		transform: none;
-		width: auto;
-		text-align: right;
-		height: auto;
-		display: block;
-		z-index: 1000;
+		right:0 !important;
+		margin-right: 0 !important;
+		width: 100%;
+		pointer-events: all;
 	}
-	.site .nav-drop-title-wrap {
-		display: flex;
-		align-items: center;
-	}
-	//.site .nav--toggle-sub .dropdown-nav-toggle,
 	.site .nav--toggle-sub .menu-item--has-toggle:not(.menu-item--toggled-on) > a {
 		pointer-events: none;
-		.dropdown-nav-toggle {
-			pointer-events: all;
-		}
 	}
 }
-
+.rtl .nav--toggle-sub .dropdown-nav-toggle {
+    right: auto;
+    left: 0;
+}
+.rtl .primary-menu-container > ul > li.menu-item > .dropdown-nav-special-toggle {
+    right: auto;
+    left: calc(1.4em / 2);
+}
+.rtl .site .nav--toggle-sub .sub-menu .dropdown-nav-special-toggle {
+    left: 0;
+    right: auto;
+}
+.rtl .nav--toggle-sub ul ul .dropdown-nav-toggle .kadence-svg-iconset {
+    transform: rotate(
+-270deg);
+}
+.rtl .header-navigation ul ul ul.sub-menu, .rtl .header-navigation ul ul ul.submenu {
+    right: 100%;
+    left: auto;
+}
+.rtl  .nav-drop-title-wrap {
+    padding-left: 1em;
+    padding-right: 0;
+}
+.site .nav--toggle-sub .kadence-menu-mega-enabled .sub-menu .dropdown-nav-special-toggle {
+    display: none;
+}
 /*--------------------------------------------------------------
 ## Header navigation top item styling
 --------------------------------------------------------------*/

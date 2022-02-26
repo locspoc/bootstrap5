@@ -66,17 +66,17 @@ function codepenPrefill(code, codeExample) {
         HTML = HTML + el.html();
         var imgStart = '../img/';
         var imgEnd = '.png';
-        var imgSuccess = '1200x600-success';
-        var imgDanger = '1200x600-danger';
-        var imgWarning = '1200x600-warning';
-        var imgInfo = '1200x600-info';
+        var imgSuccess = '-success';
+        var imgDanger = '-danger';
+        var imgWarning = '-warning';
+        var imgInfo = '-info';
         var reStart = new RegExp(imgStart,"g");
         var reEnd = new RegExp(imgEnd,"g");
         var reSuccess = new RegExp(imgSuccess,"g");
         var reDanger = new RegExp(imgDanger,"g");
         var reWarning = new RegExp(imgWarning,"g");
         var reInfo = new RegExp(imgInfo,"g");
-        HTML = HTML.replace(reStart, 'http://placehold.it/').replace(reEnd, '').replace(reSuccess, '/198754').replace(reDanger, '/dc3545').replace(reWarning, '/ffc107').replace(reInfo, '/0dcaf0');
+        HTML = HTML.replace(reStart, 'https://via.placeholder.com/').replace(reEnd, '').replace(reSuccess, '/198754').replace(reDanger, '/dc3545').replace(reWarning, '/ffc107').replace(reInfo, '/0dcaf0');
     } else if (type == "css") {
         CSS = CSS + el.html();
     } else if (type == "js") {
@@ -98,8 +98,8 @@ function codepenPrefill(code, codeExample) {
       js_modernizr       : false,
       js_library         : "",
       html_classes       : "",
-      css_external       : "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css",
-      js_external        : "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js",
+      css_external       : "https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css",
+      js_external        : "https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js",
       template           : true
     };
 

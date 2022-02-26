@@ -708,3 +708,9 @@
     margin-right: 0;
     margin-left: 1em;
 }
+.rtl .woocommerce form .form-row.form-row-last {
+    float: left;
+}
+.rtl .woocommerce form .form-row.form-row-first {
+    float: right;
+}

@@ -88,6 +88,10 @@ class Component implements Component_Interface {
 	public function elementor_after_save( $object, $data ) {
 		//error_log( print_r( $data, true ) );
 		if ( apply_filters( 'kadence_add_global_colors_to_elementor', true ) ) {
+			// Prevent Errors.
+			if ( ! current_user_can( 'edit_theme_options' ) ) {
+				return;
+			}
 			if ( $data && isset( $data['settings'] ) && is_array( $data['settings'] ) && isset( $data['settings']['kadence_colors'] ) && is_array( $data['settings']['kadence_colors'] ) ) {
 				$update_palette = false;
 				$palette = json_decode( kadence()->get_palette(), true );
@@ -209,6 +213,7 @@ class Component implements Component_Interface {
 					}
 					//error_log( 'update?' );
 					//error_log( print_r( $custom_colors, true ) );
+					error_log( 'Is the Error Here?' );
 					\Elementor\Plugin::$instance->kits_manager->update_kit_settings_based_on_option( 'custom_colors', $custom_colors );
 					// Refresh cache.
 					//\Elementor\Plugin::instance()->files_manager->clear_cache();
@@ -241,6 +246,10 @@ class Component implements Component_Interface {
 	 */
 	public function elementor_add_theme_colors() {
 		if ( apply_filters( 'kadence_add_global_colors_to_elementor', true ) ) {
+			// // Prevent Errors.
+			if ( ! current_user_can( 'edit_theme_options' ) ) {
+				return;
+			}
 			$theme_colors = array(
 				array(
 					'_id' => 'kadence1',
@@ -440,6 +449,7 @@ class Component implements Component_Interface {
 						$custom_colors = array_merge( $new_add, $custom_colors );
 					}
 				}
+				error_log( 'Here is the error?' );
 				\Elementor\Plugin::$instance->kits_manager->update_kit_settings_based_on_option( 'custom_colors', $custom_colors );
 				\Elementor\Plugin::$instance->kits_manager->update_kit_settings_based_on_option( 'kadence_colors', $theme_placeholder_colors );
 				// Refresh cache.
@@ -611,6 +621,13 @@ class Component implements Component_Interface {
 	 */
 	public function init_header_footer_support() {
 		add_theme_support( 'header-footer-elementor' );
+		add_action( 'wp', array( $this, 'loading_header_footer_support' ) );
+	}
+		/**
+	 * Check for use. Then
+	 * Run all the Actions / Filters.
+	 */
+	public function loading_header_footer_support() {
 		if ( function_exists( 'hfe_header_enabled' ) ) {
 			if ( hfe_header_enabled() ) {
 				add_action( 'template_redirect', array( $this, 'remove_theme_header' ) );

@@ -113,6 +113,7 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 
 			for ( let i = 0; i < navTOGGLE.length; i++ ) {
 				window.kadence.initEachNavToggleSubmenu( navTOGGLE[ i ] );
+				window.kadence.initEachNavToggleSubmenuInside( navTOGGLE[ i ] );
 			}
 		},
 		initEachNavToggleSubmenu: function( nav ) {
@@ -129,24 +130,14 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 				let dropdown = parentMenuItem.querySelector( '.dropdown-nav-toggle' );
 				// If dropdown.
 				if ( dropdown ) {
+					var dropdownBtn = document.createElement( 'BUTTON' ); // Create a <button> element
+					dropdownBtn.setAttribute( 'aria-label', kadenceConfig.screenReader.expand );
+					dropdownBtn.classList.add( 'dropdown-nav-special-toggle' );
+					parentMenuItem.insertBefore( dropdownBtn, parentMenuItem.childNodes[1] );
 					// Toggle the submenu when we click the dropdown button.
-					dropdown.addEventListener( 'click', function( e ) {
+					dropdownBtn.addEventListener( 'click', function( e ) {
 						e.preventDefault();
-						if ( e.target.parentNode.parentNode.parentNode.parentNode.classList.contains( 'menu-item' ) ) {
-							window.kadence.toggleSubMenu( e.target.parentNode.parentNode.parentNode.parentNode );
-						} else {
-							window.kadence.toggleSubMenu( e.target.parentNode.parentNode.parentNode );
-						}
-					} );
-					// Add tabindex.
-					dropdown.tabIndex = 0;
-					// Add role button
-					dropdown.setAttribute( 'role', 'button' );
-					// Toggle the submenu when we press enter on the dropdown button.
-					dropdown.addEventListener( 'keypress', function( e ) {
-						if ( e.key === 'Enter' ) {
-							window.kadence.toggleSubMenu( e.target.parentNode.parentNode.parentNode );
-						}
+						window.kadence.toggleSubMenu( e.target.parentNode );
 					} );
 		
 					// Clean up the toggle if a mouse takes over from keyboard.
@@ -165,7 +156,7 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 					// Handle keyboard accessibility for traversing menu.
 					SUBMENUS[ i ].addEventListener( 'keydown', function( e ) {
 						// These specific selectors help us only select items that are visible.
-						var focusSelector = 'ul.toggle-show > li > a, ul.toggle-show > li > a .dropdown-nav-toggle';
+						var focusSelector = 'ul.toggle-show > li > a, ul.toggle-show > li > .dropdown-nav-special-toggle';
 		
 						// 9 is tab KeyMap
 						if ( 9 === e.keyCode ) {
@@ -185,6 +176,34 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 				}
 			}
 		},
+		initEachNavToggleSubmenuInside: function( nav ) {
+			// Get the submenus.
+			var SUBMENUPARENTS = nav.querySelectorAll( '.menu-item-has-children' );
+			
+			// No point if no submenus.
+			if ( ! SUBMENUPARENTS.length ) {
+				return;
+			}
+		
+			for ( let i = 0; i < SUBMENUPARENTS.length; i++ ) {		
+				// Handle verifying if navigation will go offscreen
+				SUBMENUPARENTS[ i ].addEventListener( 'mouseenter', function( e ) {
+					if ( SUBMENUPARENTS[ i ].querySelector( 'ul.sub-menu' ) ) {
+						var elm = SUBMENUPARENTS[ i ].querySelector( 'ul.sub-menu' );
+						var off = window.kadence.getOffset( elm );
+						var l = off.left;
+						var w = elm.offsetWidth;
+						var docW = window.innerWidth;
+			
+						var isEntirelyVisible = (l + w <= docW);
+			
+						if ( ! isEntirelyVisible ) {
+							elm.classList.add( 'sub-menu-edge' );
+						}
+					}
+				} );
+			}
+		},
 		/**
 		 * Toggle submenus open and closed, and tell screen readers what's going on.
 		 * @param {Object} parentMenuItem Parent menu element.
@@ -192,14 +211,13 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 		 * @return {void}
 		 */
 		toggleSubMenu: function( parentMenuItem, forceToggle ) {
-			var toggleButton = parentMenuItem.querySelector( '.dropdown-nav-toggle' ),
+			var toggleButton = parentMenuItem.querySelector( '.dropdown-nav-special-toggle' ),
 				subMenu = parentMenuItem.querySelector( 'ul' );
 			let parentMenuItemToggled = parentMenuItem.classList.contains( 'menu-item--toggled-on' );
 			// Will be true if we want to force the toggle on, false if force toggle close.
 			if ( undefined !== forceToggle && 'boolean' === ( typeof forceToggle ) ) {
 				parentMenuItemToggled = ! forceToggle;
 			}
-
 			// Toggle aria-expanded status.
 			toggleButton.setAttribute( 'aria-expanded', ( ! parentMenuItemToggled ).toString() );
 
@@ -383,6 +401,11 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 				var target = event.target;
 				var modal = document.querySelector( '.show-drawer.active .drawer-overlay' );
 				if ( target === modal ) {
+					window.kadence.toggleDrawer(document.querySelector('*[data-toggle-target="' + modal.dataset.drawerTargetString + '"]'));
+				}
+				var searchModal = document.querySelector( '#search-drawer.show-drawer.active .drawer-content' );
+				var modal = document.querySelector( '#search-drawer.show-drawer.active .drawer-overlay' );
+				if ( target === searchModal ) {
 					window.kadence.toggleDrawer(document.querySelector('*[data-toggle-target="' + modal.dataset.drawerTargetString + '"]'));
 				}
 			} );
@@ -744,7 +767,7 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 			var checkIfDone = setInterval( function() {
 				var atBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2;
 				if ( ( Math.floor( element.getBoundingClientRect().top ) - offsetSticky === 0 ) || atBottom ) {
-					//element.tabIndex = '-1';
+					element.tabIndex = '-1';
 					element.focus();
 					if ( element.classList.contains( 'kt-title-item' ) ) {
 						element.firstElementChild.click();
@@ -868,17 +891,17 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 					e.preventDefault();
 					//window.scrollBy( { top: 0, left: 0, behavior: 'smooth' } );
 					window.scrollTo({top: 0, behavior: 'smooth'});
-					//document.activeElement.blur()
-					document.body.tabIndex = 1;
-					document.body.focus();
+					document.activeElement.blur();
 				} );
-				// // Toggle the Scroll to top on keypress
-				// scrollBtn.addEventListener( 'keypress', ( e ) => {
-				// 	if ( e.key === 'Enter' ) {
-				// 		document.body.scrollTop = 0;
-  				// 		document.documentElement.scrollTop = 0;
-				// 	}
-				// } );
+			}
+			var scrollBtnReader = document.getElementById( "kt-scroll-up-reader" );
+			if ( scrollBtnReader ) {
+				scrollBtnReader.addEventListener( 'click', function( e ) {
+					e.preventDefault();
+					//window.scrollBy( { top: 0, left: 0, behavior: 'smooth' } );
+					window.scrollTo({top: 0, behavior: 'smooth'});
+					document.querySelector( '.skip-link' ).focus();
+				} );
 			}
 		},
 		// Initiate the menus when the DOM loads.

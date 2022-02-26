@@ -823,6 +823,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 		$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'primary_navigation_color', 'color' ) ) );
 		$css->add_property( 'background', $this->render_color( kadence()->sub_option( 'primary_navigation_background', 'color' ) ) );
+		$css->set_selector( '.main-navigation .primary-menu-container > ul > li.menu-item > .dropdown-nav-special-toggle' );
+		$css->add_property( 'right', $this->render_half_size( kadence()->option( 'primary_navigation_spacing' ) ) );
 		$css->set_selector( '.main-navigation .primary-menu-container > ul li.menu-item > a' );
 		$css->render_font( kadence()->option( 'primary_navigation_typography' ), $css, 'primary_nav' );
 		$css->set_selector( '.main-navigation .primary-menu-container > ul > li.menu-item > a:hover' );
@@ -847,6 +849,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 		$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'secondary_navigation_color', 'color' ) ) );
 		$css->add_property( 'background', $this->render_color( kadence()->sub_option( 'secondary_navigation_background', 'color' ) ) );
+		$css->set_selector( '.secondary-navigation .primary-menu-container > ul > li.menu-item > .dropdown-nav-special-toggle' );
+		$css->add_property( 'right', $this->render_half_size( kadence()->option( 'secondary_navigation_spacing' ) ) );
 		$css->set_selector( '.secondary-navigation .secondary-menu-container > ul li.menu-item > a' );
 		$css->render_font( kadence()->option( 'secondary_navigation_typography' ), $css );
 		$css->set_selector( '.secondary-navigation .secondary-menu-container > ul > li.menu-item > a:hover' );
@@ -1262,7 +1266,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->add_property( '--global-fallback-font', apply_filters( 'kadence_theme_global_typography_fallback', 'sans-serif' ) );
 		$css->add_property( '--global-display-fallback-font', apply_filters( 'kadence_theme_global_display_typography_fallback', 'sans-serif' ) );
 		$css->add_property( '--global-content-width', kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) );
+		$css->add_property( '--global-content-narrow-width', kadence()->sub_option( 'content_narrow_width', 'size' ) . kadence()->sub_option( 'content_narrow_width', 'unit' ) );
 		$css->add_property( '--global-content-edge-padding', $css->render_range( kadence()->option( 'content_edge_spacing' ), 'desktop' ) );
+		$css->add_property( '--global-calc-content-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			$css->set_selector( ':root body.kadence-elementor-colors' );
 			$css->add_property( '--e-global-color-kadence1', 'var(--global-palette1)' );
@@ -1486,10 +1492,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'title_above_breadcrumb_font' ), 'mobile' ) );
 		$css->stop_media_query();
 		// Layout.
-		$css->set_selector( '.site-container, .site-header-row-layout-contained, .site-footer-row-layout-contained, .entry-hero-layout-contained, .comments-area, .alignfull > .wp-block-cover__inner-container, .alignwide > .wp-block-cover__inner-container' );
 		$css->add_property( 'max-width', kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) );
+		$css->set_selector( '.site-container, .site-header-row-layout-contained, .site-footer-row-layout-contained, .entry-hero-layout-contained, .comments-area, .alignfull > .wp-block-cover__inner-container, .alignwide > .wp-block-cover__inner-container' );
+		$css->add_property( 'max-width', 'var(--global-content-width)' );
 		$css->set_selector( '.content-width-narrow .content-container.site-container, .content-width-narrow .hero-container.site-container' );
-		$css->add_property( 'max-width', kadence()->sub_option( 'content_narrow_width', 'size' ) . kadence()->sub_option( 'content_narrow_width', 'unit' ) );
+		$css->add_property( 'max-width', 'var(--global-content-narrow-width)' );
 		$css->start_media_query( $media_query['alignwide'] );
 		$css->set_selector( '.site .content-container  .alignwide' );
 		$css->add_property( 'margin-left', '-' . ( $wide_width_add[ $max_width_unit ] / 2 ) . $max_width_unit );
@@ -2001,7 +2008,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'footer_html_link_color', 'hover' ) ) );
 		// Scroll To Top.
 		if ( kadence()->option( 'scroll_up' ) ) {
-			$css->set_selector( '#kt-scroll-up' );
+			$css->set_selector( '#kt-scroll-up-reader, #kt-scroll-up' );
 			$css->add_property( 'border', $css->render_border( kadence()->option( 'scroll_up_border' ) ) );
 			$css->add_property( 'border-radius', $this->render_measure( kadence()->option( 'scroll_up_radius' ) ) );
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'scroll_up_color', 'color' ) ) );
@@ -2010,32 +2017,32 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->add_property( 'bottom', $this->render_range( kadence()->option( 'scroll_up_bottom_offset' ), 'desktop' ) );
 			$css->add_property( 'font-size', $this->render_range( kadence()->option( 'scroll_up_icon_size' ), 'desktop' ) );
 			$css->add_property( 'padding', $this->render_responsive_measure( kadence()->option( 'scroll_up_padding' ), 'desktop' ) );
-			$css->set_selector( '#kt-scroll-up.scroll-up-side-right' );
+			$css->set_selector( '#kt-scroll-up-reader.scroll-up-side-right, #kt-scroll-up.scroll-up-side-right' );
 			$css->add_property( 'right', $this->render_range( kadence()->option( 'scroll_up_side_offset' ), 'desktop' ) );
-			$css->set_selector( '#kt-scroll-up.scroll-up-side-left' );
+			$css->set_selector( '#kt-scroll-up-reader.scroll-up-side-left, #kt-scroll-up.scroll-up-side-left' );
 			$css->add_property( 'left', $this->render_range( kadence()->option( 'scroll_up_side_offset' ), 'desktop' ) );
-			$css->set_selector( '#kt-scroll-up:hover' );
+			$css->set_selector( '#kt-scroll-up-reader:hover, #kt-scroll-up:hover' );
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'scroll_up_color', 'hover' ) ) );
 			$css->add_property( 'background', $this->render_color( kadence()->sub_option( 'scroll_up_background', 'hover' ) ) );
 			$css->add_property( 'border-color', $this->render_color( kadence()->sub_option( 'scroll_up_border_colors', 'hover' ) ) );
 			$css->start_media_query( $media_query['tablet'] );
-			$css->set_selector( '#kt-scroll-up' );
+			$css->set_selector( '#kt-scroll-up-reader, #kt-scroll-up' );
 			$css->add_property( 'bottom', $this->render_range( kadence()->option( 'scroll_up_bottom_offset' ), 'tablet' ) );
 			$css->add_property( 'font-size', $this->render_range( kadence()->option( 'scroll_up_icon_size' ), 'tablet' ) );
 			$css->add_property( 'padding', $this->render_responsive_measure( kadence()->option( 'scroll_up_padding' ), 'tablet' ) );
-			$css->set_selector( '#kt-scroll-up.scroll-up-side-right' );
+			$css->set_selector( '#kt-scroll-up-reader.scroll-up-side-right, #kt-scroll-up.scroll-up-side-right' );
 			$css->add_property( 'right', $this->render_range( kadence()->option( 'scroll_up_side_offset' ), 'tablet' ) );
-			$css->set_selector( '#kt-scroll-up.scroll-up-side-left' );
+			$css->set_selector( '#kt-scroll-up-reader.scroll-up-side-left, #kt-scroll-up.scroll-up-side-left' );
 			$css->add_property( 'left', $this->render_range( kadence()->option( 'scroll_up_side_offset' ), 'tablet' ) );
 			$css->stop_media_query();
 			$css->start_media_query( $media_query['mobile'] );
-			$css->set_selector( '#kt-scroll-up' );
+			$css->set_selector( '#kt-scroll-up-reader, #kt-scroll-up' );
 			$css->add_property( 'bottom', $this->render_range( kadence()->option( 'scroll_up_bottom_offset' ), 'mobile' ) );
 			$css->add_property( 'font-size', $this->render_range( kadence()->option( 'scroll_up_icon_size' ), 'mobile' ) );
 			$css->add_property( 'padding', $this->render_responsive_measure( kadence()->option( 'scroll_up_padding' ), 'mobile' ) );
-			$css->set_selector( '#kt-scroll-up.scroll-up-side-right' );
+			$css->set_selector( '#kt-scroll-up-reader.scroll-up-side-right, #kt-scroll-up.scroll-up-side-right' );
 			$css->add_property( 'right', $this->render_range( kadence()->option( 'scroll_up_side_offset' ), 'mobile' ) );
-			$css->set_selector( '#kt-scroll-up.scroll-up-side-left' );
+			$css->set_selector( '#kt-scroll-up-reader.scroll-up-side-left, #kt-scroll-up.scroll-up-side-left' );
 			$css->add_property( 'left', $this->render_range( kadence()->option( 'scroll_up_side_offset' ), 'mobile' ) );
 			$css->stop_media_query();
 		}
@@ -3851,6 +3858,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			foreach( $socials as $name => $color ) {
 				$css->set_selector( 'body.social-brand-colors .social-show-brand-hover .social-link-' . $name . ':not(.ignore-brand):not(.skip):not(.ignore):hover, body.social-brand-colors .social-show-brand-until .social-link-' . $name . ':not(:hover):not(.skip):not(.ignore), body.social-brand-colors .social-show-brand-always .social-link-' . $name . ':not(.ignore-brand):not(.skip):not(.ignore)' );
 				$css->add_property( 'background', $color );
+				$css->set_selector( 'body.social-brand-colors .social-show-brand-hover.social-style-outline .social-link-' . $name . ':not(.ignore-brand):not(.skip):not(.ignore):hover, body.social-brand-colors .social-show-brand-until.social-style-outline .social-link-' . $name . ':not(:hover):not(.skip):not(.ignore), body.social-brand-colors .social-show-brand-always.social-style-outline .social-link-' . $name . ':not(.ignore-brand):not(.skip):not(.ignore)' );
+				$css->add_property( 'color', $color );
 			}
 		}
 		self::$google_fonts = $css->fonts_output();
@@ -3863,6 +3872,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function generate_editor_css() {
 		$css = new Kadence_CSS();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
 		// Globals.
 		$css->set_selector( ':root' );
 		$css->add_property( '--global-palette1', kadence()->palette_option( 'palette1' ) );
@@ -3886,6 +3899,22 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->add_property( '--global-display-fallback-font', apply_filters( 'kadence_theme_global_display_typography_fallback', 'sans-serif' ) );
 		$css->add_property( '--global-body-font-family', $css->render_font_family( kadence()->option( 'base_font' ), '' ) );
 		$css->add_property( '--global-heading-font-family', $css->render_font_family( kadence()->option( 'heading_font' ) ) );
+		$css->add_property( '--global-content-width', kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) );
+		$css->add_property( '--global-content-narrow-width', kadence()->sub_option( 'content_narrow_width', 'size' ) . kadence()->sub_option( 'content_narrow_width', 'unit' ) );
+		$css->add_property( '--global-content-edge-padding', $css->render_range( kadence()->option( 'content_edge_spacing' ), 'desktop' ) );
+		$css->add_property( '--global-content-wide-width', 'calc( var(--global-content-width) + 160px )' );
+		$css->add_property( '--global-content-narrow-wide-width', 'calc( var(--global-content-narrow-width) + 260px )' );
+		$css->add_property( '--global-content-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
+		$css->add_property( '--global-calc-content-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
+		$css->add_property( '--global-calc-wide-content-width', 'calc( var(--global-content-width) + 160px )' );
+		$css->start_media_query( $media_query['tablet'] );
+		$css->set_selector( ':root' );
+		$css->add_property( '--global-content-edge-padding', $css->render_range( kadence()->option( 'content_edge_spacing' ), 'tablet' ) );
+		$css->stop_media_query();
+		$css->start_media_query( $media_query['mobile'] );
+		$css->set_selector( ':root' );
+		$css->add_property( '--global-content-edge-padding', $css->render_range( kadence()->option( 'content_edge_spacing' ), 'mobile' ) );
+		$css->stop_media_query();
 		// Colors.
 		$css->set_selector( ':root .has-theme-palette-1-background-color' );
 		$css->add_property( 'background-color', 'var(--global-palette1)' );
@@ -3997,8 +4026,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->render_background( kadence()->sub_option( 'site_background', 'desktop' ), $css );
 		$css->render_font( kadence()->option( 'base_font' ), $css );
 		// FSE Specific.
-		$css->set_selector( 'body.editor-styles-wrapper .block-editor-writing-flow' );
+		$css->set_selector( 'body.editor-styles-wrapper' );
 		$css->render_font( kadence()->option( 'base_font' ), $css );
+		$css->set_selector( 'body.editor-styles-wrapper.admin-color-pcs-unboxed' );
+		$css->add_property( 'padding', '1em var(--global-content-edge-padding)' );
+		// Unboxed.
 		$css->set_selector( '.block-editor-page.post-content-style-unboxed .editor-styles-wrapper' );
 		$css->render_background( kadence()->sub_option( 'content_background', 'desktop' ), $css );
 		// Page specific.
@@ -4017,11 +4049,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->render_background( kadence()->sub_option( 'post_content_background', 'desktop' ), $css );
 		// Boxed Editor Width.
 		$css->set_selector( '.block-editor-page.post-content-style-boxed .editor-styles-wrapper:before' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - 3rem )' );
+		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
 		$css->render_background( kadence()->sub_option( 'content_background', 'desktop' ), $css );
 		// Narrow width.
 		$css->set_selector( '.block-editor-page.post-content-style-boxed.post-content-width-narrow .editor-styles-wrapper:before' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_narrow_width', 'size' ) . kadence()->sub_option( 'content_narrow_width', 'unit' ) . ' - 3rem )' );
+		$css->add_property( 'max-width', 'calc(var(--global-content-narrow-width) - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
 		// Sidebar Width.
 		$sidebar_size = kadence()->sub_option( 'sidebar_width', 'size' );
 		if ( empty( $sidebar_size ) ) {
@@ -4042,52 +4074,56 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$sidebar_neg = $sidebar_size . kadence()->sub_option( 'sidebar_width', 'unit' );
 		}
 		$css->set_selector( '.block-editor-page.post-content-style-boxed.post-content-sidebar-right .editor-styles-wrapper:before, .block-editor-page.post-content-style-boxed.post-content-sidebar-left .editor-styles-wrapper:before' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - ' . $sidebar_neg . ' - 3.5rem - 3rem )' );
+		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - ' . $sidebar_neg . ' - 3.5rem - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
 		// Full Width.
 		$css->set_selector( '.block-editor-page.post-content-style-boxed.post-content-width-fullwidth .editor-styles-wrapper:before' );
 		$css->add_property( 'max-width', '100%' );
 		// Content Editor Width.
-		$css->set_selector( 'body.block-editor-page .editor-styles-wrapper .block-editor-block-list__layout .wp-block, body.block-editor-page .editor-post-title__block' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - 3rem )' );
+		$css->set_selector( '.editor-styles-wrapper .block-editor-block-list__layout.is-root-container > *, .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > *' );
+		$css->add_property( 'max-width', 'var(--global-content-width)' );
+		$css->set_selector( '.editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > [data-align="wide"], .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > [data-align="wide"]' );
+		$css->add_property( 'max-width', 'var(--global-content-wide-width)' );
+		
 		// Boxed Content Editor Width.
-		$css->set_selector( 'body.block-editor-page.post-content-style-boxed .block-editor-block-list__layout .wp-block, body.block-editor-page.post-content-style-boxed .editor-post-title__block' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - 3rem - 4rem )' );
+		$css->set_selector( '.post-content-style-boxed' );
+		$css->add_property( '--global-content-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) - 4rem )' );
+		$css->add_property( '--global-calc-content-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) - 4rem )' );
+		// $css->add_property( 'max-width', 'calc(var(--global-content-width) - var(--global-content-edge-padding) - 4rem )' );
 		// Narrow Content Editor Width.
-		$css->set_selector( 'body.block-editor-page.post-content-width-narrow .block-editor-block-list__layout .wp-block, body.block-editor-page.post-content-width-narrow .editor-post-title__block' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_narrow_width', 'size' ) . kadence()->sub_option( 'content_narrow_width', 'unit' ) . ' - 3rem )' );
+		$css->set_selector( '.post-content-width-narrow' );
+		$css->add_property( '--global-content-width', 'calc(var(--global-content-narrow-width) - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
 		// Boxed Narrow Content Editor Width.
-		$css->set_selector( 'body.block-editor-page.post-content-style-boxed.post-content-width-narrow .block-editor-block-list__layout .wp-block, body.block-editor-page.post-content-style-boxed.post-content-width-narrow .editor-post-title__block' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_narrow_width', 'size' ) . kadence()->sub_option( 'content_narrow_width', 'unit' ) . ' - 3rem - 4rem)' );
+		$css->set_selector( '.post-content-style-boxed.post-content-width-narrow');
+		$css->add_property( '--global-content-width', 'calc(var(--global-content-narrow-width) - var(--global-content-edge-padding) - var(--global-content-edge-padding) - 4rem)' );
 		// Sidebar Content Editor Width.
-		$css->set_selector( 'body.block-editor-page.post-content-sidebar-right .block-editor-block-list__layout .wp-block, body.block-editor-page.post-content-sidebar-left .block-editor-block-list__layout .wp-block, body.block-editor-page.post-content-sidebar-right .editor-post-title__block, body.block-editor-page.post-content-sidebar-left .editor-post-title__block' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - ' . $sidebar_neg . ' - 3.5rem - 3rem )' );
+		$css->set_selector( '.post-content-sidebar-right, .post-content-sidebar-left' );
+		$css->add_property( '--global-content-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - 3.5rem - ' . $sidebar_neg . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
 		// Boxed Sidebar Content Editor Width.
-		$css->set_selector( 'body.block-editor-page.post-content-style-boxed.post-content-sidebar-right .block-editor-block-list__layout .wp-block, body.block-editor-page.post-content-style-boxed.post-content-sidebar-left .block-editor-block-list__layout .wp-block, body.post-content-style-boxed.block-editor-page.post-content-sidebar-right .editor-post-title__block, body.post-content-style-boxed.block-editor-page.post-content-sidebar-left .editor-post-title__block' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - ' . $sidebar_neg . ' - 3.5rem - 3rem - 4rem )' );
+		$css->set_selector( '.post-content-style-boxed.post-content-sidebar-right, .post-content-style-boxed.post-content-sidebar-left' );
+		$css->add_property( '--global-content-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - 3.5rem - ' . $sidebar_neg . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) - 4rem )' );
 		// Fullwidth Content Editor Width.
-		$css->set_selector( 'body.block-editor-page.post-content-width-fullwidth .block-editor-block-list__layout .wp-block, body.block-editor-page.post-content-width-fullwidth .editor-post-title__block' );
-		$css->add_property( 'max-width', 'none' );
-		$css->set_selector( 'body.block-editor-page.post-content-width-fullwidth.post-content-style-boxed .block-editor-block-list__layout .wp-block, body.block-editor-page.post-content-width-fullwidth.post-content-style-boxed .editor-post-title__block' );
-		$css->add_property( 'max-width', 'none' );
+		$css->set_selector( '.post-content-width-fullwidth' );
+		$css->add_property( '--global-content-width', 'calc( 100% - 16px )' );
+		$css->set_selector( '.post-content-width-fullwidth.post-content-style-boxed' );
+		$css->add_property( '--global-content-width', 'calc( 100% - 4rem )' );
 		// Kadence row theme Width.
-		$css->set_selector( 'body.block-editor-page .wp-block-kadence-rowlayout > .innerblocks-wrap.kb-theme-content-width' );
-		$css->add_property( 'padding-left', '1.5rem' );
-		$css->add_property( 'padding-right', '1.5rem' );
-		$css->set_selector( 'body.block-editor-page.post-content-style-boxed .wp-block-kadence-rowlayout > .innerblocks-wrap.kb-theme-content-width' );
-		$css->add_property( 'padding-left', 'calc(1.5rem + 2rem)' );
-		$css->add_property( 'padding-right', 'calc(1.5rem + 2rem)' );
-		// Align Wide.
-		$css->set_selector( 'body.block-editor-page .block-editor-block-list__layout .wp-block[data-align=wide], body.block-editor-page .block-editor-block-list__layout .wp-block.alignwide' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' + 160px)' );
-		// Align Wide Normal boxed.
-		$css->set_selector( 'body.block-editor-page.post-content-style-boxed .block-editor-block-list__layout .wp-block[data-align=wide], body.block-editor-page.post-content-style-boxed .block-editor-block-list__layout .wp-block.alignwide' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - 3rem )' );
+		$css->set_selector( '.editor-styles-wrapper .wp-block-kadence-rowlayout > .innerblocks-wrap.kb-theme-content-width' );
+		$css->add_property( 'padding-left', 'var(--global-content-edge-padding)' );
+		$css->add_property( 'padding-right', 'var(--global-content-edge-padding)' );
+		$css->set_selector( '.post-content-style-boxed .editor-styles-wrapper .wp-block-kadence-rowlayout > .innerblocks-wrap.kb-theme-content-width' );
+		$css->add_property( 'padding-left', 'calc(var(--global-content-edge-padding) + 2rem)' );
+		$css->add_property( 'padding-right', 'calc(var(--global-content-edge-padding) + 2rem)' );
+		// Align Wide Boxed.
+		$css->set_selector( '.post-content-style-boxed' );
+		$css->add_property( '--global-content-wide-width', 'calc(var(--global-content-width) + 4rem )' );
+		$css->add_property( '--global-calc-wide-content-width', 'calc(var(--global-content-width) + 4rem )' );
 		// Align Wide narrow boxed.
-		$css->set_selector( 'body.block-editor-page.post-content-style-boxed.post-content-width-narrow .block-editor-block-list__layout .wp-block[data-align=wide], body.block-editor-page.post-content-style-boxed.post-content-width-narrow .block-editor-block-list__layout .wp-block.alignwide' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_narrow_width', 'size' ) . kadence()->sub_option( 'content_narrow_width', 'unit' ) . ' - 3rem )' );
+		// $css->set_selector( 'body.block-editor-page.post-content-style-boxed.post-content-width-narrow .block-editor-block-list__layout .wp-block[data-align=wide], body.block-editor-page.post-content-style-boxed.post-content-width-narrow .block-editor-block-list__layout .wp-block.alignwide' );
+		// $css->add_property( 'max-width', 'calc(var(--global-content-narrow-width) - var(--global-content-edge-padding) )' );
 		// Align Wide Sidebar boxed.
 		$css->set_selector( 'body.block-editor-page.post-content-style-boxed.post-content-sidebar-right .block-editor-block-list__layout .wp-block[data-align=wide], body.block-editor-page.post-content-style-boxed.post-content-sidebar-right .block-editor-block-list__layout .wp-block.alignwide, body.block-editor-page.post-content-style-boxed.post-content-sidebar-left .block-editor-block-list__layout .wp-block[data-align=wide], body.block-editor-page.post-content-style-boxed.post-content-sidebar-left .block-editor-block-list__layout .wp-block.alignwide' );
-		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - ' . $sidebar_neg . ' - 3.5em - 3rem )' );
+		$css->add_property( 'max-width', 'calc(var(--global-content-width) - ' . $sidebar_neg . ' - 3.5em - var(--global-content-edge-padding) )' );
+		// Full width.
 		$css->set_selector( '.editor-styles-wrapper .wp-block[data-align="full"], .editor-styles-wrapper .wp-block.alignfull' );
 		$css->add_property( 'max-width', 'none !important' );
 		// $css->set_selector( 'body.block-editor-page .interface-interface-skeleton__editor' );
@@ -4098,19 +4134,19 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->set_selector( '.block-editor-page.kadence-preview-width-mobile .editor-styles-wrapper:before' );
 		$css->add_property( 'max-width', '390px !important' );
 		// Heading Fonts.
-		$css->set_selector( '.block-editor-page .editor-post-title__block .editor-post-title__input, .block-editor-page .editor-styles-wrapper h1, .block-editor-page .editor-styles-wrapper h2, .block-editor-page .editor-styles-wrapper h3, .block-editor-page .editor-styles-wrapper h4, .block-editor-page .editor-styles-wrapper h5, .block-editor-page .editor-styles-wrapper h6' );
+		$css->set_selector( '.editor-styles-wrapper .editor-post-title .editor-post-title__input, .editor-post-title.wp-block .editor-post-title.wp-block__input, .editor-styles-wrapper .block-editor-block-list__layout h1, .editor-styles-wrapper .block-editor-block-list__layout h2, .editor-styles-wrapper .block-editor-block-list__layout h3, .editor-styles-wrapper .block-editor-block-list__layout h4, .editor-styles-wrapper .block-editor-block-list__layout h5, .editor-styles-wrapper .block-editor-block-list__layout h6' );
 		$css->add_property( 'font-family', $css->render_font_family( kadence()->option( 'heading_font' ) ) );
-		$css->set_selector( '.block-editor-page .editor-styles-wrapper h1, .block-editor-page .editor-post-title__block .editor-post-title__input' );
+		$css->set_selector( '.editor-styles-wrapper .editor-post-title .editor-post-title__input, .editor-styles-wrapper .block-editor-block-list__layout h1, .block-editor-page .editor-post-title.wp-block .editor-post-title.wp-block__input, .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper h1' );
 		$css->render_font( kadence()->option( 'h1_font' ), $css );
-		$css->set_selector( '.block-editor-page .editor-styles-wrapper h2' );
+		$css->set_selector( '.editor-styles-wrapper .block-editor-block-list__layout h2' );
 		$css->render_font( kadence()->option( 'h2_font' ), $css );
-		$css->set_selector( '.block-editor-page .editor-styles-wrapper h3' );
+		$css->set_selector( '.editor-styles-wrapper .block-editor-block-list__layout h3' );
 		$css->render_font( kadence()->option( 'h3_font' ), $css );
-		$css->set_selector( '.block-editor-page .editor-styles-wrapper h4' );
+		$css->set_selector( '.editor-styles-wrapper .block-editor-block-list__layout h4' );
 		$css->render_font( kadence()->option( 'h4_font' ), $css );
-		$css->set_selector( '.block-editor-page .editor-styles-wrapper h5' );
+		$css->set_selector( '.editor-styles-wrapper .block-editor-block-list__layout h5' );
 		$css->render_font( kadence()->option( 'h5_font' ), $css );
-		$css->set_selector( '.block-editor-page .editor-styles-wrapper h6' );
+		$css->set_selector( '.editor-styles-wrapper .block-editor-block-list__layout h6' );
 		$css->render_font( kadence()->option( 'h6_font' ), $css );
 		self::$google_fonts = $css->fonts_output();
 		return $css->css_output();

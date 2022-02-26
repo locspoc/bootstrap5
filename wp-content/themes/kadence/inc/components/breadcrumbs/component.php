@@ -157,6 +157,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					'portfolio_id'   => '',
 					'staff_id'       => '',
 					'testimonial_id' => '',
+					'gallery_id'     => 'none',
 				)
 			)
 		);
@@ -168,8 +169,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'before'           => '<span class="kadence-bread-current">',
 				'after'            => '</span>',
 				'home_link'        => home_url( '/' ),
-				'wrap_before'      => '<div id="kadence-breadcrumbs" class="kadence-breadcrumbs"><div class="kadence-breadcrumb-container"' . ( $this->args['color_style'] ? ' style="' . esc_attr( $this->args['color_style'] ) . '"' : '' ) . '>',
-				'wrap_after'       => '</div></div>',
+				'wrap_before'      => '<nav id="kadence-breadcrumbs" aria-label="' . esc_attr__( 'Breadcrumbs', 'kadence' ) . '"  class="kadence-breadcrumbs"><div class="kadence-breadcrumb-container"' . ( $this->args['color_style'] ? ' style="' . esc_attr( $this->args['color_style'] ) . '"' : '' ) . '>',
+				'wrap_after'       => '</div></nav>',
 				'delimiter'        => apply_filters( 'kadence_breadcrumb_delimiter', '/' ),
 				'delimiter_before' => '<span class="bc-delimiter">',
 				'delimiter_after'  => '</span>',
@@ -210,6 +211,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					'post_type'     => 'testimonial',
 					'taxonomy'      => 'testimonial-group',
 					'archive_page'  => $this->args['testimonial_id'],
+					'archive_label' => '',
+				),
+				'kt_gallery'  => array(
+					'post_type'     => 'kt_gallery',
+					'taxonomy'      => 'kt_album',
+					'archive_page'  => $this->args['gallery_id'],
 					'archive_label' => '',
 				),
 				'tribe_events' => array(
@@ -521,6 +528,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		} elseif ( 'tribe_events' === $archive_page ) {
 			// Check for tribe.
 			$html .= sprintf( $this->get_link(), tribe_get_events_link(), tribe_get_event_label_plural() ) . $this->get_sep();
+		} elseif ( 'none' === $archive_page ) {
+			// Check for none.
+			$html .= '';
 		} elseif ( 'archive' === $archive_page ) {
 			$parent_title = ( ! empty( $archive_label ) ? $archive_label : 'Archive' );
 			$html        .= sprintf( $this->get_link(), get_post_type_archive_link( get_post_type() ), $parent_title ) . $this->get_sep();
@@ -599,7 +609,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				$ancestor = get_term( $ancestor, $taxonomy );
 				$html    .= sprintf( $this->get_link(), get_term_link( $ancestor->slug, $taxonomy ), $this->get_breadcrumb_term_title( $ancestor ) ) . $this->get_sep();
 			}
-			$html .= sprintf( $this->get_link(), get_term_link( $main_term->slug, $taxonomy ), $this->get_breadcrumb_term_title( $main_term ) ) . $this->get_sep();
+			$term_link = get_term_link( $main_term->slug, $taxonomy );
+			if ( $term_link && ! is_wp_error( $term_link ) ) {
+				$html .= sprintf( $this->get_link(), $term_link, $this->get_breadcrumb_term_title( $main_term ) ) . $this->get_sep();
+			}
 		}
 		return $html;
 	}

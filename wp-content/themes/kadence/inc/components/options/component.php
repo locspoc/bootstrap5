@@ -308,6 +308,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 						'variant' => '',
 						'color'   => 'palette4',
 					),
+					'sidebar_link_style' => 'normal',
 					'sidebar_link_colors' => array(
 						'color' => '',
 						'hover' => '',
@@ -2375,7 +2376,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					'post_navigation'         => true,
 					'post_related'            => true,
 					'post_related_style'      => 'wide',
-					'post_related_carousel_loop' => true,
+					'post_related_carousel_loop' => false,
 					'post_related_columns'    => '',
 					'post_related_title_font' => array(
 						'size' => array(
