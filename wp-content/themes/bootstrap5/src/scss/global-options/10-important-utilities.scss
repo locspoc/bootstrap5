@@ -1,0 +1,5 @@
+// Enables the !important suffix in utility classes.
+// Can not disable important utilities
+$enable-important-utilities: false;
+
+@import "../../../default/bootstrap/scss/bootstrap";
