@@ -8,6 +8,9 @@ add_action( 'wp_enqueue_scripts', 'wpchild_enqueue_styles' );
 
 /* Loads child scripts */
 function custom_enqueue_scripts(){
+
+  wp_dequeue_style( 'kadence-global-css' );
+
 //   wp_enqueue_style( 'wpm-kadence-style', get_stylesheet_directory_uri() . '/style.css' );
 //   wp_enqueue_style( 'bootstrap5-style', get_stylesheet_directory_uri() . '/vendor/bootstrap/css/bootstrap.min.css' );
   wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/build/index.css' );
