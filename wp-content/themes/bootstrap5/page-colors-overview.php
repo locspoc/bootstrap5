@@ -15,7 +15,7 @@ get_header(); ?>
 
 <div class="container pt-5">
 
-    <h1>Colors overview</h1>
+    <h1><?php the_title(); ?></h1>
 
       <h2 class="text-muted my-3">Color Sass maps</h2>
       <div class="row">
