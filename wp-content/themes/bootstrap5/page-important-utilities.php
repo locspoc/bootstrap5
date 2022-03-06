@@ -27,7 +27,7 @@ get_header(); ?>
     </div>
 
 <?php 
-kadence()->print_styles( 'kadence-content' );
+// kadence()->print_styles( 'kadence-content' );
 /**
  * Hook for everything, makes for better elementor theming support.
  */
