@@ -19,8 +19,15 @@ function custom_enqueue_scripts(){
 }
 add_action( 'wp_enqueue_scripts', 'custom_enqueue_scripts' );
 
-/* Load scripts to Kadence header */
+/* Load scripts to Kadence header before */
+function custom_before_header() {
+  // die('before header');
+  get_template_part( 'template-parts/header/before-header' ); // Roboto
+}
+add_action( 'kadence_before_header', 'custom_before_header' );
+
+/* Load scripts to Kadence header after */
 function custom_after_header() {
-  get_template_part( 'template-part/header/pre-code' ); // Pre code color
+  get_template_part( 'template-parts/header/pre-code' ); // Pre code color
 }
 add_action( 'kadence_after_header', 'custom_after_header' );
