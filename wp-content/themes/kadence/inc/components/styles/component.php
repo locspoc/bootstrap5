@@ -1154,16 +1154,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->add_property( 'border-color', $this->render_color( kadence()->sub_option( 'mobile_button_border_colors', 'color' ) ) );
 		$css->add_property( 'box-shadow', $css->render_shadow( kadence()->option( 'mobile_button_shadow' ), kadence()->default( 'mobile_button_shadow' ) ) );
 		$css->start_media_query( $media_query['tablet'] );
-		$css->set_selector( '.mobile-header-button-wrap .mobile-header-button' );
+		$css->set_selector( '.mobile-header-button-wrap .mobile-header-button-inner-wrap .mobile-header-button' );
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'mobile_button_typography' ), 'tablet' ) );
 		$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'mobile_button_typography' ), 'tablet' ) );
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
-		$css->set_selector( '.mobile-header-button-wrap .mobile-header-button' );
+		$css->set_selector( '.mobile-header-button-wrap .mobile-header-button-inner-wrap .mobile-header-button' );
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'mobile_button_typography' ), 'mobile' ) );
 		$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'mobile_button_typography' ), 'mobile' ) );
 		$css->stop_media_query();
-		$css->set_selector( '.mobile-header-button-wrap .mobile-header-button:hover' );
+		$css->set_selector( '.mobile-header-button-wrap .mobile-header-button-inner-wrap .mobile-header-button:hover' );
 		$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'mobile_button_color', 'hover' ) ) );
 		$css->add_property( 'background', $this->render_color( kadence()->sub_option( 'mobile_button_background', 'hover' ) ) );
 		$css->add_property( 'border-color', $this->render_color( kadence()->sub_option( 'mobile_button_border_colors', 'hover' ) ) );
@@ -4028,6 +4028,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		// FSE Specific.
 		$css->set_selector( 'body.editor-styles-wrapper' );
 		$css->render_font( kadence()->option( 'base_font' ), $css );
+		$css->render_background( kadence()->sub_option( 'site_background', 'desktop' ), $css );
 		$css->set_selector( 'body.editor-styles-wrapper.admin-color-pcs-unboxed' );
 		$css->add_property( 'padding', '1em var(--global-content-edge-padding)' );
 		// Unboxed.
@@ -4041,15 +4042,17 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->set_selector( '.block-editor-page.post-type-page.post-content-style-boxed .editor-styles-wrapper:before' );
 		$css->render_background( kadence()->sub_option( 'page_content_background', 'desktop' ), $css );
 		// Post specific.
-		$css->set_selector( '.block-editor-page.post-type-post .editor-styles-wrapper' );
+		$css->set_selector( '.block-editor-page.post-type-post .editor-styles-wrapper, .admin-color-post-type-post.editor-styles-wrapper' );
 		$css->render_background( kadence()->sub_option( 'post_site_background', 'desktop' ), $css );
-		$css->set_selector( '.block-editor-page.post-type-post.post-content-style-unboxed .editor-styles-wrapper' );
+		$css->set_selector( '.block-editor-page.post-type-post.post-content-style-unboxed .editor-styles-wrapper, .admin-color-post-type-post.admin-color-pcs-unboxed.editor-styles-wrapper' );
 		$css->render_background( kadence()->sub_option( 'post_content_background', 'desktop' ), $css );
-		$css->set_selector( '.block-editor-page.post-type-post.post-content-style-boxed .editor-styles-wrapper:before' );
+		$css->set_selector( '.block-editor-page.post-type-post.post-content-style-boxed .editor-styles-wrapper:before, .admin-color-post-type-post.admin-color-pcs-boxed.editor-styles-wrapper:before' );
 		$css->render_background( kadence()->sub_option( 'post_content_background', 'desktop' ), $css );
 		// Boxed Editor Width.
 		$css->set_selector( '.block-editor-page.post-content-style-boxed .editor-styles-wrapper:before' );
 		$css->add_property( 'max-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
+		$css->render_background( kadence()->sub_option( 'content_background', 'desktop' ), $css );
+		$css->set_selector( '.admin-color-pcs-boxed.editor-styles-wrapper:before, .admin-color-pcs-unboxed.editor-styles-wrapper' );
 		$css->render_background( kadence()->sub_option( 'content_background', 'desktop' ), $css );
 		// Narrow width.
 		$css->set_selector( '.block-editor-page.post-content-style-boxed.post-content-width-narrow .editor-styles-wrapper:before' );
