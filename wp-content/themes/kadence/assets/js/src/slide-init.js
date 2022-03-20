@@ -63,6 +63,7 @@
 				toLabel: kadenceSlideConfig.to,
 				controlsPosition: 'bottom',
 				navPosition: 'bottom',
+				useLocalStorage: false,
 				textDirection: slideRtl,
 				controlsText: [prevLabel, nextLabel],
 				loop:( 'false' === sliderLoop ? false : true ),
