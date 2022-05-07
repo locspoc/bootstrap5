@@ -4,7 +4,7 @@ Tags: translation-ready, two-columns, right-sidebar, left-sidebar, footer-widget
 Requires at least: 5.4
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 1.1.14
+Stable tag: 1.1.15
 License: GNU General Public License v3.0 (or later)
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,6 +18,17 @@ Kadence is released under GNU General Public License v3.0 (or later)
 
 
 = Changelog =
+
+== 1.1.15 | 4th March 2022 ==
+* Add: Option to show post time.
+* Update: Link authors to profile website address.
+* Update: Prevent related slider from using local storage.
+* Fix: Possible issue with dropdown background.
+* Fix: Issue with 0px not rendering properly.
+* Fix: Issue with attribute archives not showing shop in breadcrumbs.
+* Fix: Issue where scroll to id could cause the page to jump once user scrolled to the end.
+* Fix: Issue with header mobile button css specificity.
+* Fix: Issue with preview not showing correct background color.
 
 == 1.1.14 | 2nd February 2022 ==
 * Fix: Some situations where content was aligned left in editor.

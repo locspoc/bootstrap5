@@ -1,3 +1,14 @@
+== 1.1.15 | 4th March 2022 ==
+* Add: Option to show post time.
+* Update: Link authors to profile website address.
+* Update: Prevent related slider from using local storage.
+* Fix: Possible issue with dropdown background.
+* Fix: Issue with 0px not rendering properly.
+* Fix: Issue with attribute archives not showing shop in breadcrumbs.
+* Fix: Issue where scroll to id could cause the page to jump once user scrolled to the end.
+* Fix: Issue with header mobile button css specificity.
+* Fix: Issue with preview not showing correct background color.
+
 == 1.1.14 | 2nd February 2022 ==
 * Fix: Some situations where content was aligned left in editor.
 

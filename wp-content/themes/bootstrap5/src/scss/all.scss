@@ -1,11 +1,49 @@
+// Colors
+// @import "./colors/01-colors-overview.scss";
+// @import "./colors/02-add-to-theme-colors.scss";
+// @import "./colors/03-remove-from-theme-colors.scss";
+// @import "./colors/04-defining-color-palette.scss";
+
+// Components
+// @import "./components/breadcrumb.scss";
+// @import "./components/card.scss";
+// @import "./components/carousel.scss";
+// @import "./components/modal.scss";
+// @import "./components/progress.scss";
+// @import "./components/spinners.scss";
+
+// Content
+// @import "./content/figures.scss";
+// @import "./content/images.scss";
+// @import "./content/tables.scss";
+// @import "./content/typography.scss";
+
+// Forms
+// @import "./forms/range.scss";
+
 // Global Options
-@import "./global-options/01-spacer.scss";
-@import "./global-options/02-border-radius.scss";
-@import "./global-options/03-box-shadow.scss";
-@import "./global-options/04-gradients.scss";
-@import "./global-options/05-transitions.scss";
-@import "./global-options/06-caret.scss";
-@import "./global-options/07-button-pointers.scss";
-@import "./global-options/08-validation-icons.scss";
-@import "./global-options/09-negative-margins.scss";
-@import "./global-options/10-important-utilities.scss";
+// @import "./global-options/01-spacer.scss";
+// @import "./global-options/02-border-radius.scss";
+// @import "./global-options/03-box-shadow.scss";
+// @import "./global-options/04-gradients.scss";
+// @import "./global-options/05-transitions.scss";
+// @import "./global-options/06-caret.scss";
+// @import "./global-options/07-button-pointers.scss";
+// @import "./global-options/08-validation-icons.scss";
+// @import "./global-options/09-negative-margins.scss";
+// @import "./global-options/10-important-utilities.scss";
+
+// Helpers
+// @import "./helpers/ratio.scss";
+
+// Layout
+// @import "./layout/breakpoints.scss";
+// @import "./layout/container.scss";
+// @import "./layout/grid.scss";
+
+// Utilities
+// @import "./utilities/borders.scss";
+// @import "./utilities/position.scss";
+// @import "./utilities/sizing.scss";
+// @import "./utilities/spacing.scss";
+@import "./utilities/utility-api.scss";

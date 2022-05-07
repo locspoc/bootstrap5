@@ -1948,6 +1948,9 @@ class Theme_Customizer {
 			--global-heading-font: ' . ( 'inherit' !== kadence()->sub_option( 'heading_font', 'family' ) ? kadence()->sub_option( 'heading_font', 'family' ) : 'var(--global-base-font)' ) . ';
 		}';
 		wp_add_inline_style( 'kadence-customizer-controls', wp_strip_all_tags( $css ) );
+		if ( function_exists( 'wp_set_script_translations' ) ) {
+			wp_set_script_translations( 'kadence-customizer-controls', 'kadence' );
+		}
 	}
 	/**
 	 * Generates the color output.
