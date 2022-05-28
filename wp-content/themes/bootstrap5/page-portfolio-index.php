@@ -103,6 +103,61 @@ get_header(); ?>
         </div><!-- / col-12.col-md-6.col-xl-3.mb-4 -->
 
     </div><!-- / row.mb-4 -->
+
+    <h3>Testimonials</h3>
+
+    <div class="row mb-4">
+
+        <div class="col-12 col-lg-4">
+
+            <figure>
+
+                <blockquote class="blockquote">
+
+                    <p>Banh mi lo-fi skateboard, brunch tacos umami pork belly echo park salvia venmo tumeric try-hard. Health goth selfies occupy fingerstache. Gluten-free austin listicle gochujang echo park activated charcoal slow-carb dreamcatcher craft beer cold-pressed. Etsy roof party actually chambray, activated charcoal VHS fingerstache irony organic cred pug.</p>
+
+                </blockquote>
+
+                <figcaption class="blockquote-footer">Firstname Lastname</figcaption>
+
+            </figure>
+
+        </div><!-- / col-12.col-lg-4 -->
+
+        <div class="col-12 col-lg-4">
+
+            <figure>
+
+                <blockquote class="blockquote">
+
+                    <p>Banh mi lo-fi skateboard, brunch tacos umami pork belly echo park salvia venmo tumeric try-hard. Health goth selfies occupy fingerstache. Gluten-free austin listicle gochujang echo park activated charcoal slow-carb dreamcatcher craft beer cold-pressed. Etsy roof party actually chambray, activated charcoal VHS fingerstache irony organic cred pug.</p>
+
+                </blockquote>
+
+                <figcaption class="blockquote-footer">Firstname Lastname</figcaption>
+
+            </figure>
+
+        </div><!-- / col-12.col-lg-4 -->
+
+        <div class="col-12 col-lg-4">
+
+            <figure>
+
+                <blockquote class="blockquote">
+
+                    <p>Banh mi lo-fi skateboard, brunch tacos umami pork belly echo park salvia venmo tumeric try-hard. Health goth selfies occupy fingerstache. Gluten-free austin listicle gochujang echo park activated charcoal slow-carb dreamcatcher craft beer cold-pressed. Etsy roof party actually chambray, activated charcoal VHS fingerstache irony organic cred pug.</p>
+
+                </blockquote>
+
+                <figcaption class="blockquote-footer">Firstname Lastname</figcaption>
+
+            </figure>
+
+        </div><!-- / col-12.col-lg-4 -->
+
+    </div><!-- / row.mb-4 -->
+
 </div><!-- / container.mt-4 -->
 
 <div class="container pt-5">
