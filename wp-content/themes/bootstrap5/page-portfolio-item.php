@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: Portfolio Overview
+ * Template Name: Portfolio Item
  *
  * @package kadence
  */
