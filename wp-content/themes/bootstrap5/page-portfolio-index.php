@@ -63,6 +63,46 @@ get_header(); ?>
             <p>Cloud bread fanny pack af, prism bespoke next level enamel pin activated charcoal brooklyn offal. Mumblecore taiyaki man bun wayfarers letterpress. Photo booth plaid pabst literally, austin chambray keytar forage humblebrag la croix typewriter kinfolk. Selfies narwhal palo santo live-edge vegan.</p>
         </div><!-- / col-12.col-lg-6 -->
     </div><!-- / row.mb-4 -->
+    <h3>Featured Projects</h3>
+    <div class="row mb-4">
+
+        <div class="col-12 col-md-6 col-xl-3 mb-4">
+            <a href="<?= home_url('portfolio-item'); ?>">
+                <figure class="figure">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/510x400.png" class="figure-img img-fluid img-thumbnail" alt="Portfolio Item Heading">
+                    <figcaption class="figure-caption">Portfolio Item Heading</figcaption>
+                </figure>
+            </a>
+        </div><!-- / col-12.col-md-6.col-xl-3.mb-4 -->
+
+        <div class="col-12 col-md-6 col-xl-3 mb-4">
+            <a href="<?= home_url('portfolio-item'); ?>">
+                <figure class="figure">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/510x400.png" class="figure-img img-fluid img-thumbnail" alt="Portfolio Item Heading">
+                    <figcaption class="figure-caption">Portfolio Item Heading</figcaption>
+                </figure>
+            </a>
+        </div><!-- / col-12.col-md-6.col-xl-3.mb-4 -->
+
+        <div class="col-12 col-md-6 col-xl-3 mb-4">
+            <a href="<?= home_url('portfolio-item'); ?>">
+                <figure class="figure">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/510x400.png" class="figure-img img-fluid img-thumbnail" alt="Portfolio Item Heading">
+                    <figcaption class="figure-caption">Portfolio Item Heading</figcaption>
+                </figure>
+            </a>
+        </div><!-- / col-12.col-md-6.col-xl-3.mb-4 -->
+
+        <div class="col-12 col-md-6 col-xl-3 mb-4">
+            <a href="<?= home_url('portfolio-item'); ?>">
+                <figure class="figure">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/510x400.png" class="figure-img img-fluid img-thumbnail" alt="Portfolio Item Heading">
+                    <figcaption class="figure-caption">Portfolio Item Heading</figcaption>
+                </figure>
+            </a>
+        </div><!-- / col-12.col-md-6.col-xl-3.mb-4 -->
+
+    </div><!-- / row.mb-4 -->
 </div><!-- / container.mt-4 -->
 
 <div class="container pt-5">
