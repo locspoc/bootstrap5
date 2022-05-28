@@ -6,3 +6,9 @@ Author URI: https://wpmarmite.com
 Template: kadence
 Version: 1.0
 */
+
+@font-face {
+	font-family: "bootstrap-icons";
+	src: url("./vendor/bootstrap/fonts/bootstrap-icons.woff") format("woff");
+	src: url("./vendor/bootstrap/fonts/bootstrap-icons.woff2") format("woff2");
+}
