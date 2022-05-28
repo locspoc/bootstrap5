@@ -48,6 +48,23 @@ get_header(); ?>
     </div><!-- / container -->
 </nav>
 
+<div class="container mt-4">
+    <h2 class="display-4 mb-4">
+        Firstname Lastname
+        <small class="d-block text-muted">Job Position</small>
+    </h2>
+    <div class="row mb-4">
+        <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/690x400.png" class="img-fluid" alt="">
+        </div><!-- / col-12.col-lg-6.mb-4.mb-lg-0 -->
+        <div class="col-12 col-lg-6">
+            <h3>About</h3>
+            <p>I'm baby glossier master cleanse hexagon pabst prism, vape beard man braid whatever tote bag +1 celiac. Helvetica kombucha kickstarter, trust fund etsy retro vaporware praxis listicle single-origin coffee. Tousled mlkshk gochujang photo booth, yes plz shoreditch deep v biodiesel banh mi. You probably haven't heard of them succulents biodiesel shabby chic pug. Retro semiotics pok pok readymade, chambray succulents vegan beard health goth.</p>
+            <p>Cloud bread fanny pack af, prism bespoke next level enamel pin activated charcoal brooklyn offal. Mumblecore taiyaki man bun wayfarers letterpress. Photo booth plaid pabst literally, austin chambray keytar forage humblebrag la croix typewriter kinfolk. Selfies narwhal palo santo live-edge vegan.</p>
+        </div><!-- / col-12.col-lg-6 -->
+    </div><!-- / row.mb-4 -->
+</div><!-- / container.mt-4 -->
+
 <div class="container pt-5">
 
     <h1><?php the_title(); ?></h1>
