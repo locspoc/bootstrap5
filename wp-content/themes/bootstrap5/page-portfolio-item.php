@@ -84,7 +84,118 @@ get_header(); ?>
 
 <div class="container mt-4">
 
+    <h2 class="display-4 mb-4">
+        <span class="badge bg-primary">Tag</span>
+        Portfolio Item Heading
+        <small class="d-block text-muted">Portfolio Item Subtitle</small>
+    </h2>
 
+    <div class="row mb-4">
+
+        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+
+            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div><!-- / carousel-indicators -->
+
+
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/930x700.png" alt="First slide" class="d-block w-100">
+                        <div class="carousel-caption">
+                            <h3>Caption 1</h3>
+                            <p>This text describes the first slide.</p>
+                        </div><!-- / carousel-caption -->
+
+                    </div><!-- / carousel-item -->
+
+                    <div class="carousel-item">
+
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/930x700.png" alt="Second slide" class="d-block w-100">
+                        <div class="carousel-caption">
+                            <h3>Caption 2</h3>
+                            <p>This text describes the first slide.</p>
+                        </div><!-- / carousel-caption -->
+
+                    </div><!-- / carousel-item -->
+
+                    <div class="carousel-item">
+
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/930x700.png" alt="Third slide" class="d-block w-100">
+                        <div class="carousel-caption">
+                            <h3>Caption 3</h3>
+                            <p>This text describes the first slide.</p>
+                        </div><!-- / carousel-caption -->
+
+                    </div><!-- / carousel-item -->
+
+                    <div class="carousel-item">
+
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/930x700.png" alt="Fourth slide" class="d-block w-100">
+                        <div class="carousel-caption">
+                            <h3>Caption 4</h3>
+                            <p>This text describes the first slide.</p>
+                        </div><!-- / carousel-caption -->
+
+                    </div><!-- / carousel-item -->
+
+                    <div class="carousel-item">
+
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/930x700.png" alt="Fifth slide" class="d-block w-100">
+                        <div class="carousel-caption">
+                            <h3>Caption 5</h3>
+                            <p>This text describes the first slide.</p>
+                        </div><!-- / carousel-caption -->
+
+                    </div><!-- / carousel-item -->
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+                </div><!-- / carousel-inner -->
+
+            </div><!-- / carousel.slide -->
+
+        </div><!-- / col-12.col-xl-8.mb-4.mb-xl-0 -->
+
+        <div class="col-12 col-xl-4">
+
+            <h3>Project Description</h3>
+
+            <p>I'm baby glossier master cleanse hexagon pabst prism, vape beard man braid whatever tote bag +1 celiac. Helvetica kombucha kickstarter, trust fund etsy retro vaporware praxis listicle single-origin coffee. Tousled mlkshk gochujang photo booth, yes plz shoreditch deep v biodiesel banh mi. You probably haven't heard of them succulents biodiesel shabby chic pug. Retro semiotics pok pok readymade, chambray succulents vegan beard health goth.</p>
+
+            <h3>Project Details</h3>
+
+            <ul>
+                <li>Description of detail</li>
+                <li>Description of detail</li>
+                <li>Description of detail</li>
+                <li>Description of detail</li>
+                <li>Description of detail</li>
+            </ul>
+
+            <h3>Project Link</h3>
+
+            <i class="fas fa-external-link-alt"></i> <a href="#0" target="_blank">www.portfolioitemheading.com</a>
+
+        </div><!-- / col-12 col-xl-4 -->
+
+    </div><!-- / row.mb-4 -->
 
 </div><!-- / container.mt-4 -->
 
