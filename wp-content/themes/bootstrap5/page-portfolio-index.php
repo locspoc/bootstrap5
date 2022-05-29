@@ -237,6 +237,113 @@ get_header(); ?>
 
 </div><!-- / container.mt-4 -->
 
+<footer class="bg-light py-4">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-12 col-md-6 col-xl-3">
+
+                <div class="d-flex align-items-center mb-2">
+
+                    <div class="fa-layers fa-fw fa-2x me-1">
+
+                        <i class="fas fa-circle text-muted"></i>
+
+                        <i class="fas fa-code text-white" data-fa-transform="shrink-10"></i>
+
+                    </div><!-- / fa-layers.fa-fw.fa-2x.me-1 -->
+
+                    <h5 class="m-0">Code</h5>
+
+                </div><!-- / d-flex.align-items-center.mb-2 -->
+
+                <ul class="list-unstyled">
+                    <li><i class="fab fa-fw fa-github text-muted"></i><a href="#0">GitHub</a></li>
+                    <li><i class="fab fa-fw fa-codepen text-muted"></i><a href="#0">CodePen</a></li>
+                    <li><i class="fab fa-fw fa-stack-overflow text-muted"></i><a href="#0">Stack Overflow</a></li>
+                </ul>
+
+            </div><!-- / col-12.col-md-6.col-xl-3 -->
+
+            <div class="col-12 col-md-6 col-xl-3">
+
+                <div class="d-flex align-items-center mb-2">
+
+                    <div class="fa-layers fa-fw fa-2x me-1">
+
+                        <i class="fas fa-circle text-muted"></i>
+
+                        <i class="fas fa-paint-brush text-white" data-fa-transform="shrink-10"></i>
+
+                    </div><!-- / fa-layers.fa-fw.fa-2x.me-1 -->
+
+                    <h5 class="m-0">Design</h5>
+
+                </div><!-- / d-flex.align-items-center.mb-2 -->
+
+                <ul class="list-unstyled">
+                    <li><i class="fab fa-fw fa-behance text-muted"></i><a href="#0">Behance</a></li>
+                    <li><i class="fab fa-fw fa-dribbble text-muted"></i><a href="#0">Dribbble</a></li>
+                </ul>
+
+            </div><!-- / col-12.col-md-6.col-xl-3 -->
+
+            <div class="col-12 col-md-6 col-xl-3">
+
+                <div class="d-flex align-items-center mb-2">
+
+                    <div class="fa-layers fa-fw fa-2x me-1">
+
+                        <i class="fas fa-circle text-muted"></i>
+
+                        <i class="fas fa-images text-white" data-fa-transform="shrink-10"></i>
+
+                    </div><!-- / fa-layers.fa-fw.fa-2x.me-1 -->
+
+                    <h5 class="m-0">Photography</h5>
+
+                </div><!-- / d-flex.align-items-center.mb-2 -->
+
+                <ul class="list-unstyled">
+                    <li><i class="fab fa-fw fa-flickr text-muted"></i><a href="#0">Flickr</a></li>
+                    <li><i class="fab fa-fw fa-instagram text-muted"></i><a href="#0">Instagram</a></li>
+                </ul>
+
+            </div><!-- / col-12.col-md-6.col-xl-3 -->
+
+            <div class="col-12 col-md-6 col-xl-3">
+
+                <div class="d-flex align-items-center mb-2">
+
+                    <div class="fa-layers fa-fw fa-2x me-1">
+
+                        <i class="fas fa-circle text-muted"></i>
+
+                        <i class="fas fa-video text-white" data-fa-transform="shrink-10"></i>
+
+                    </div><!-- / fa-layers.fa-fw.fa-2x.me-1 -->
+
+                    <h5 class="m-0">Video</h5>
+
+                </div><!-- / d-flex.align-items-center.mb-2 -->
+
+                <ul class="list-unstyled">
+                    <li><i class="fab fa-fw fa-youtube text-muted"></i><a href="#0">YouTube</a></li>
+                    <li><i class="fab fa-fw fa-vimeo text-muted"></i><a href="#0">Vimeo</a></li>
+                </ul>
+
+            </div><!-- / col-12.col-md-6.col-xl-3 -->
+
+        </div><!-- / row -->
+
+        <p class="text-center mb-0">&copy; 2020 Firstname Lastname. All rights reserved.</p>
+
+    </div><!-- / container -->
+
+</footer>
+
 <?php kadence()->print_styles('kadence-content');
 /**
  * Hook for everything, makes for better elementor theming support.
