@@ -41,7 +41,7 @@ get_header(); ?>
 
             <ul class="navbar-nav ms-auto">
 
-                <li class="nav-item active" aria-curent="page">
+                <li class="nav-item active" aria-current="page">
 
                     <a class="nav-link" href="<?= home_url('portfolio-index'); ?>">
                         Home
@@ -52,7 +52,15 @@ get_header(); ?>
                 <li class="nav-item">
 
                     <a class="nav-link" href="<?= home_url('portfolio-overview'); ?>">
-                        Portfolio
+                        Portfolio Overview
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link" href="<?= home_url('portfolio-item'); ?>">
+                        Portfolio Item
                     </a>
 
                 </li>
