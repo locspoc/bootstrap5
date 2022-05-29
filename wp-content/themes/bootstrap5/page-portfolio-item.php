@@ -197,6 +197,108 @@ get_header(); ?>
 
     </div><!-- / row.mb-4 -->
 
+    <h3>Related Projects</h3>
+
+    <div class="row mb-4">
+
+        <div class="col-12 col-md-6 col-xl-3 mb-4">
+
+            <a href="<?= home_url('portfolio-item'); ?>">
+
+                <figure class="figure">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/510x400.png" class="figure-img img-fluid img-thumbnail" alt="Portfolio Item Heading">
+                    <figcaption class="figure-caption">Portfolio Item Heading</figcaption>
+                </figure>
+
+            </a>
+
+        </div><!-- / col-12.col-md-6.col-xl-3.mb-4 -->
+
+        <div class="col-12 col-md-6 col-xl-3 mb-4">
+
+            <a href="<?= home_url('portfolio-item'); ?>">
+
+                <figure class="figure">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/510x400.png" class="figure-img img-fluid img-thumbnail" alt="Portfolio Item Heading">
+                    <figcaption class="figure-caption">Portfolio Item Heading</figcaption>
+                </figure>
+
+            </a>
+
+        </div><!-- / col-12.col-md-6.col-xl-3.mb-4 -->
+
+        <div class="col-12 col-md-6 col-xl-3 mb-4">
+
+            <a href="<?= home_url('portfolio-item'); ?>">
+
+                <figure class="figure">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/510x400.png" class="figure-img img-fluid img-thumbnail" alt="Portfolio Item Heading">
+                    <figcaption class="figure-caption">Portfolio Item Heading</figcaption>
+                </figure>
+
+            </a>
+
+        </div><!-- / col-12.col-md-6.col-xl-3.mb-4 -->
+
+        <div class="col-12 col-md-6 col-xl-3 mb-4">
+
+            <a href="<?= home_url('portfolio-item'); ?>">
+
+                <figure class="figure">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/510x400.png" class="figure-img img-fluid img-thumbnail" alt="Portfolio Item Heading">
+                    <figcaption class="figure-caption">Portfolio Item Heading</figcaption>
+                </figure>
+
+            </a>
+
+        </div><!-- / col-12.col-md-6.col-xl-3.mb-4 -->
+
+    </div><!-- / row.mb-4 -->
+
+    <h3>Contact Me</h3>
+
+    <form action="" class="mb-4">
+
+        <div class="row">
+
+            <div class="col-12 col-md-6">
+
+                <div class="mb-3">
+
+                    <label for="name" class="form-label">Name</label>
+
+                    <input type="text" id="name" class="form-control" placeholder="Enter your name">
+
+                </div><!-- / mb-3 -->
+
+                <div class="mb-3">
+
+                    <label for="email" class="form-label">Email</label>
+
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email">
+
+                </div><!-- / mb-3 -->
+
+            </div><!-- / col-12.col-md-6 -->
+
+            <div class="col-12 col-md-6">
+
+                <div class="mb-3">
+
+                    <label for="message" class="form-label">Message</label>
+
+                    <textarea name="" id="message" cols="30" rows="4" class="form-control" placeholder="Enter your message"></textarea>
+
+                </div><!-- / mb-3 -->
+
+            </div><!-- / col-12.col-md-6 -->
+
+        </div><!-- / row -->
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+
+    </form>
+
 </div><!-- / container.mt-4 -->
 
 <footer class="bg-light py-4">
