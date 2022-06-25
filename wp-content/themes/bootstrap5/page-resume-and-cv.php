@@ -212,6 +212,70 @@ get_header(); ?>
                 </div><!-- / card-body -->
             </div><!-- / card -->
 
+            <div class="card mb-4">
+                <h2 class="card-header text-center">Testimonials</h2>
+                <div class="card-body">
+                    <div id="carousel" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-indicators mb-0">
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" aria-label="Slide 1" class="bg-secondary active"></button>
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2" class="bg-secondary"></button>
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3" class="bg-secondary"></button>
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4" class="bg-secondary"></button>
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="4" aria-label="Slide 5" class="bg-secondary"></button>
+                        </div><!-- / carousel-indicators -->
+
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <figure class="text-center mb-4">
+                                    <blockquote class="blockquote">
+                                        <p>1. Woke pitchfork fingerstache, butcher gochujang taxidermy organic humblebrag waistcoat gluten-free yes plz.</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer">Firstname Lastname</figcaption>
+                                </figure>
+                            </div><!-- / carouesel-item -->
+
+                            <div class="carousel-item">
+                                <figure class="text-center mb-4">
+                                    <blockquote class="blockquote">
+                                        <p>2. Chia pabst pinterest, heirloom hexagon deep v tilde typewriter leggings kale chips.</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer">Firstname Lastname</figcaption>
+                                </figure>
+                            </div><!-- / carouesel-item -->
+
+                            <div class="carousel-item">
+                                <figure class="text-center mb-4">
+                                    <blockquote class="blockquote">
+                                        <p>3. Woke pitchfork fingerstache, butcher gochujang taxidermy organic humblebrag waistcoat gluten-free yes plz.</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer">Firstname Lastname</figcaption>
+                                </figure>
+                            </div><!-- / carouesel-item -->
+
+                            <div class="carousel-item">
+                                <figure class="text-center mb-4">
+                                    <blockquote class="blockquote">
+                                        <p>4. Church-key shaman asymmetrical waistcoat next level edison bulb.</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer">Firstname Lastname</figcaption>
+                                </figure>
+                            </div><!-- / carouesel-item -->
+
+                            <div class="carousel-item">
+                                <figure class="text-center mb-4">
+                                    <blockquote class="blockquote">
+                                        <p>5. Polaroid church-key chillwave kitsch pok pok cliche, deep v pug narwhal before they sold out.</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer">Firstname Lastname</figcaption>
+                                </figure>
+                            </div><!-- / carouesel-item -->
+
+                        </div><!-- / carousel-inner -->
+                    </div><!-- / carousel -->
+                </div><!-- / card-body -->
+            </div><!-- / card -->
+
         </div><!-- / col-12 -->
     </div><!-- / row -->
 </div><!-- / container -->
