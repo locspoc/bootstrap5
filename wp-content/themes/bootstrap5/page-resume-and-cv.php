@@ -276,7 +276,137 @@ get_header(); ?>
                 </div><!-- / card-body -->
             </div><!-- / card -->
 
-        </div><!-- / col-12 -->
+        </div><!-- / col-12 col-lg-8 -->
+
+        <div class="col-12 col-lg-4">
+
+            <div class="card mb-4">
+                <h2 class="card-header text-center">
+                    Contact Info
+                </h2>
+                <div class="card-body">
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-male text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <div class="flex-grow-1">
+                            Firstname Lastname
+
+                            <hr>
+
+                        </div><!-- / flex-grow-1 -->
+                    </div><!-- / d-flex -->
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-calendar-alt text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <div class="flex-grow-1">
+                            <time datetime="1990-01-01">1st of January 1990</time>
+
+                            <hr>
+
+                        </div><!-- / flex-grow-1 -->
+                    </div><!-- / d-flex -->
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-phone text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <ul class="flex-grow-1 list-unstyled">
+                            <li><a href="tel:+1234567890">(123)-456-7890</a></li>
+                            <li><i class="fab fa-skype fa-fw text-muted"></i><a href="#0">Skype_User</a></li>
+                            <li><i class="fab fa-fw fa-whatsapp text-muted"></i><a href="#0">Whatsapp_User</a></li>
+
+                            <hr>
+
+                        </ul><!-- / flex-grow-1 -->
+
+                    </div><!-- / d-flex -->
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-envelope text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <ul class="flex-grow-1 list-unstyled">
+                            <li><a href="mailto:mail@domain.com">mail@domain.com</a></li>
+                            <li><i class="fab fa-fw fa-linkedin text-muted"></i><a href="#0">LinkedIn</a></li>
+                            <li><i class="fab fa-fw fa-twitter text-muted"></i><a href="#0">@twitteruser</a></li>
+
+                            <hr>
+
+                        </ul><!-- / flex-grow-1 -->
+
+                    </div><!-- / d-flex -->
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-home text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <ul class="flex-grow-1">
+                            <address class="mb-0">
+                                Street Name 123<br>
+                                ZIP Code and City<br>
+                                Country
+                            </address>
+
+                            <hr>
+
+                        </ul><!-- / flex-grow-1 -->
+
+                    </div><!-- / d-flex -->
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-at text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <ul class="flex-grow-1">
+
+                            <form action="">
+
+                                <div class="mb-3">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text" id="name">Name:</span>
+                                        <input type="text" class="form-control" name="name" placeholder="Your name here" aria-label="Your name" aria-describedby="name">
+                                    </div><!-- / input-group -->
+                                </div><!-- / mb-3 -->
+
+                                <div class="mb-3">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text" id="email">Email:</span>
+                                        <input type="email" class="form-control" name="email" placeholder="Your email here" aria-label="Your email" aria-describedby="email">
+                                    </div><!-- / input-group -->
+                                </div><!-- / mb-3 -->
+
+                                <div class="mb-3">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text" id="message"><i class="fas fa-pencil-alt"></i></span>
+                                        <textarea class="form-control" name="message" placeholder="Your message here" aria-label="Your message" aria-describedby="message" rows="3"></textarea>
+                                    </div><!-- / input-group -->
+                                </div><!-- / mb-3 -->
+
+                                <button type="submit" class="btn btn-sm btn-primary">Send message</button>
+
+                            </form>
+
+                            <hr>
+
+                        </ul><!-- / flex-grow-1 -->
+
+                    </div><!-- / d-flex -->
+
+                </div><!-- / card-body -->
+            </div><!-- / card -->
+
+        </div><!-- / col-12 col-lg-4 -->
+
     </div><!-- / row -->
 </div><!-- / container -->
 
