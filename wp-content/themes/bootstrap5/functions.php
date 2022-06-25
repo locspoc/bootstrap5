@@ -35,3 +35,17 @@ function custom_after_header()
   get_template_part('template-parts/header/pre-code'); // Pre code color
 }
 add_action('kadence_after_header', 'custom_after_header');
+
+/**
+ * Define Body Classes
+ *
+ * @param array $classes the body classes.
+ */
+function custom_body_classes($classes)
+{
+  if (is_page('resume-and-cv-page')) {
+    $classes[] = 'bg-light';
+  }
+  return $classes;
+}
+add_filter('body_class', 'custom_body_classes');
