@@ -40,7 +40,9 @@ get_header(); ?>
                     </figure>
                 </div><!-- / card-body -->
             </div><!-- / card -->
+
             <div class="card mb-4">
+                <div class="card-header text-center">Work Experience</div>
                 <div class="card-body">
 
                     <div class="d-flex align-items-start mb-2">
@@ -129,6 +131,87 @@ get_header(); ?>
 
                 </div><!-- / card-body -->
             </div><!-- / card -->
+
+            <div class="card mb-4">
+
+                <div class="card-header text-center">Education</div>
+
+                <div class="card-body">
+
+                    <div class="d-flex align-items-start mb-2">
+                        <i class="fas fa-university fa-fw fa-3x text-primary me-2"></i>
+                        <div class="flex-grow-1">
+                            <h3 class="h4 mb-1">PhD in Software Engineering</h3>
+                            <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline">
+                                <h5 class="mb-0"><a href="#0" class="text-decoration-none">Stanford University</a></h5>
+                                <small class="text-uppercase fw-bold text-muted"><time datetime="2020-01">January 2020</time> &ndash; <time datetime="2020-12">December 2020</time></small>
+                            </div><!-- / d-sm-flex -->
+                        </div><!-- / flex-grow-1 -->
+                    </div><!-- / d-flex -->
+                    <p class="card-text">Pug succulents selvage, umami mixtape kinfolk dreamcatcher marfa.</p>
+                    <hr>
+
+                    <div class="d-flex align-items-start mb-2">
+                        <i class="fas fa-university fa-fw fa-3x text-primary me-2"></i>
+                        <div class="flex-grow-1">
+                            <h3 class="h4 mb-1">Master in Interaction Design</h3>
+                            <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline">
+                                <h5 class="mb-0"><a href="#0" class="text-decoration-none">Harvard University</a></h5>
+                                <small class="text-uppercase fw-bold text-muted"><time datetime="2020-01">January 2020</time> &ndash; <time datetime="2020-12">December 2020</time></small>
+                            </div><!-- / d-sm-flex -->
+                        </div><!-- / flex-grow-1 -->
+                    </div><!-- / d-flex -->
+                    <p class="card-text">Pug succulents selvage, umami mixtape kinfolk dreamcatcher marfa.</p>
+                    <hr>
+
+                    <div class="d-flex align-items-start mb-2">
+                        <i class="fas fa-university fa-fw fa-3x text-primary me-2"></i>
+                        <div class="flex-grow-1">
+                            <h3 class="h4 mb-1">Bachelor in Digital Culture</h3>
+                            <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline">
+                                <h5 class="mb-0"><a href="#0" class="text-decoration-none">Berkley University</a></h5>
+                                <small class="text-uppercase fw-bold text-muted"><time datetime="2020-01">January 2020</time> &ndash; <time datetime="2020-12">December 2020</time></small>
+                            </div><!-- / d-sm-flex -->
+                        </div><!-- / flex-grow-1 -->
+                    </div><!-- / d-flex -->
+                    <p class="card-text">Pug succulents selvage, umami mixtape kinfolk dreamcatcher marfa.</p>
+                    <hr>
+
+                    <div class="collapse" id="collapse-education">
+
+                        <div class="d-flex align-items-start mb-2">
+                            <i class="fas fa-graduation-cap fa-fw fa-3x text-primary me-2"></i>
+                            <div class="flex-grow-1">
+                                <h3 class="h4 mb-1">Information Technology</h3>
+                                <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline">
+                                    <h5 class="mb-0"><a href="#0" class="text-decoration-none">New York College</a></h5>
+                                    <small class="text-uppercase fw-bold text-muted"><time datetime="2020-01">January 2020</time> &ndash; <time datetime="2020-12">December 2020</time></small>
+                                </div><!-- / d-sm-flex -->
+                            </div><!-- / flex-grow-1 -->
+                        </div><!-- / d-flex -->
+                        <p class="card-text">Pug succulents selvage, umami mixtape kinfolk dreamcatcher marfa.</p>
+                        <hr>
+
+                        <div class="d-flex align-items-start mb-2">
+                            <i class="fas fa-graduation-cap fa-fw fa-3x text-primary me-2"></i>
+                            <div class="flex-grow-1">
+                                <h3 class="h4 mb-1">Science and Technology</h3>
+                                <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline">
+                                    <h5 class="mb-0"><a href="#0" class="text-decoration-none">New York High School</a></h5>
+                                    <small class="text-uppercase fw-bold text-muted"><time datetime="2020-01">January 2020</time> &ndash; <time datetime="2020-12">December 2020</time></small>
+                                </div><!-- / d-sm-flex -->
+                            </div><!-- / flex-grow-1 -->
+                        </div><!-- / d-flex -->
+                        <p class="card-text">Pug succulents selvage, umami mixtape kinfolk dreamcatcher marfa.</p>
+                        <hr>
+
+                    </div><!-- / collapse-work -->
+
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#collapse-education" aria-expanded="false" aria-controls="collapse-education">Show all</button>
+
+                </div><!-- / card-body -->
+            </div><!-- / card -->
+
         </div><!-- / col-12 -->
     </div><!-- / row -->
 </div><!-- / container -->
