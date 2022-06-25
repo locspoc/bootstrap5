@@ -396,7 +396,73 @@ get_header(); ?>
 
                             </form>
 
+                        </ul><!-- / flex-grow-1 -->
+
+                    </div><!-- / d-flex -->
+
+                </div><!-- / card-body -->
+            </div><!-- / card -->
+
+            <div class="card mb-4">
+                <h2 class="card-header text-center">
+                    Portfolio
+                </h2>
+                <div class="card-body">
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-code text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <ul class="flex-grow-1 list-unstyled">
+                            <li><i class="fab fa-fw fa-github text-muted"></i><a href="#0">GitHub</a></li>
+                            <li><i class="fab fa-fw fa-codepen text-muted"></i><a href="#0">CodePen</a></li>
+                            <li><i class="fab fa-fw fa-stack-overflow text-muted"></i><a href="#0">Stack Overflow</a></li>
+
                             <hr>
+
+                        </ul><!-- / flex-grow-1 -->
+
+                    </div><!-- / d-flex -->
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-paint-brush text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <ul class="flex-grow-1 list-unstyled">
+                            <li><i class="fab fa-fw fa-behance text-muted"></i><a href="#0">Behance</a></li>
+                            <li><i class="fab fa-fw fa-dribbble text-muted"></i><a href="#0">Dribbble</a></li>
+
+                            <hr>
+
+                        </ul><!-- / flex-grow-1 -->
+
+                    </div><!-- / d-flex -->
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-images text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <ul class="flex-grow-1 list-unstyled">
+                            <li><i class="fab fa-fw fa-flickr text-muted"></i><a href="#0">Flickr</a></li>
+                            <li><i class="fab fa-fw fa-instagram text-muted"></i><a href="#0">Instagram</a></li>
+
+                            <hr>
+
+                        </ul><!-- / flex-grow-1 -->
+
+                    </div><!-- / d-flex -->
+
+                    <div class="d-flex align-items-start">
+                        <div class="fas-layers fa-fw fa-2x me-3 position-relative">
+                            <i class="fas fa-circle text-primary"></i>
+                            <i id="fas-fa-item" class="fas fa-video text-white position-absolute w-50" data-fa-transform="shirnk-3"></i>
+                        </div><!-- / fa-layers -->
+                        <ul class="flex-grow-1 list-unstyled">
+                            <li><i class="fab fa-fw fa-youtube text-muted"></i><a href="#0">YouTube</a></li>
+                            <li><i class="fab fa-fw fa-vimeo text-muted"></i><a href="#0">Vimeo</a></li>
 
                         </ul><!-- / flex-grow-1 -->
 
