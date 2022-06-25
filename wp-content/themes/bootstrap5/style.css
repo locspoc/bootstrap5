@@ -10,3 +10,8 @@ Version: 1.0
 .nav-item.active {
 	background-color: orange;
 }
+
+#fas-fa-item {
+	left: 25%;
+	top: 18%;
+}
