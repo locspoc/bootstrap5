@@ -143,7 +143,7 @@ get_header(); ?>
 
 <footer class="small bg-light">
     <div class="container py-3 py-sm-5 text-center">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/120x40.png" alt="Brand logo" class="mb-2 mb-sm-4">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/120x40.png" alt="Brand logo" class="mb-2 mb-sm-4 ms-auto me-auto">
         <p class="mb-2 mb-sm-4">&copy; 2020 Brand Name. All Rights Reserved.</p>
         <ul class="list-inline mb-0">
             <li class="list-inline-item">
