@@ -178,7 +178,26 @@ get_header(); ?>
                             </tr>
                         </tbody>
                     </table>
-
+                    <hr class="my-5">
+                    <form>
+                        <fieldset class="mb-3">
+                            <legend class="col-form-legend">Was this article helpful?</legend>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="helpful-article" id="helpful-article1">
+                                <label class="form-check-label" for="helpful-article1">Yes</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="helpful-article" id="helpful-article2">
+                                <label class="form-check-label" for="helpful-article2">No</label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="mb-3">
+                            <legend class="col-form-legend">Anything else we can do to improve our site?</legend>
+                            <label for="message" class="visually-hidden">Message:</label>
+                            <textarea class="form-control" id="message" rows="6"></textarea>
+                        </fieldset>
+                        <button type="submit" class="btn btn-sm btn-secondary">Submit Feedback</button>
+                    </form>
                 </article>
             </div><!-- / col-12 -->
             <div class="col-12 col-lg-3">
