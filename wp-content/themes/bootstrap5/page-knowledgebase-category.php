@@ -56,6 +56,24 @@ get_header(); ?>
                 </nav>
             </div><!-- / col-12 -->
         </div><!-- / row -->
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                <nav aria-label="Page navigation" class="sticky-top pt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="h6">Page Navigation</h4>
+                            <div class="nav flex-column">
+                                <a href="#section-1" class="nav-link">Category Subheading</a>
+                                <a href="#section-2" class="nav-link">Category Subheading</a>
+                                <a href="#section-3" class="nav-link">Category Subheading</a>
+                                <a href="#section-4" class="nav-link">Category Subheading</a>
+                                <a href="#section-5" class="nav-link">Category Subheading</a>
+                            </div><!-- / nav -->
+                        </div><!-- / card-body -->
+                    </div><!-- / card -->
+                </nav>
+            </div><!-- / col-12 -->
+        </div><!-- / row -->
     </div><!-- / container -->
 </main>
 
