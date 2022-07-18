@@ -15,3 +15,8 @@ Version: 1.0
 	left: 25%;
 	top: 18%;
 }
+
+/* Overflow unset for sticky nav */
+#wrapper {
+	overflow: unset !important;
+}

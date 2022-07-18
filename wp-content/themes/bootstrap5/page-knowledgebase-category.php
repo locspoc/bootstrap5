@@ -14,14 +14,6 @@ if (!defined('ABSPATH')) {
 
 get_header(); ?>
 
-<style>
-    @font-face {
-        font-family: "bootstrap-icons";
-        src: url("<?php echo get_stylesheet_directory_uri(); ?>/vendor/bootstrap/fonts/bootstrap-icons.woff2") format("woff2"),
-            url("<?php echo get_stylesheet_directory_uri(); ?>/vendor/bootstrap/fonts/bootstrap-icons.woff") format("woff");
-    }
-</style>
-
 <nav class="navbar navbar-light bg-light">
     <div class="container">
         <a href="<?= home_url('knowledgebase-index'); ?>" class="navbar-brand me-0"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/40x40.png" alt="Brand Logo" class="me-2"> Knowledge Base</a>
@@ -54,6 +46,83 @@ get_header(); ?>
                         <li class="breadcrumb-item active" aria-current="page">Category Heading</li>
                     </ol>
                 </nav>
+            </div><!-- / col-12 -->
+        </div><!-- / row -->
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                <nav aria-label="Page navigation" class="sticky-top pt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="h6">Page Navigation</h4>
+                            <div class="nav flex-column">
+                                <a href="#section-1" class="nav-link">Category Subheading</a>
+                                <a href="#section-2" class="nav-link">Category Subheading</a>
+                                <a href="#section-3" class="nav-link">Category Subheading</a>
+                                <a href="#section-4" class="nav-link">Category Subheading</a>
+                                <a href="#section-5" class="nav-link">Category Subheading</a>
+                            </div><!-- / nav -->
+                        </div><!-- / card-body -->
+                    </div><!-- / card -->
+                </nav>
+            </div><!-- / col-12 -->
+            <div class="col-12 col-lg-6 pt-3">
+                <main>
+                    <h2>Category Heading</h2>
+                    <h3 class="fst-italic" id="section-1">Category Subheading</h3>
+                    <ul>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                    </ul>
+                    <hr>
+                    <h3 class="fst-italic" id="section-2">Category Subheading</h3>
+                    <ul>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                    </ul>
+                    <hr>
+                    <h3 class="fst-italic" id="section-3">Category Subheading</h3>
+                    <ul>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                    </ul>
+                    <hr>
+                    <h3 class="fst-italic" id="section-4">Category Subheading</h3>
+                    <ul>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                    </ul>
+                    <hr>
+                    <h3 class="fst-italic" id="section-5">Category Subheading</h3>
+                    <ul>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                        <li><a href="<?= home_url('knowledgebase-article'); ?>">Article Heading</a></li>
+                    </ul>
+                </main>
+            </div><!-- / col-12 -->
+            <div class="col-12 col-lg-3">
+                <aside class="sticky-top pt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="h6">Technical Support</h4>
+                            <a href="#0" class="btn btn-secondary">Contact Support</a>
+                        </div>
+                    </div>
+                </aside>
             </div><!-- / col-12 -->
         </div><!-- / row -->
     </div><!-- / container -->
