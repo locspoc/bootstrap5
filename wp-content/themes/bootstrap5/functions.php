@@ -39,6 +39,7 @@ add_action('kadence_before_header', 'custom_before_header');
 /* Load scripts to Kadence header after */
 function custom_after_header()
 {
+  get_template_part('template-parts/header/bootstrap-icons'); // Bootstrap icons
   get_template_part('template-parts/header/pre-code'); // Pre code color
 }
 add_action('kadence_after_header', 'custom_after_header');
