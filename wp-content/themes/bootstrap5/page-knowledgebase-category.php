@@ -122,6 +122,16 @@ get_header(); ?>
                     </ul>
                 </main>
             </div><!-- / col-12 -->
+            <div class="col-12 col-lg-3">
+                <aside class="sticky-top pt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="h6">Technical Support</h4>
+                            <a href="#0" class="btn btn-secondary">Contact Support</a>
+                        </div>
+                    </div>
+                </aside>
+            </div><!-- / col-12 -->
         </div><!-- / row -->
     </div><!-- / container -->
 </main>
