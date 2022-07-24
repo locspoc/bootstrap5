@@ -162,6 +162,108 @@ get_header(); ?>
 
             <div class="tab-pane fade pt-4" id="step-2" role="tabpanel" aria-labelledby="step-2-tab">
 
+                <h2 class="h5 text-center mb-3">Question #1: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <figure class="figure">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/1600x900.png" class="figure-img img-fluid rounded">
+                            <figcaption class="figure-caption">A caption for the figure image.</figcaption>
+                        </figure>
+                    </div><!-- / col-lg-6 -->
+
+                    <div class="col-lg-6">
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion1" id="radioButtonsQuestion1-1" value="option1">
+                            <label class="form-check-label" for="radioButtonsQuestion1-1">Answer for radio 1</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion1" id="radioButtonsQuestion1-2" value="option2">
+                            <label class="form-check-label" for="radioButtonsQuestion1-2">Answer for radio 2</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion1" id="radioButtonsQuestion1-3" value="option3">
+                            <label class="form-check-label" for="radioButtonsQuestion1-3">Answer for radio 3</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion1" id="radioButtonsQuestion1-4" value="option4">
+                            <label class="form-check-label" for="radioButtonsQuestion1-4">Answer for radio 4</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion1" id="radioButtonsQuestion1-5" value="option5">
+                            <label class="form-check-label" for="radioButtonsQuestion1-5">Answer for radio 5</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check">
+                            <input class="form-check-input mt-2" type="radio" name="radioButtonsQuestion1" id="radioButtonsQuestion1-6" value="option6">
+                            <label class="form-check-label" for="radioButtonsQuestion1-6">
+                                <input type="text" class="form-control form-control-sm" id="radioButtonsQuestion1-other" placeholder="Other" aria-describedby="radioButtonsQuestion1-other-help">
+                            </label>
+                            <p id="radioButtonsQuestion1-other-help" class="form-text text-muted">If none of the answers above is appropriate for you please write your own answer in the input field.</p>
+                        </div><!-- / form-check -->
+
+                    </div><!-- / col-lg-6 -->
+
+                </div><!-- / row -->
+
+                <hr class="my-4">
+
+                <h2 class="h5 text-center mb-3">Question #2: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <figure class="figure">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/1600x900.png" class="figure-img img-fluid rounded">
+                            <figcaption class="figure-caption">A caption for the figure image.</figcaption>
+                        </figure>
+                    </div><!-- / col-lg-6 -->
+
+                    <div class="col-lg-6">
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion2" id="radioButtonsQuestion2-1" value="option1">
+                            <label class="form-check-label" for="radioButtonsQuestion2-1">Answer for radio 1</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion2" id="radioButtonsQuestion2-2" value="option2">
+                            <label class="form-check-label" for="radioButtonsQuestion2-2">Answer for radio 2</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion2" id="radioButtonsQuestion2-3" value="option3">
+                            <label class="form-check-label" for="radioButtonsQuestion2-3">Answer for radio 3</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion2" id="radioButtonsQuestion2-4" value="option4">
+                            <label class="form-check-label" for="radioButtonsQuestion2-4">Answer for radio 4</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="radioButtonsQuestion2" id="radioButtonsQuestion2-5" value="option5">
+                            <label class="form-check-label" for="radioButtonsQuestion2-5">Answer for radio 5</label>
+                        </div><!-- / form-check -->
+
+                        <div class="form-check">
+                            <input class="form-check-input mt-2" type="radio" name="radioButtonsQuestion2" id="radioButtonsQuestion2-6" value="option6">
+                            <label class="form-check-label" for="radioButtonsQuestion2-6">
+                                <input type="text" class="form-control form-control-sm" id="radioButtonsQuestion2-other" placeholder="Other" aria-describedby="radioButtonsQuestion2-other-help">
+                            </label>
+                            <p id="radioButtonsQuestion2-other-help" class="form-text text-muted">If none of the answers above is appropriate for you please write your own answer in the input field.</p>
+                        </div><!-- / form-check -->
+
+                    </div><!-- / col-lg-6 -->
+
+                </div><!-- / row -->
+
             </div><!-- / tab-pane -->
 
             <div class="tab-pane fade pt-4" id="step-3" role="tabpanel" aria-labelledby="step-3-tab">
