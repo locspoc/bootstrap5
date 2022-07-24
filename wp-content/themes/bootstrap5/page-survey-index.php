@@ -497,6 +497,98 @@ get_header(); ?>
 
                 </div><!-- / row -->
 
+                <hr class="my-4">
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <h2 class="h5">Question #7: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum malesuada semper velit, id condimentum dui aliquet non.</p>
+
+                    </div><!-- / col-lg-6 -->
+
+                    <div class="col-lg-6">
+
+                        <div class="mb-3">
+
+                            <div class="btn-group btn-group-lg w-100">
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion7" id="ratingToggleButtonsQuestion7-1" value="rating-1" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion7-1">1</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion7" id="ratingToggleButtonsQuestion7-2" value="rating-2" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion7-2">2</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion7" id="ratingToggleButtonsQuestion7-3" value="rating-3" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion7-3">3</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion7" id="ratingToggleButtonsQuestion7-4" value="rating-4" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion7-4">4</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion7" id="ratingToggleButtonsQuestion7-5" value="rating-5" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion7-5">5</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion7" id="ratingToggleButtonsQuestion7-na" value="rating-na" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion7-na">n/a</label>
+
+                            </div><!-- / btn-group -->
+
+                        </div><!-- / mb-3 -->
+
+                        <label class="visually-hidden" for="ratingToggleButtonsQuestion7-comment">Comment:</label>
+                        <textarea class="form-control form-control-sm" id="ratingToggleButtonsQuestion7-comment" name="ratingToggleButtonsQuestion7" rows="3" placeholder="Write a comment here..."></textarea>
+
+                    </div><!-- / col-lg-6 -->
+
+                </div><!-- / row -->
+
+                <hr class="my-4">
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <h2 class="h5">Question #8: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum malesuada semper velit, id condimentum dui aliquet non.</p>
+
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <div class="mb-3">
+
+                            <div class="btn-group btn-group-lg w-100">
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion8" id="ratingToggleButtonsQuestion8-1" value="rating-1" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion8-1">1</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion8" id="ratingToggleButtonsQuestion8-2" value="rating-2" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion8-2">2</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion8" id="ratingToggleButtonsQuestion8-3" value="rating-3" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion8-3">3</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion8" id="ratingToggleButtonsQuestion8-4" value="rating-4" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion8-4">4</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion8" id="ratingToggleButtonsQuestion8-5" value="rating-5" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion8-5">5</label>
+
+                                <input class="btn-check" type="radio" name="ratingToggleButtonsQuestion8" id="ratingToggleButtonsQuestion8-na" value="rating-na" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="ratingToggleButtonsQuestion8-na">n/a</label>
+
+                            </div><!-- / btn-group -->
+
+                        </div><!-- / mb-3 -->
+
+                        <label class="visually-hidden" for="ratingToggleButtonsQuestion8-comment">Comment:</label>
+                        <textarea class="form-control form-control-sm" id="ratingToggleButtonsQuestion8-comment" name="ratingToggleButtonsQuestion8" rows="3" placeholder="Write a comment here..."></textarea>
+
+                    </div><!-- / col-lg-6 -->
+
+                </div><!-- / row -->
+
             </div><!-- / tab-pane -->
 
         </div><!-- / tab-content -->
