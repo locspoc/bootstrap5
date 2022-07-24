@@ -649,13 +649,55 @@ get_header(); ?>
 
                 </div><!-- / row -->
 
-                <button type="submit" id="submitButton" class="btn btn-secondary d-block ms-auto">Submit</button>
+                <button type="submit" id="submitButton" class="btn btn-secondary d-block ms-auto">
+                    Submit
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                </button>
 
             </div><!-- / tab-pane -->
 
         </div><!-- / tab-content -->
 
     </div><!-- / container -->
+
+    <script>
+        var goToStep2Trigger = document.querySelector('#go-to-step-2');
+        goToStep2Trigger.addEventListener('click', function() {
+            scrollToTop();
+            setTimeout(function() {
+                var step2TabElement = document.querySelector('#step-2-tab');
+                var step2Tab = new bootstrap.Tab(step2TabElement);
+                step2Tab.show();
+            }, 1000)
+        })
+
+        var goToStep3Trigger = document.querySelector('#go-to-step-3');
+        goToStep3Trigger.addEventListener('click', function() {
+            scrollToTop();
+            setTimeout(function() {
+                var step3TabElement = document.querySelector('#step-3-tab');
+                var step3Tab = new bootstrap.Tab(step3TabElement);
+                step3Tab.show();
+            }, 1000)
+        })
+
+        function scrollToTop() {
+            scroll({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        var submitButton = document.querySelector('#submitButton');
+        submitButton.addEventListener('click', function() {
+            submitButton.disabled = true;
+            submitButton.querySelector('.spinner-border').classList.remove('d-none');
+            setTimeout(function() {
+                window.location.href = '<?= home_url("knowledgebase-category"); ?>survey/survey-results/';
+                console.log('redirect');
+            }, 2000)
+        })
+    </script>
 
 </body>
 
