@@ -377,6 +377,126 @@ get_header(); ?>
 
             <div class="tab-pane fade pt-4" id="step-3" role="tabpanel" aria-labelledby="step-3-tab">
 
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <h2 class="h5">Question #5: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum malesuada semper velit, id condimentum dui aliquet non.</p>
+
+                    </div><!-- / col-lg-6 -->
+
+                    <div class="col-lg-6">
+
+                        <div class="d-flex justify-content-between mb-3">
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion5" id="ratingRadioQuestion5-1" value="rating-1">
+                                <label class="form-check-label" for="ratingRadioQuestion5-1">1</label>
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion5" id="ratingRadioQuestion5-2" value="rating-2">
+                                <label class="form-check-label" for="ratingRadioQuestion5-2">2</label>
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion5" id="ratingRadioQuestion5-3" value="rating-3">
+                                <label class="form-check-label" for="ratingRadioQuestion5-3">3</label>
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion5" id="ratingRadioQuestion5-4" value="rating-4">
+                                <label class="form-check-label" for="ratingRadioQuestion5-4">4</label>
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion5" id="ratingRadioQuestion5-5" value="rating-5">
+                                <label class="form-check-label" for="ratingRadioQuestion5-5">5</label>
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion5" id="ratingRadioQuestion5-na" value="rating-na">
+                                <label class="form-check-label" for="ratingRadioQuestion5-na">n/a</label>
+                            </div><!-- / form-check -->
+
+                        </div><!-- / d-flex -->
+
+                        <label class="visually-hidden" for="ratingRadioQuestion5-comment">Comment:</label>
+
+                        <textarea class="form-control form-control-sm" id="ratingRadioQuestion5-comment" name="ratingRadioQuestion5" rows="3" placeholder="Write a comment here..."></textarea>
+
+                    </div><!-- / col-lg-6 -->
+
+                </div><!-- / row -->
+
+                <hr class="my-4">
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <h2 class="h5">Question #6: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum malesuada semper velit, id condimentum dui aliquet non.</p>
+
+                    </div><!-- / col-lg-6 -->
+
+                    <div class="col-lg-6">
+
+                        <div class="d-flex justify-content-between mb-3">
+
+                            <div class="form-check">
+
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion6" id="ratingRadioQuestion6-1" value="rating-1">
+                                <label class="form-check-label" for="ratingRadioQuestion6-1">1</label>
+
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion6" id="ratingRadioQuestion6-2" value="rating-2">
+                                <label class="form-check-label" for="ratingRadioQuestion6-2">2</label>
+
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion6" id="ratingRadioQuestion6-3" value="rating-3">
+                                <label class="form-check-label" for="ratingRadioQuestion6-3">3</label>
+
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion6" id="ratingRadioQuestion6-4" value="rating-4">
+                                <label class="form-check-label" for="ratingRadioQuestion6-4">4</label>
+
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion6" id="ratingRadioQuestion6-5" value="rating-5">
+                                <label class="form-check-label" for="ratingRadioQuestion6-5">5</label>
+
+                            </div><!-- / form-check -->
+
+                            <div class="form-check">
+
+                                <input class="form-check-input" type="radio" name="ratingRadioQuestion6" id="ratingRadioQuestion6-na" value="rating-na">
+                                <label class="form-check-label" for="ratingRadioQuestion6-na">n/a</label>
+
+                            </div><!-- / form-check -->
+
+                        </div><!-- / d-flex -->
+
+                        <label class="visually-hidden" for="ratingRadioQuestion6-comment">Comment:</label>
+
+                        <textarea class="form-control form-control-sm" id="ratingRadioQuestion6-comment" name="ratingRadioQuestion6" rows="3" placeholder="Write a comment here..."></textarea>
+
+                    </div><!-- / col-lg-6 -->
+
+                </div><!-- / row -->
+
             </div><!-- / tab-pane -->
 
         </div><!-- / tab-content -->
