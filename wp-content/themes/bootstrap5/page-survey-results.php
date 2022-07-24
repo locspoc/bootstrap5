@@ -266,9 +266,80 @@ get_header(); ?>
 
             </div><!-- / row -->
 
+            <hr class="my-4">
+
+            <h3 class="h5 mb-3">Question #4: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h3>
+
+            <div class="row mb-2">
+
+                <div class="col-md-6">
+
+                    <p class="mb-0">Answer distribution</p>
+
+                </div><!-- / col-md-6 -->
+
+                <div class="col-md-6">
+
+                    <div class="progress">
+
+                        <div class="progress-bar bg-info border-end" role="progressbar" style="width: 12%;" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="bottom" title="12%">(1)</div>
+
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="bottom" title="17%">(2)</div>
+
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 42%;" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="bottom" title="42%">(3)</div>
+
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="bottom" title="20%">(4)</div>
+
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 9%;" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="bottom" title="9%">(5)</div>
+
+                    </div><!-- / progress -->
+
+                </div><!-- / col-md-6 -->
+
+            </div><!-- / row -->
+
+            <hr class="my-4">
+
+            <h3 class="h5 mb-3">Question #5: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h3>
+
+            <div class="row mb-2">
+
+                <div class="col-md-6">
+
+                    <p class="mb-0">Answer distribution</p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="progress">
+
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 24%;" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="bottom" title="24%">(1)</div>
+
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 47%;" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="bottom" title="47%">(2)</div>
+
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 19%;" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="bottom" title="19%">(3)</div>
+
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="bottom" title="10%">(4)</div>
+
+                    </div><!-- / progress -->
+
+                </div><!-- / col-md-6 -->
+
+            </div><!-- / row -->
+
         </div><!-- / mb-5 -->
 
     </div><!-- / container -->
+
+    <script>
+        var tooltipTriggerElements = document.querySelectorAll(
+            '[data-bs-toggle="tooltip"]'
+        );
+        for (var i = 0; i < tooltipTriggerElements.length; i++) {
+            new bootstrap.Tooltip(tooltipTriggerElements[i]);
+        }
+    </script>
 
 </body>
 
