@@ -264,6 +264,115 @@ get_header(); ?>
 
                 </div><!-- / row -->
 
+                <hr class="my-4">
+
+                <h2 class="h5 text-center mb-3">Question #3: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <figure class="figure">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/1600x900.png" class="figure-img img-fluid rounded">
+                            <figcaption class="figure-caption">A caption for the figure image.</figcaption>
+                        </figure>
+
+                    </div><!-- / col-lg-6 -->
+
+                    <div class="col-lg-6">
+
+                        <div class="form-check mb-1">
+
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion3" id="checkBoxesQuestion3-1" value="option1">
+                            <label class="form-check-label" for="checkBoxesQuestion3-1">Answer for checkbox 1</label>
+
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion3" id="checkBoxesQuestion3-2" value="option2">
+                            <label class="form-check-label" for="checkBoxesQuestion3-2">Answer for checkbox 2</label>
+
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion3" id="checkBoxesQuestion3-3" value="option3">
+                            <label class="form-check-label" for="checkBoxesQuestion3-3">Answer for checkbox 3</label>
+
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion3" id="checkBoxesQuestion3-4" value="option4">
+                            <label class="form-check-label" for="checkBoxesQuestion3-4">Answer for checkbox 4</label>
+
+                        </div><!-- / form-check -->
+
+                        <div class="form-check mb-1">
+
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion3" id="checkBoxesQuestion3-5" value="option5">
+                            <label class="form-check-label" for="checkBoxesQuestion3-5">Answer for checkbox 5</label>
+
+                        </div><!-- / form-check -->
+
+                        <div class="form-check">
+
+                            <input class="form-check-input mt-2" type="checkbox" name="checkBoxesQuestion3" id="checkBoxesQuestion3-6" value="option6">
+
+                            <label class="form-check-label" for="checkBoxesQuestion3-6">
+                                <input type="text" class="form-control form-control-sm" id="checkBoxesQuestion3-other" placeholder="Other" aria-describedby="checkBoxesQuestion3-other-help">
+                            </label>
+
+                            <p id="checkBoxesQuestion3-other-help" class="form-text text-muted">If none of the answers above is appropriate for you please write your own answer in the input field.</p>
+
+                        </div><!-- / form-check -->
+
+                    </div><!-- / col-lg-6 -->
+
+                </div><!-- / row -->
+
+                <hr class="my-4">
+                <h2 class="h5 text-center mb-3">Question #4: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <figure class="figure">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/1600x900.png" class="figure-img img-fluid rounded">
+                            <figcaption class="figure-caption">A caption for the figure image.</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion4" id="checkBoxesQuestion4-1" value="option1">
+                            <label class="form-check-label" for="checkBoxesQuestion4-1">Answer for checkbox 1</label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion4" id="checkBoxesQuestion4-2" value="option2">
+                            <label class="form-check-label" for="checkBoxesQuestion4-2">Answer for checkbox 2</label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion4" id="checkBoxesQuestion4-3" value="option3">
+                            <label class="form-check-label" for="checkBoxesQuestion4-3">Answer for checkbox 3</label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion4" id="checkBoxesQuestion4-4" value="option4">
+                            <label class="form-check-label" for="checkBoxesQuestion4-4">Answer for checkbox 4</label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="checkbox" name="checkBoxesQuestion4" id="checkBoxesQuestion4-5" value="option5">
+                            <label class="form-check-label" for="checkBoxesQuestion4-5">Answer for checkbox 5</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input mt-2" type="checkbox" name="checkBoxesQuestion4" id="checkBoxesQuestion4-6" value="option6">
+                            <label class="form-check-label" for="checkBoxesQuestion4-6">
+                                <input type="text" class="form-control form-control-sm" id="checkBoxesQuestion4-other" placeholder="Other" aria-describedby="checkBoxesQuestion4-other-help">
+                            </label>
+                            <p id="checkBoxesQuestion4-other-help" class="form-text text-muted">If none of the answers above is appropriate for you please write your own answer in the input field.</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline-secondary d-block ms-auto" id="go-to-step-3">Step 3</button>
+
             </div><!-- / tab-pane -->
 
             <div class="tab-pane fade pt-4" id="step-3" role="tabpanel" aria-labelledby="step-3-tab">
