@@ -589,6 +589,68 @@ get_header(); ?>
 
                 </div><!-- / row -->
 
+                <hr class="my-4">
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <h2 class="h5">Question #9: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum malesuada semper velit, id condimentum dui aliquet non.</p>
+
+                    </div><!-- / col-lg-6 -->
+
+                    <div class="col-lg-6">
+
+                        <div class="d-flex justify-content-between mb-3">
+
+                            <span class="me-3">1</span>
+
+                            <label for="ratingRangeQuestion9" class="form-label visually-hidden">Range input label</label>
+                            <input type="range" class="form-range" id="ratingRangeQuestion9" name="ratingRangeQuestion9" min="1" max="5">
+
+                            <span class="ms-3">5</span>
+
+                        </div><!-- / d-flex -->
+
+                        <label class="visually-hidden" for="ratingRangeQuestion9-comment">Comment:</label>
+                        <textarea class="form-control form-control-sm" id="ratingRangeQuestion9-comment" name="ratingRangeQuestion9" rows="3" placeholder="Write a comment here..."></textarea>
+
+                    </div><!-- / col-lg-6 -->
+
+                </div><!-- /row -->
+
+                <hr class="my-4">
+
+                <div class="row mb-3">
+
+                    <div class="col-lg-6">
+
+                        <h2 class="h5">Question #10: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
+                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum malesuada semper velit, id condimentum dui aliquet non.</p>
+
+                    </div><!-- / col-lg-6 -->
+
+                    <div class="col-lg-6">
+
+                        <div class="d-flex justify-content-between mb-3">
+
+                            <span class="me-3">1</span>
+                            <label for="ratingRangeQuestion10" class="form-label visually-hidden">Range input label</label>
+                            <input type="range" class="form-range" id="ratingRangeQuestion10" name="ratingRangeQuestion10" min="1" max="5">
+                            <span class="ms-3">5</span>
+
+                        </div><!-- / d-flex -->
+
+                        <label class="visually-hidden" for="ratingRangeQuestion10-comment">Comment:</label>
+                        <textarea class="form-control form-control-sm" id="ratingRangeQuestion10-comment" name="ratingRangeQuestion10" rows="3" placeholder="Write a comment here..."></textarea>
+
+                    </div><!-- / col-lg-6 -->
+
+                </div><!-- / row -->
+
+                <button type="submit" id="submitButton" class="btn btn-secondary d-block ms-auto">Submit</button>
+
             </div><!-- / tab-pane -->
 
         </div><!-- / tab-content -->
