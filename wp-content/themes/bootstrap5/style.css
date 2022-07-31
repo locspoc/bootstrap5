@@ -20,3 +20,8 @@ Version: 1.0
 #wrapper {
 	overflow: unset !important;
 }
+
+/* App Landing Page */
+.fixed-top {
+	top: 100px;
+}
