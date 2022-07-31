@@ -14,6 +14,8 @@ if (!defined('ABSPATH')) {
 
 get_header(); ?>
 
+
+
 <body data-bs-spy="scroll" data-bs-target="#navScrollspy">
     <nav class="navbar bg-primary navbar-dark navbar-expand-lg fixed-top">
         <div class="container">
@@ -48,6 +50,17 @@ get_header(); ?>
             </div><!-- / collapse -->
         </div><!-- / container -->
     </nav>
+    <section id="section-hero" class="text-center text-white d-flex justify-content-center align-items-center py-5">
+        <div class="container">
+            <h1 class="display-1 text-primary text-uppercase mt-5">App Name</h1>
+            <p class="display-4 text-primary">Lorem ipsum dolor</p>
+            <p class="lead text-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p class="lead text-primary">Laborum unde dolores ullam nostrum?</p>
+            <p><strong class="text-primary">Download now on:</strong></p>
+            <a href="#0" class="btn btn-lg btn-primary mb-3 mb-sm-0 me-sm-3"><i class="fab fa-app-store-ios" aria-hidden="true"></i> App Store</a>
+            <a href="#0" class="btn btn-lg btn-primary"><i class="fab fa-google-play" aria-hidden="true"></i> Google Play</a>
+        </div>
+    </section>
 </body>
 
 <?php kadence()->print_styles('kadence-content');
