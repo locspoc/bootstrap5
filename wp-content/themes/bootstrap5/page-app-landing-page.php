@@ -59,8 +59,15 @@ get_header(); ?>
             <p><strong class="text-primary">Download now on:</strong></p>
             <a href="#0" class="btn btn-lg btn-primary mb-3 mb-sm-0 me-sm-3"><i class="fab fa-app-store-ios" aria-hidden="true"></i> App Store</a>
             <a href="#0" class="btn btn-lg btn-primary"><i class="fab fa-google-play" aria-hidden="true"></i> Google Play</a>
-        </div>
+        </div><!-- / container -->
     </section>
+    <div class="container">
+        <section id="section-description" class="mt-5">
+            <h2 class="display-4 text-center">What is App Name?</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptates sint at! Laboriosam ducimus expedita reiciendis suscipit quibusdam ad ipsa distinctio voluptatem ullam adipisci id molestias, explicabo iusto atque. Libero voluptates, maxime ipsa iure quis veritatis obcaecati vitae eaque exercitationem non saepe enim!</p>
+            <p>Ducimus et aperiam tempora pariatur, excepturi est mollitia alias, hic voluptas, porro repudiandae voluptatum nulla minus ipsam repellat accusamus voluptate nam modi!</p>
+        </section>
+    </div><!-- / container -->
 </body>
 
 <?php kadence()->print_styles('kadence-content');
