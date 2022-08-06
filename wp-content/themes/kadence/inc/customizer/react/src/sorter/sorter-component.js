@@ -47,11 +47,13 @@ class SorterComponent extends Component {
 					'dateLabel': '',
 					'dateUpdated': true,
 					'dateUpdatedTime': false,
+					'dateUpdatedDifferent': false,
 					'dateUpdatedLabel': '',
 					'categories': true,
 					'categoriesLabel': '',
 					'comments': false,
 					'commentsLabel': '',
+					'commentsCondition': false,
 				},
 				'categories': {
 					'id': 'categories',

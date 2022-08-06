@@ -51,6 +51,7 @@
 				container: element,
 				items: ss,
 				slideBy: scroll,
+				preventScrollOnTouch: 'auto',
 				autoplay: ( 'true' === sliderAuto ? true : false ),
 				speed: sliderAnimationSpeed,
 				autoplayTimeout: sliderSpeed,
