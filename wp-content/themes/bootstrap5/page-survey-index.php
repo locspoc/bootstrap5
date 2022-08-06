@@ -15,7 +15,6 @@ if (!defined('ABSPATH')) {
 get_header(); ?>
 
 <body class="bg-light py-3 py-lg-5">
-
     <div class="container">
 
         <div class="text-center">

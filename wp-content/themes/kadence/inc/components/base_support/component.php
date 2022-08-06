@@ -102,6 +102,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_action( 'wp_ajax_kadence_install_starter', array( $this, 'install_plugin_ajax_callback' ) );
 		add_action( 'wp_head', array( $this, 'action_add_pingback_header' ) );
 		add_action( 'wp_head', array( $this, 'action_add_no_js_remove_script' ), 2 );
+		add_action( 'wp_footer', array( $this, 'action_add_scrollbar_offset_script' ), 2 );
 		add_filter( 'body_class', array( $this, 'filter_body_classes_add_hfeed' ) );
 		add_filter( 'embed_defaults', array( $this, 'filter_embed_dimensions' ) );
 		add_filter( 'theme_scandir_exclusions', array( $this, 'filter_scandir_exclusions_for_optional_templates' ) );
@@ -431,7 +432,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'kadence_wootemplate',
 				'elementor_library',
 				'kt_size_chart',
+				'kt_cart_notice',
 				'kt_reviews',
+				'kt_product_tabs',
 				'ele-product-template',
 				'ele-p-arch-template',
 				'ele-p-loop-template',
@@ -490,7 +493,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'elementor_library',
 				'fl-theme-layout',
 				'kt_size_chart',
+				'kt_cart_notice',
 				'kt_reviews',
+				'kt_product_tabs',
 				'shop_order',
 				'ele-product-template',
 				'ele-p-arch-template',
@@ -505,6 +510,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'llms_certificate',
 				'llms_my_certificate',
 				'sfwd-quiz',
+				'ld-exam',
 				'sfwd-certificates',
 				'sfwd-lessons',
 				'sfwd-topic',
@@ -531,7 +537,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'elementor_library',
 				'fl-theme-layout',
 				'kt_size_chart',
+				'kt_cart_notice',
 				'kt_reviews',
+				'kt_product_tabs',
 				'shop_order',
 				'kadence_element',
 				'kadence_conversions',
@@ -657,6 +665,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		if ( ! kadence()->is_amp() ) {
 			?>
 			<script>document.documentElement.classList.remove( 'no-js' );</script>
+			<?php
+		}
+	}
+	/**
+	 * Adds a tiny script to set scrollbar offset.
+	 */
+	public function action_add_scrollbar_offset_script() {
+		if ( ! kadence()->is_amp() ) {
+			?>
+			<script>document.documentElement.style.setProperty('--scrollbar-offset', window.innerWidth - document.documentElement.clientWidth + 'px' );</script>
 			<?php
 		}
 	}

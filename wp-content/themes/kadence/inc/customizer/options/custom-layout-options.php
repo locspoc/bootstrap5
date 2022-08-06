@@ -302,9 +302,11 @@ foreach ( $all_post_types as $post_type_item ) {
 							'dateLabel'              => '',
 							'dateUpdated'            => false,
 							'dateUpdatedTime'        => false,
+							'dateUpdatedDifferent'   => false,
 							'dateUpdatedEnableLabel' => false,
 							'dateUpdatedLabel'       => '',
 							'comments'               => false,
+							'commentsCondition'      => false,
 						),
 						'breadcrumb' => array(
 							'enabled' => false,
@@ -1647,12 +1649,14 @@ foreach ( $all_post_types as $post_type_item ) {
 							'dateLabel'              => '',
 							'dateUpdated'            => false,
 							'dateUpdatedTime'        => false,
+							'dateUpdatedDifferent'   => false,
 							'dateUpdatedEnableLabel' => false,
 							'dateUpdatedLabel'       => '',
 							'categories'             => false,
 							'categoriesEnableLabel'  => false,
 							'categoriesLabel'        => '',
 							'comments'               => false,
+							'commentsCondition'      => false,
 						) ),
 						'excerpt'    => kadence()->default( $post_type_name . '_archive_element_excerpt', array(
 							'enabled'     => true,
@@ -1852,4 +1856,14 @@ foreach ( $all_post_types as $post_type_item ) {
 		Theme_Customizer::add_settings( $settings );
 	}
 }
-
+Theme_Customizer::add_settings(
+	array( 
+		'info_custom_post_types_placehoder' => array(
+			'control_type' => 'kadence_title_control',
+			'section'      => 'custom_posts_placeholder',
+			'priority'     => 10,
+			'label'        => esc_html__( 'Custom Post Types', 'kadence' ),
+			'settings'     => false,
+		),
+	)
+);

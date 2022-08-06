@@ -255,7 +255,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
+		$media_query['desktop'] = apply_filters( 'kadence_desktop_media_query', '(min-width: 1025px)' );
 		// Above Page Title Featured Image.
 		if ( is_singular() && kadence()->show_hero_title() && has_post_thumbnail() ) {
 			$post_type = get_post_type();
@@ -301,8 +301,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					$css->add_property( 'background-attachment', $attachement );
 				} else {
 					$css->add_property( 'background-repeat', 'no-repeat' );
-					$css->add_property( 'background-position', 'cover' );
-					$css->add_property( 'background-size', 'center' );
+					$css->add_property( 'background-position', 'center' );
+					$css->add_property( 'background-size', 'cover' );
 					$css->add_property( 'background-attachment', 'scroll' );
 				}
 			}
@@ -342,7 +342,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
+		$media_query['desktop'] = apply_filters( 'kadence_desktop_media_query', '(min-width: 1025px)' );
 		$wide_width_add         = apply_filters(
 			'kadence_align_wide_array',
 			array(
@@ -374,17 +374,46 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$media_query['alignwide_narrow'] = '(min-width: ' . $n_alignwide_media_query . $n_max_width_unit . ')';
 		// Header to Mobile Switch.
 		if ( kadence()->sub_option( 'header_mobile_switch', 'size' ) ) {
-			$css->set_selector( '.site #mobile-header' );
+			$css->set_selector( '.wp-site-blocks #mobile-header' );
 			$css->add_property( 'display', 'block' );
-			$css->set_selector( '.site #main-header' );
+			$css->set_selector( '.wp-site-blocks #main-header' );
 			$css->add_property( 'display', 'none' );
+			// Desktop Header.
 			$css->start_media_query( '(min-width: ' . kadence()->sub_option( 'header_mobile_switch', 'size' ) . 'px)' );
-			$css->set_selector( '.site #mobile-header' );
+			$css->set_selector( '.wp-site-blocks #mobile-header' );
 			$css->add_property( 'display', 'none' );
-			$css->set_selector( '.site #main-header' );
+			$css->set_selector( '.wp-site-blocks #main-header' );
 			$css->add_property( 'display', 'block' );
 			$css->stop_media_query();
 		}
+		$tablet_down_media = kadence()->sub_option( 'header_mobile_switch', 'size' ) ? ( kadence()->sub_option( 'header_mobile_switch', 'size' ) - 1 ) : 1024;
+		$desktop_up_media = kadence()->sub_option( 'header_mobile_switch', 'size' ) ? ( kadence()->sub_option( 'header_mobile_switch', 'size' ) ) : 1025;
+		$css->start_media_query( '(max-width: ' . $tablet_down_media . 'px)' );
+		// Mobile Transparent Header.
+		$css->set_selector( '.mobile-transparent-header #masthead' );
+		$css->add_property( 'position', 'absolute' );
+		$css->add_property( 'left', '0px' );
+		$css->add_property( 'right', '0px' );
+		$css->add_property( 'z-index', '100' );
+		$css->set_selector( '.mobile-transparent-header #masthead, .mobile-transparent-header .site-top-header-wrap .site-header-row-container-inner, .mobile-transparent-header .site-main-header-wrap .site-header-row-container-inner, .mobile-transparent-header .site-bottom-header-wrap .site-header-row-container-inner' );
+		$css->add_property( 'background', 'transparent' );
+		// Mobile Header row layouts.
+		$css->set_selector( '.site-header-row-tablet-layout-fullwidth, .site-header-row-tablet-layout-standard' );
+		$css->add_property( 'padding', '0px' );
+		$css->stop_media_query();
+		// Desktop Header.
+		$css->start_media_query( '(min-width: ' . $desktop_up_media . 'px)' );
+		// Desktop Transparent Header.
+		$css->set_selector( 'body.elementor-editor-active.transparent-header #masthead, body.fl-builder-edit.transparent-header #masthead, body.vc_editor.transparent-header #masthead, body.brz-ed.transparent-header #masthead' );
+		$css->add_property( 'z-index', '0' );
+		$css->set_selector( '.transparent-header #masthead' );
+		$css->add_property( 'position', 'absolute' );
+		$css->add_property( 'left', '0px' );
+		$css->add_property( 'right', '0px' );
+		$css->add_property( 'z-index', '100' );
+		$css->set_selector( '.transparent-header #masthead, .transparent-header .site-top-header-wrap .site-header-row-container-inner, .transparent-header .site-main-header-wrap .site-header-row-container-inner, .transparent-header .site-bottom-header-wrap .site-header-row-container-inner' );
+		$css->add_property( 'background', 'transparent' );
+		$css->stop_media_query();
 		// Logo area.
 		if ( kadence()->option( 'custom_logo' ) || is_customize_preview() ) {
 			$logo_width = kadence()->option( 'logo_width' );
@@ -1037,15 +1066,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		// Header Social.
 		$css->set_selector( '.header-social-wrap' );
 		$css->add_property( 'margin', $this->render_measure( kadence()->option( 'header_social_margin' ) ) );
-		$css->set_selector( '.header-social-inner-wrap' );
+		$css->set_selector( '.header-social-wrap .header-social-inner-wrap' );
 		$css->add_property( 'font-size', $this->render_size( kadence()->option( 'header_social_icon_size' ) ) );
-		$css->add_property( 'margin-top', $this->render_negative_size( kadence()->option( 'header_social_item_spacing' ) ) );
-		$css->add_property( 'margin-left', $this->render_negative_half_size( kadence()->option( 'header_social_item_spacing' ) ) );
-		$css->add_property( 'margin-right', $this->render_negative_half_size( kadence()->option( 'header_social_item_spacing' ) ) );
+		$css->add_property( 'gap', $this->render_size( kadence()->option( 'header_social_item_spacing' ) ) );
 		$css->set_selector( '.header-social-wrap .header-social-inner-wrap .social-button' );
-		$css->add_property( 'margin-top', $this->render_size( kadence()->option( 'header_social_item_spacing' ) ) );
-		$css->add_property( 'margin-left', $this->render_half_size( kadence()->option( 'header_social_item_spacing' ) ) );
-		$css->add_property( 'margin-right', $this->render_half_size( kadence()->option( 'header_social_item_spacing' ) ) );
 		if ( ! in_array( kadence()->option( 'header_social_brand' ), array( 'always', 'untilhover' ), true ) ) {
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'header_social_color', 'color' ) ) );
 			$css->add_property( 'background', $this->render_color( kadence()->sub_option( 'header_social_background', 'color' ) ) );
@@ -1065,15 +1089,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		// Mobile Header Social.
 		$css->set_selector( '.header-mobile-social-wrap' );
 		$css->add_property( 'margin', $this->render_measure( kadence()->option( 'header_mobile_social_margin' ) ) );
-		$css->set_selector( '.header-mobile-social-inner-wrap' );
+		$css->set_selector( '.header-mobile-social-wrap .header-mobile-social-inner-wrap' );
 		$css->add_property( 'font-size', $this->render_size( kadence()->option( 'header_mobile_social_icon_size' ) ) );
-		$css->add_property( 'margin-top', $this->render_negative_size( kadence()->option( 'header_mobile_social_item_spacing' ) ) );
-		$css->add_property( 'margin-left', $this->render_negative_half_size( kadence()->option( 'header_mobile_social_item_spacing' ) ) );
-		$css->add_property( 'margin-right', $this->render_negative_half_size( kadence()->option( 'header_mobile_social_item_spacing' ) ) );
+		$css->add_property( 'gap', $this->render_size( kadence()->option( 'header_mobile_social_item_spacing' ) ) );
 		$css->set_selector( '.header-mobile-social-wrap .header-mobile-social-inner-wrap .social-button' );
-		$css->add_property( 'margin-top', $this->render_size( kadence()->option( 'header_mobile_social_item_spacing' ) ) );
-		$css->add_property( 'margin-left', $this->render_half_size( kadence()->option( 'header_mobile_social_item_spacing' ) ) );
-		$css->add_property( 'margin-right', $this->render_half_size( kadence()->option( 'header_mobile_social_item_spacing' ) ) );
 		if ( ! in_array( kadence()->option( 'header_mobile_social_brand' ), array( 'always', 'untilhover' ), true ) ) {
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'header_mobile_social_color', 'color' ) ) );
 			$css->add_property( 'background', $this->render_color( kadence()->sub_option( 'header_mobile_social_background', 'color' ) ) );
@@ -1199,7 +1218,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
+		$media_query['desktop'] = apply_filters( 'kadence_desktop_media_query', '(min-width: 1025px)' );
 		$wide_width_add         = apply_filters(
 			'kadence_align_wide_array',
 			array(
@@ -1269,6 +1288,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->add_property( '--global-content-narrow-width', kadence()->sub_option( 'content_narrow_width', 'size' ) . kadence()->sub_option( 'content_narrow_width', 'unit' ) );
 		$css->add_property( '--global-content-edge-padding', $css->render_range( kadence()->option( 'content_edge_spacing' ), 'desktop' ) );
 		$css->add_property( '--global-calc-content-width', 'calc(' . kadence()->sub_option( 'content_width', 'size' ) . kadence()->sub_option( 'content_width', 'unit' ) . ' - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
+		//$css->add_property( '--scrollbar-offset', '0px' );
+		$css->set_selector( '.wp-site-blocks' );
+		$css->add_property( '--global-vw', 'calc( 100vw - ( 0.5 * var(--scrollbar-offset)))' );
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			$css->set_selector( ':root body.kadence-elementor-colors' );
 			$css->add_property( '--e-global-color-kadence1', 'var(--global-palette1)' );
@@ -1382,6 +1404,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		// }
 		$css->set_selector( 'body' );
 		$css->render_background( kadence()->sub_option( 'site_background', 'desktop' ), $css );
+		if ( kadence()->option( 'font_rendering' ) ) {
+			$css->add_property( '-webkit-font-smoothing', 'antialiased' );
+			$css->add_property( '-moz-osx-font-smoothing', 'grayscale' );
+		}
 		$css->set_selector( 'body, input, select, optgroup, textarea' );
 		$css->render_font( kadence()->option( 'base_font' ), $css, 'body' );
 		$css->set_selector( '.content-bg, body.content-style-unboxed .site' );
@@ -1420,7 +1446,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->set_selector( 'h6' );
 		$css->render_font( kadence()->option( 'h6_font' ), $css );
 		$css->set_selector( '.entry-hero h1' );
-		$css->render_font( kadence()->option( 'title_above_font' ), $css );
+		$css->render_font( kadence()->option( 'title_above_font' ), $css, 'heading' );
 		$css->set_selector( '.entry-hero .kadence-breadcrumbs, .entry-hero .search-form' );
 		$css->render_font( kadence()->option( 'title_above_breadcrumb_font' ), $css );
 		$css->start_media_query( $media_query['tablet'] );
@@ -1448,7 +1474,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'h6_font' ), 'tablet' ) );
 		$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'h6_font' ), 'tablet' ) );
 		$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'h6_font' ), 'tablet' ) );
-		$css->set_selector( '.site .entry-hero h1' );
+		$css->set_selector( '.wp-site-blocks .entry-hero h1' );
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'title_above_font' ), 'tablet' ) );
 		$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'title_above_font' ), 'tablet' ) );
 		$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'title_above_font' ), 'tablet' ) );
@@ -1482,7 +1508,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'h6_font' ), 'mobile' ) );
 		$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'h6_font' ), 'mobile' ) );
 		$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'h6_font' ), 'mobile' ) );
-		$css->set_selector( '.site .entry-hero h1' );
+		$css->set_selector( '.wp-site-blocks .entry-hero h1' );
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'title_above_font' ), 'mobile' ) );
 		$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'title_above_font' ), 'mobile' ) );
 		$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'title_above_font' ), 'mobile' ) );
@@ -1498,30 +1524,30 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->set_selector( '.content-width-narrow .content-container.site-container, .content-width-narrow .hero-container.site-container' );
 		$css->add_property( 'max-width', 'var(--global-content-narrow-width)' );
 		$css->start_media_query( $media_query['alignwide'] );
-		$css->set_selector( '.site .content-container  .alignwide' );
+		$css->set_selector( '.wp-site-blocks .content-container  .alignwide' );
 		$css->add_property( 'margin-left', '-' . ( $wide_width_add[ $max_width_unit ] / 2 ) . $max_width_unit );
 		$css->add_property( 'margin-right', '-' . ( $wide_width_add[ $max_width_unit ] / 2 ) . $max_width_unit );
 		$css->add_property( 'width', 'unset' );
 		$css->add_property( 'max-width', 'unset' );
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['alignwide_narrow'] );
-		$css->set_selector( '.content-width-narrow .site .content-container .alignwide' );
+		$css->set_selector( '.content-width-narrow .wp-site-blocks .content-container .alignwide' );
 		$css->add_property( 'margin-left', '-' . ( $n_wide_width_add[ $n_max_width_unit ] / 2 ) . $n_max_width_unit );
 		$css->add_property( 'margin-right', '-' . ( $n_wide_width_add[ $n_max_width_unit ] / 2 ) . $n_max_width_unit );
 		$css->add_property( 'width', 'unset' );
 		$css->add_property( 'max-width', 'unset' );
 		$css->stop_media_query();
 		// Wide layout when boxed.
-		$css->set_selector( '.content-style-boxed .site .entry-content .alignwide' );
+		$css->set_selector( '.content-style-boxed .wp-site-blocks .entry-content .alignwide' );
 		$css->add_property( 'margin-left', '-' . $this->render_range( kadence()->option( 'boxed_spacing' ), 'desktop' ) );
 		$css->add_property( 'margin-right', '-' . $this->render_range( kadence()->option( 'boxed_spacing' ), 'desktop' ) );
 		$css->start_media_query( $media_query['tablet'] );
-		$css->set_selector( '.content-style-boxed .site .entry-content .alignwide' );
+		$css->set_selector( '.content-style-boxed .wp-site-blocks .entry-content .alignwide' );
 		$css->add_property( 'margin-left', '-' . $this->render_range( kadence()->option( 'boxed_spacing' ), 'tablet' ) );
 		$css->add_property( 'margin-right', '-' . $this->render_range( kadence()->option( 'boxed_spacing' ), 'tablet' ) );
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
-		$css->set_selector( '.content-style-boxed .site .entry-content .alignwide' );
+		$css->set_selector( '.content-style-boxed .wp-site-blocks .entry-content .alignwide' );
 		$css->add_property( 'margin-left', '-' . $this->render_range( kadence()->option( 'boxed_spacing' ), 'mobile' ) );
 		$css->add_property( 'margin-right', '-' . $this->render_range( kadence()->option( 'boxed_spacing' ), 'mobile' ) );
 		$css->stop_media_query();
@@ -1717,16 +1743,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->stop_media_query();
 		}
 		// Above Title Area.
-		$css->set_selector( '.site .entry-hero-container-inner' );
+		$css->set_selector( '.wp-site-blocks .entry-hero-container-inner' );
 		$css->render_background( kadence()->sub_option( 'above_title_background', 'desktop' ), $css );
-		$css->set_selector( '.site .hero-section-overlay' );
+		$css->set_selector( '.wp-site-blocks .hero-section-overlay' );
 		$css->add_property( 'background', $this->render_color( kadence()->sub_option( 'above_title_overlay_color', 'color' ) ) );
 		$css->start_media_query( $media_query['tablet'] );
-		$css->set_selector( '.site .entry-hero-container-inner' );
+		$css->set_selector( '.wp-site-blocks .entry-hero-container-inner' );
 		$css->render_background( kadence()->sub_option( 'above_title_background', 'tablet' ), $css );
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
-		$css->set_selector( '.site .entry-hero-container-inner' );
+		$css->set_selector( '.wp-site-blocks .entry-hero-container-inner' );
 		$css->render_background( kadence()->sub_option( 'above_title_background', 'mobile' ), $css );
 		$css->stop_media_query();
 		// Footer.
@@ -1963,15 +1989,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		// Footer Social.
 		$css->set_selector( '.footer-social-wrap' );
 		$css->add_property( 'margin', $this->render_measure( kadence()->option( 'footer_social_margin' ) ) );
-		$css->set_selector( '.footer-social-inner-wrap' );
+		$css->set_selector( '.footer-social-wrap .footer-social-inner-wrap' );
 		$css->add_property( 'font-size', $this->render_size( kadence()->option( 'footer_social_icon_size' ) ) );
-		$css->add_property( 'margin-top', $this->render_negative_size( kadence()->option( 'footer_social_item_spacing' ) ) );
-		$css->add_property( 'margin-left', $this->render_negative_half_size( kadence()->option( 'footer_social_item_spacing' ) ) );
-		$css->add_property( 'margin-right', $this->render_negative_half_size( kadence()->option( 'footer_social_item_spacing' ) ) );
+		$css->add_property( 'gap', $this->render_size( kadence()->option( 'footer_social_item_spacing' ) ) );
 		$css->set_selector( '.site-footer .site-footer-wrap .site-footer-section .footer-social-wrap .social-button' );
-		$css->add_property( 'margin-top', $this->render_size( kadence()->option( 'footer_social_item_spacing' ) ) );
-		$css->add_property( 'margin-left', $this->render_half_size( kadence()->option( 'footer_social_item_spacing' ) ) );
-		$css->add_property( 'margin-right', $this->render_half_size( kadence()->option( 'footer_social_item_spacing' ) ) );
 		if ( ! in_array( kadence()->option( 'footer_social_brand' ), array( 'always', 'untilhover' ), true ) ) {
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'footer_social_color', 'color' ) ) );
 			$css->add_property( 'background', $this->render_color( kadence()->sub_option( 'footer_social_background', 'color' ) ) );
@@ -2092,16 +2113,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->stop_media_query();
 
 		// Page Title.
-		$css->set_selector( '.site .page-title h1' );
-		$css->render_font( kadence()->option( 'page_title_font' ), $css );
+		$css->set_selector( '.wp-site-blocks .page-title h1' );
+		$css->render_font( kadence()->option( 'page_title_font' ), $css, 'heading' );
 		$css->start_media_query( $media_query['tablet'] );
-		$css->set_selector( '.site .page-title h1' );
+		$css->set_selector( '.wp-site-blocks .page-title h1' );
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'page_title_font' ), 'tablet' ) );
 		$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'page_title_font' ), 'tablet' ) );
 		$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'page_title_font' ), 'tablet' ) );
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
-		$css->set_selector( '.site .page-title h1' );
+		$css->set_selector( '.wp-site-blocks .page-title h1' );
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'page_title_font' ), 'mobile' ) );
 		$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'page_title_font' ), 'mobile' ) );
 		$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'page_title_font' ), 'mobile' ) );
@@ -2227,31 +2248,31 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->render_background( kadence()->sub_option( 'post_related_background', 'mobile' ), $css );
 			$css->stop_media_query();
 			// Post Related Title.
-			$css->set_selector( '.site .entry-related h2.entry-related-title' );
-			$css->render_font( kadence()->option( 'post_related_title_font' ), $css );
+			$css->set_selector( '.wp-site-blocks .entry-related h2.entry-related-title' );
+			$css->render_font( kadence()->option( 'post_related_title_font' ), $css, 'heading' );
 			$css->start_media_query( $media_query['tablet'] );
-			$css->set_selector( '.site .entry-related h2.entry-related-title' );
+			$css->set_selector( '.wp-site-blocks .entry-related h2.entry-related-title' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'post_related_title_font' ), 'tablet' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'post_related_title_font' ), 'tablet' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'post_related_title_font' ), 'tablet' ) );
 			$css->stop_media_query();
 			$css->start_media_query( $media_query['mobile'] );
-			$css->set_selector( '.site .entry-related h2.entry-related-title' );
+			$css->set_selector( '.wp-site-blocks .entry-related h2.entry-related-title' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'post_related_title_font' ), 'mobile' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'post_related_title_font' ), 'mobile' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'post_related_title_font' ), 'mobile' ) );
 			$css->stop_media_query();
 			// Post Title.
-			$css->set_selector( '.site .post-title h1' );
-			$css->render_font( kadence()->option( 'post_title_font' ), $css );
+			$css->set_selector( '.wp-site-blocks .post-title h1' );
+			$css->render_font( kadence()->option( 'post_title_font' ), $css, 'heading' );
 			$css->start_media_query( $media_query['tablet'] );
-			$css->set_selector( '.site .post-title h1' );
+			$css->set_selector( '.wp-site-blocks .post-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'post_title_font' ), 'tablet' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'post_title_font' ), 'tablet' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'post_title_font' ), 'tablet' ) );
 			$css->stop_media_query();
 			$css->start_media_query( $media_query['mobile'] );
-			$css->set_selector( '.site .post-title h1' );
+			$css->set_selector( '.wp-site-blocks .post-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'post_title_font' ), 'mobile' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'post_title_font' ), 'mobile' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'post_title_font' ), 'mobile' ) );
@@ -2383,7 +2404,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->set_selector( '.entry-hero.post-archive-hero-section .entry-header' );
 		$css->add_property( 'min-height', $this->render_range( kadence()->option( 'post_archive_title_height' ), 'mobile' ) );
 		$css->stop_media_query();
-		$css->set_selector( '.site .post-archive-title h1' );
+		$css->set_selector( '.wp-site-blocks .post-archive-title h1' );
 		$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'post_archive_title_color', 'color' ) ) );
 		$css->set_selector( '.post-archive-title .kadence-breadcrumbs' );
 		$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'post_archive_title_breadcrumb_color', 'color' ) ) );
@@ -2412,7 +2433,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->stop_media_query();
 		// Post archive item title.
 		$css->set_selector( '.loop-entry.type-post h2.entry-title' );
-		$css->render_font( kadence()->option( 'post_archive_item_title_font' ), $css );
+		$css->render_font( kadence()->option( 'post_archive_item_title_font' ), $css, 'heading' );
 		$css->start_media_query( $media_query['tablet'] );
 		$css->set_selector( '.loop-entry.type-post h2.entry-title' );
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'post_archive_item_title_font' ), 'tablet' ) );
@@ -2513,7 +2534,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->stop_media_query();
 		// Search Results item title.
 		$css->set_selector( '.search-results .loop-entry h2.entry-title' );
-		$css->render_font( kadence()->option( 'search_archive_item_title_font' ), $css );
+		$css->render_font( kadence()->option( 'search_archive_item_title_font' ), $css, 'heading' );
 		$css->start_media_query( $media_query['tablet'] );
 		$css->set_selector( '.search-results .loop-entry h2.entry-title' );
 		$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'search_archive_item_title_font' ), 'tablet' ) );
@@ -2649,23 +2670,23 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'product_above_category_font' ), 'mobile' ) );
 			$css->stop_media_query();
 			// Product Above Extra Title.
-			$css->set_selector( '.site .product-hero-section .extra-title' );
-			$css->render_font( kadence()->option( 'product_above_title_font' ), $css );
+			$css->set_selector( '.wp-site-blocks .product-hero-section .extra-title' );
+			$css->render_font( kadence()->option( 'product_above_title_font' ), $css, 'heading' );
 			$css->start_media_query( $media_query['tablet'] );
-			$css->set_selector( '.site .product-hero-section .extra-title' );
+			$css->set_selector( '.wp-site-blocks .product-hero-section .extra-title' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'product_above_title_font' ), 'tablet' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'product_above_title_font' ), 'tablet' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'product_above_title_font' ), 'tablet' ) );
 			$css->stop_media_query();
 			$css->start_media_query( $media_query['mobile'] );
-			$css->set_selector( '.site .product-hero-section .extra-title' );
+			$css->set_selector( '.wp-site-blocks .product-hero-section .extra-title' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'product_above_title_font' ), 'mobile' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'product_above_title_font' ), 'mobile' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'product_above_title_font' ), 'mobile' ) );
 			$css->stop_media_query();
 			// Product Title.
 			$css->set_selector( '.woocommerce div.product .product_title' );
-			$css->render_font( kadence()->option( 'product_title_font' ), $css );
+			$css->render_font( kadence()->option( 'product_title_font' ), $css, 'heading' );
 			$css->start_media_query( $media_query['tablet'] );
 			$css->set_selector( '.woocommerce div.product .product_title' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'product_title_font' ), 'tablet' ) );
@@ -2761,7 +2782,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->add_property( 'min-height', $this->render_range( kadence()->option( 'product_archive_title_height' ), 'mobile' ) );
 			$css->stop_media_query();
 			$css->set_selector( '.product-archive-title h1' );
-			$css->render_font( kadence()->option( 'product_archive_title_heading_font' ), $css );
+			$css->render_font( kadence()->option( 'product_archive_title_heading_font' ), $css, 'heading' );
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'product_archive_title_color', 'color' ) ) );
 			$css->start_media_query( $media_query['tablet'] );
 			$css->set_selector( '.product-archive-title h1' );
@@ -2884,7 +2905,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->set_selector( '.entry-hero.sfwd-courses-archive-hero-section .entry-header' );
 			$css->add_property( 'min-height', $this->render_range( kadence()->option( 'sfwd-courses_archive_title_height' ), 'mobile' ) );
 			$css->stop_media_query();
-			$css->set_selector( '.site .sfwd-courses-archive-title h1' );
+			$css->set_selector( '.wp-site-blocks .sfwd-courses-archive-title h1' );
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'sfwd-courses_archive_title_color', 'color' ) ) );
 			$css->set_selector( '.sfwd-courses-archive-title .kadence-breadcrumbs' );
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'sfwd-courses_archive_title_breadcrumb_color', 'color' ) ) );
@@ -2896,7 +2917,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'sfwd-courses_archive_title_description_color', 'hover' ) ) );
 			// Course Title.
 			$css->set_selector( '.sfwd-courses-title h1' );
-			$css->render_font( kadence()->option( 'sfwd-courses_title_font' ), $css );
+			$css->render_font( kadence()->option( 'sfwd-courses_title_font' ), $css, 'heading' );
 			$css->start_media_query( $media_query['tablet'] );
 			$css->set_selector( '.sfwd-courses-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'sfwd-courses_title_font' ), 'tablet' ) );
@@ -2974,7 +2995,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				if ( ! $in_focus_mode ) {
 					// Lesson Title.
 					$css->set_selector( '.sfwd-lessons-title h1' );
-					$css->render_font( kadence()->option( 'sfwd-lessons_title_font' ), $css );
+					$css->render_font( kadence()->option( 'sfwd-lessons_title_font' ), $css, 'heading' );
 					$css->start_media_query( $media_query['tablet'] );
 					$css->set_selector( '.sfwd-lessons-title h1' );
 					$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'sfwd-lessons_title_font' ), 'tablet' ) );
@@ -3049,7 +3070,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					$css->stop_media_query();
 					// Quiz Title.
 					$css->set_selector( '.sfwd-quiz-title h1' );
-					$css->render_font( kadence()->option( 'sfwd-quiz_title_font' ), $css );
+					$css->render_font( kadence()->option( 'sfwd-quiz_title_font' ), $css, 'heading' );
 					$css->start_media_query( $media_query['tablet'] );
 					$css->set_selector( '.sfwd-quiz-title h1' );
 					$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'sfwd-quiz_title_font' ), 'tablet' ) );
@@ -3124,7 +3145,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					$css->stop_media_query();
 					// Topic Title.
 					$css->set_selector( '.sfwd-topic-title h1' );
-					$css->render_font( kadence()->option( 'sfwd-topic_title_font' ), $css );
+					$css->render_font( kadence()->option( 'sfwd-topic_title_font' ), $css, 'heading' );
 					$css->start_media_query( $media_query['tablet'] );
 					$css->set_selector( '.sfwd-topic-title h1' );
 					$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'sfwd-topic_title_font' ), 'tablet' ) );
@@ -3200,16 +3221,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				}
 			}
 			// Group Title.
-			$css->set_selector( '.site .groupe-title h1' );
-			$css->render_font( kadence()->option( 'groupe_title_font' ), $css );
+			$css->set_selector( '.wp-site-blocks .groupe-title h1' );
+			$css->render_font( kadence()->option( 'groupe_title_font' ), $css, 'heading' );
 			$css->start_media_query( $media_query['tablet'] );
-			$css->set_selector( '.site .groupe-title h1' );
+			$css->set_selector( '.wp-site-blocks .groupe-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'groupe_title_font' ), 'tablet' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'groupe_title_font' ), 'tablet' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'groupe_title_font' ), 'tablet' ) );
 			$css->stop_media_query();
 			$css->start_media_query( $media_query['mobile'] );
-			$css->set_selector( '.site .groupe-title h1' );
+			$css->set_selector( '.wp-site-blocks .groupe-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'groupe_title_font' ), 'mobile' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'groupe_title_font' ), 'mobile' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'groupe_title_font' ), 'mobile' ) );
@@ -3258,16 +3279,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->add_property( 'min-height', $this->render_range( kadence()->option( 'groupe_title_height' ), 'mobile' ) );
 			$css->stop_media_query();
 			// Essay Title.
-			$css->set_selector( '.site .sfwd-essays-title h1' );
-			$css->render_font( kadence()->option( 'sfwd-essays_title_font' ), $css );
+			$css->set_selector( '.wp-site-blocks .sfwd-essays-title h1' );
+			$css->render_font( kadence()->option( 'sfwd-essays_title_font' ), $css, 'heading' );
 			$css->start_media_query( $media_query['tablet'] );
-			$css->set_selector( '.site .sfwd-essays-title h1' );
+			$css->set_selector( '.wp-site-blocks .sfwd-essays-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'sfwd-essays_title_font' ), 'tablet' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'sfwd-essays_title_font' ), 'tablet' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'sfwd-essays_title_font' ), 'tablet' ) );
 			$css->stop_media_query();
 			$css->start_media_query( $media_query['mobile'] );
-			$css->set_selector( '.site .sfwd-essays-title h1' );
+			$css->set_selector( '.wp-site-blocks .sfwd-essays-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'sfwd-essays_title_font' ), 'mobile' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'sfwd-essays_title_font' ), 'mobile' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'sfwd-essays_title_font' ), 'mobile' ) );
@@ -3402,16 +3423,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->render_background( kadence()->sub_option( 'llms_membership_archive_content_background', 'mobile' ), $css );
 			$css->stop_media_query();
 			// Course Title.
-			$css->set_selector( '.site .course-title h1' );
-			$css->render_font( kadence()->option( 'course_title_font' ), $css );
+			$css->set_selector( '.wp-site-blocks .course-title h1' );
+			$css->render_font( kadence()->option( 'course_title_font' ), $css, 'heading' );
 			$css->start_media_query( $media_query['tablet'] );
-			$css->set_selector( '.site .course-title h1' );
+			$css->set_selector( '.wp-site-blocks .course-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'course_title_font' ), 'tablet' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'course_title_font' ), 'tablet' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'course_title_font' ), 'tablet' ) );
 			$css->stop_media_query();
 			$css->start_media_query( $media_query['mobile'] );
-			$css->set_selector( '.site .course-title h1' );
+			$css->set_selector( '.wp-site-blocks .course-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'course_title_font' ), 'mobile' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'course_title_font' ), 'mobile' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'course_title_font' ), 'mobile' ) );
@@ -3460,16 +3481,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->add_property( 'min-height', $this->render_range( kadence()->option( 'course_title_height' ), 'mobile' ) );
 			$css->stop_media_query();
 			// Lesson Title.
-			$css->set_selector( '.site .lesson-title h1' );
-			$css->render_font( kadence()->option( 'lesson_title_font' ), $css );
+			$css->set_selector( '.wp-site-blocks .lesson-title h1' );
+			$css->render_font( kadence()->option( 'lesson_title_font' ), $css, 'heading' );
 			$css->start_media_query( $media_query['tablet'] );
-			$css->set_selector( '.site .lesson-title h1' );
+			$css->set_selector( '.wp-site-blocks .lesson-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'lesson_title_font' ), 'tablet' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'lesson_title_font' ), 'tablet' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'lesson_title_font' ), 'tablet' ) );
 			$css->stop_media_query();
 			$css->start_media_query( $media_query['mobile'] );
-			$css->set_selector( '.site .lesson-title h1' );
+			$css->set_selector( '.wp-site-blocks .lesson-title h1' );
 			$css->add_property( 'font-size', $this->render_font_size( kadence()->option( 'lesson_title_font' ), 'mobile' ) );
 			$css->add_property( 'line-height', $this->render_font_height( kadence()->option( 'lesson_title_font' ), 'mobile' ) );
 			$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( 'lesson_title_font' ), 'mobile' ) );
@@ -3542,7 +3563,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->set_selector( '.entry-hero.course-archive-hero-section .entry-header' );
 			$css->add_property( 'min-height', $this->render_range( kadence()->option( 'course_archive_title_height' ), 'mobile' ) );
 			$css->stop_media_query();
-			$css->set_selector( '.site .course-archive-title h1' );
+			$css->set_selector( '.wp-site-blocks .course-archive-title h1' );
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'course_archive_title_color', 'color' ) ) );
 			$css->set_selector( '.course-archive-title .kadence-breadcrumbs' );
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'course_archive_title_breadcrumb_color', 'color' ) ) );
@@ -3577,7 +3598,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$css->set_selector( '.entry-hero.llms_membership-archive-hero-section .entry-header' );
 			$css->add_property( 'min-height', $this->render_range( kadence()->option( 'llms_membership_archive_title_height' ), 'mobile' ) );
 			$css->stop_media_query();
-			$css->set_selector( '.site .llms_membership-archive-title h1' );
+			$css->set_selector( '.wp-site-blocks .llms_membership-archive-title h1' );
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'llms_membership_archive_title_color', 'color' ) ) );
 			$css->set_selector( '.llms_membership-archive-title .kadence-breadcrumbs' );
 			$css->add_property( 'color', $this->render_color( kadence()->sub_option( 'llms_membership_archive_title_breadcrumb_color', 'color' ) ) );
@@ -3615,16 +3636,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					$css->render_background( kadence()->sub_option( $post_type_name . '_content_background', 'mobile' ), $css );
 					$css->stop_media_query();
 					// CPT Title.
-					$css->set_selector( '.site .' . $post_type_name . '-title h1' );
-					$css->render_font( kadence()->option( $post_type_name . '_title_font' ), $css );
+					$css->set_selector( '.wp-site-blocks .' . $post_type_name . '-title h1' );
+					$css->render_font( kadence()->option( $post_type_name . '_title_font' ), $css, 'heading' );
 					$css->start_media_query( $media_query['tablet'] );
-					$css->set_selector( '.site .' . $post_type_name . '-title h1' );
+					$css->set_selector( '.wp-site-blocks .' . $post_type_name . '-title h1' );
 					$css->add_property( 'font-size', $this->render_font_size( kadence()->option( $post_type_name . '_title_font' ), 'tablet' ) );
 					$css->add_property( 'line-height', $this->render_font_height( kadence()->option( $post_type_name . '_title_font' ), 'tablet' ) );
 					$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( $post_type_name . '_title_font' ), 'tablet' ) );
 					$css->stop_media_query();
 					$css->start_media_query( $media_query['mobile'] );
-					$css->set_selector( '.site .' . $post_type_name . '-title h1' );
+					$css->set_selector( '.wp-site-blocks .' . $post_type_name . '-title h1' );
 					$css->add_property( 'font-size', $this->render_font_size( kadence()->option( $post_type_name . '_title_font' ), 'mobile' ) );
 					$css->add_property( 'line-height', $this->render_font_height( kadence()->option( $post_type_name . '_title_font' ), 'mobile' ) );
 					$css->add_property( 'letter-spacing', $this->render_font_spacing( kadence()->option( $post_type_name . '_title_font' ), 'mobile' ) );
@@ -3757,7 +3778,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					$css->set_selector( '.entry-hero.' . $post_type_name . '-archive-hero-section .entry-header' );
 					$css->add_property( 'min-height', $this->render_range( kadence()->option( $post_type_name . '_archive_title_height' ), 'mobile' ) );
 					$css->stop_media_query();
-					$css->set_selector( '.site .' . $post_type_name . '-archive-title h1' );
+					$css->set_selector( '.wp-site-blocks .' . $post_type_name . '-archive-title h1' );
 					$css->add_property( 'color', $this->render_color( kadence()->sub_option( $post_type_name . '_archive_title_color', 'color' ) ) );
 					$css->set_selector( '.' . $post_type_name . '-archive-title .kadence-breadcrumbs' );
 					$css->add_property( 'color', $this->render_color( kadence()->sub_option( $post_type_name . '_archive_title_breadcrumb_color', 'color' ) ) );
@@ -3786,7 +3807,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					$css->stop_media_query();
 					// CTP archive item title.
 					$css->set_selector( '.loop-entry.type-' . $post_type_name . ' h2.entry-title' );
-					$css->render_font( kadence()->option( $post_type_name . '_archive_item_title_font' ), $css );
+					$css->render_font( kadence()->option( $post_type_name . '_archive_item_title_font' ), $css, 'heading' );
 					$css->start_media_query( $media_query['tablet'] );
 					$css->set_selector( '.loop-entry.type-' . $post_type_name . ' h2.entry-title' );
 					$css->add_property( 'font-size', $this->render_font_size( kadence()->option( $post_type_name . '_archive_item_title_font' ), 'tablet' ) );
@@ -3875,7 +3896,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
+		$media_query['desktop'] = apply_filters( 'kadence_desktop_media_query', '(min-width: 1025px)' );
 		// Globals.
 		$css->set_selector( ':root' );
 		$css->add_property( '--global-palette1', kadence()->palette_option( 'palette1' ) );
@@ -4096,7 +4117,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$css->set_selector( '.post-content-width-narrow' );
 		$css->add_property( '--global-content-width', 'calc(var(--global-content-narrow-width) - var(--global-content-edge-padding) - var(--global-content-edge-padding) )' );
 		// Boxed Narrow Content Editor Width.
-		$css->set_selector( '.post-content-style-boxed.post-content-width-narrow');
+		$css->set_selector( '.post-content-style-boxed.post-content-width-narrow' );
 		$css->add_property( '--global-content-width', 'calc(var(--global-content-narrow-width) - var(--global-content-edge-padding) - var(--global-content-edge-padding) - 4rem)' );
 		// Sidebar Content Editor Width.
 		$css->set_selector( '.post-content-sidebar-right, .post-content-sidebar-left' );
@@ -4900,8 +4921,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					return is_single() && kadence()->option( 'post_related' );
 				},
 			),
-			'kadence-slide'   => array(
-				'file'             => 'slider.min.css',
+			'kadence-splide'   => array(
+				'file'             => 'kadence-splide.min.css',
 				'preload_callback' => function() {
 					return is_single() && kadence()->option( 'post_related' );
 				},
