@@ -200,11 +200,43 @@ $post_type_obj = get_post_type_object( get_post_type() );
 				}
 				break;
 			case 'dateUpdated':
-				$time_string = sprintf(
-					'<time class="entry-date published updated" datetime="%1$s">%2$s</time>',
-					esc_attr( get_the_modified_date( 'c' ) ),
-					esc_html( get_the_modified_date() )
-				);
+				if ( isset( $elements['dateUpdatedDifferent'] ) && $elements['dateUpdatedDifferent'] && get_the_date() === get_the_modified_date() ) {
+					$time_string = '';
+				} else {
+					$time_string = sprintf(
+						'<time class="entry-date published updated" datetime="%1$s">%2$s</time>',
+						esc_attr( get_the_modified_date( 'c' ) ),
+						esc_html( get_the_modified_date() )
+					);
+				}
+				if ( ! empty( $time_string ) ) {
+					?>
+					<span class="updated-on">
+						<?php
+						if ( 'customicon' === $meta_divider ) {
+							kadence()->print_icon( 'hoursAlt', '', false );
+						}
+						if ( isset( $meta_labels['dateUpdated'] ) ) {
+							echo '<span class="meta-label">' . esc_html( $meta_labels['dateUpdated'] ) . '</span>';
+						}
+						echo $time_string; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						?>
+					</span>
+					<?php
+				}
+				break;
+			case 'dateUpdatedTime':
+				$publish_time = get_the_time( 'U' ) + ( 60 * 5 );
+				if ( isset( $elements['dateUpdatedDifferent'] ) && $elements['dateUpdatedDifferent'] && $publish_time > get_the_modified_time( 'U' ) ) {
+					$time_string = '';
+				} else {
+					$time_string = sprintf(
+						'<time class="entry-date published updated" datetime="%1$s">%2$s %3$s</time>',
+						esc_attr( get_the_modified_date( 'c' ) ),
+						esc_html( get_the_modified_date() ),
+						esc_html( get_the_modified_time() )
+					);
+				}
 				if ( ! empty( $time_string ) ) {
 					?>
 					<span class="updated-on">
@@ -241,18 +273,24 @@ $post_type_obj = get_post_type_object( get_post_type() );
 				}
 				break;
 			case 'comments':
-				echo '<div class="meta-comments">';
-				if ( 'customicon' === $meta_divider ) {
-					kadence()->print_icon( 'commentsAlt', '', false );
+				$show = true;
+				if ( isset( $elements['commentsCondition'] ) && $elements['commentsCondition'] && 0 == get_comments_number() ) {
+					$show = false;
 				}
-				echo '<a class="meta-comments-link anchor-scroll" href="#comments">';
-				if ( '1' === get_comments_number() ) {
-					echo esc_html( get_comments_number() ) . ' ' . esc_html__( 'Comment', 'kadence' );
-				} else {
-					echo esc_html( get_comments_number() ) . ' ' . esc_html__( 'Comments', 'kadence' );
+				if ( $show ) {
+					echo '<div class="meta-comments">';
+					if ( 'customicon' === $meta_divider ) {
+						kadence()->print_icon( 'commentsAlt', '', false );
+					}
+					echo '<a class="meta-comments-link anchor-scroll" href="#comments">';
+					if ( '1' === get_comments_number() ) {
+						echo esc_html( get_comments_number() ) . ' ' . esc_html__( 'Comment', 'kadence' );
+					} else {
+						echo esc_html( get_comments_number() ) . ' ' . esc_html__( 'Comments', 'kadence' );
+					}
+					echo '</a>';
+					echo '</div>';
 				}
-				echo '</a>';
-				echo '</div>';
 				break;
 		}
 	}

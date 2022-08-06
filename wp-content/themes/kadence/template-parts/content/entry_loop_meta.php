@@ -24,12 +24,14 @@ $defaults = array(
 	'dateLabel'              => '',
 	'dateUpdated'            => false,
 	'dateUpdatedTime'        => false,
+	'dateUpdatedDifferent'   => false,
 	'dateUpdatedEnableLabel' => false,
 	'dateUpdatedLabel'       => '',
 	'categories'             => false,
 	'categoriesEnableLabel'  => false,
 	'categoriesLabel'        => '',
 	'comments'               => false,
+	'commentsCondition'      => false,
 );
 $slug              = ( is_search() ? 'search' : get_post_type() );
 $elements          = kadence()->option( $slug . '_archive_element_meta', $defaults );
@@ -226,11 +228,15 @@ $post_type_obj = get_post_type_object( get_post_type() );
 				}
 				break;
 			case 'dateUpdated':
-				$time_string = sprintf(
-					'<time class="entry-date published updated" datetime="%1$s">%2$s</time>',
-					esc_attr( get_the_modified_date( 'c' ) ),
-					esc_html( get_the_modified_date() )
-				);
+				if ( isset( $elements['dateUpdatedDifferent'] ) && $elements['dateUpdatedDifferent'] && get_the_date() === get_the_modified_date() ) {
+					$time_string = '';
+				} else {
+					$time_string = sprintf(
+						'<time class="entry-date published updated" datetime="%1$s">%2$s</time>',
+						esc_attr( get_the_modified_date( 'c' ) ),
+						esc_html( get_the_modified_date() )
+					);
+				}
 				if ( ! empty( $time_string ) ) {
 					?>
 					<span class="updated-on">
@@ -248,12 +254,17 @@ $post_type_obj = get_post_type_object( get_post_type() );
 				}
 				break;
 			case 'dateUpdatedTime':
-				$time_string = sprintf(
-					'<time class="entry-date published updated" datetime="%1$s">%2$s %3$s</time>',
-					esc_attr( get_the_modified_date( 'c' ) ),
-					esc_html( get_the_modified_date() ),
-					esc_html( get_the_modified_time() )
-				);
+				$publish_time = get_the_time( 'U' ) + ( 60 * 5 );
+				if ( isset( $elements['dateUpdatedDifferent'] ) && $elements['dateUpdatedDifferent'] && $publish_time > get_the_modified_time( 'U' ) ) {
+					$time_string = '';
+				} else {
+					$time_string = sprintf(
+						'<time class="entry-date published updated" datetime="%1$s">%2$s %3$s</time>',
+						esc_attr( get_the_modified_date( 'c' ) ),
+						esc_html( get_the_modified_date() ),
+						esc_html( get_the_modified_time() )
+					);
+				}
 				if ( ! empty( $time_string ) ) {
 					?>
 					<span class="updated-on">
@@ -290,18 +301,24 @@ $post_type_obj = get_post_type_object( get_post_type() );
 				}
 				break;
 			case 'comments':
-				echo '<div class="meta-comments">';
-				if ( 'customicon' === $meta_divider ) {
-					kadence()->print_icon( 'commentsAlt', '', false );
+				$show = true;
+				if ( isset( $elements['commentsCondition'] ) && $elements['commentsCondition'] && 0 == get_comments_number() ) {
+					$show = false;
 				}
-				echo '<a class="meta-comments-link anchor-scroll" href="' . esc_url( get_the_permalink() ) . '#comments">';
-				if ( '1' === get_comments_number() ) {
-					echo esc_html( get_comments_number() ) . ' ' . esc_html__( 'Comment', 'kadence' );
-				} else {
-					echo esc_html( get_comments_number() ) . ' ' . esc_html__( 'Comments', 'kadence' );
+				if ( $show ) {
+					echo '<div class="meta-comments">';
+					if ( 'customicon' === $meta_divider ) {
+						kadence()->print_icon( 'commentsAlt', '', false );
+					}
+					echo '<a class="meta-comments-link anchor-scroll" href="' . esc_url( get_the_permalink() ) . '#comments">';
+					if ( '1' === get_comments_number() ) {
+						echo esc_html( get_comments_number() ) . ' ' . esc_html__( 'Comment', 'kadence' );
+					} else {
+						echo esc_html( get_comments_number() ) . ' ' . esc_html__( 'Comments', 'kadence' );
+					}
+					echo '</a>';
+					echo '</div>';
 				}
-				echo '</a>';
-				echo '</div>';
 				break;
 		}
 	}

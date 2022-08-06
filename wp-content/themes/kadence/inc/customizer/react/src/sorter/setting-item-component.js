@@ -636,6 +636,15 @@ class ItemComponent extends Component {
 								/>
 								{ this.state.item.dateUpdated && (
 									<ToggleControl
+										label={ __( 'Show only if different from publish date?', 'kadence' ) }
+										checked={ this.state.item.dateUpdatedDifferent ? this.state.item.dateUpdatedDifferent : this.props.item.dateUpdatedDifferent }
+										onChange={ ( value ) => {
+											this.updateValues( { dateUpdatedDifferent: value }, this.props.index );
+										} }
+									/>
+								) }
+								{ this.state.item.dateUpdated && (
+									<ToggleControl
 										label={ __( 'Show Time?', 'kadence' ) }
 										checked={ this.state.item.dateUpdatedTime ? this.state.item.dateUpdatedTime : this.props.item.dateUpdatedTime }
 										onChange={ ( value ) => {
@@ -715,6 +724,15 @@ class ItemComponent extends Component {
 										this.updateValues( { comments: value } );
 									} }
 								/>
+								{ this.state.item.comments && (
+									<ToggleControl
+										label={ __( 'Show only if post has at least one comment', 'kadence' ) }
+										checked={ this.state.item.commentsCondition ? this.state.item.commentsCondition : this.props.item.commentsCondition }
+										onChange={ ( value ) => {
+											this.updateValues( { commentsCondition: value }, this.props.index );
+										} }
+									/>
+								) }
 							</div>
 						) }
 						{ undefined !== this.state.item.card_color && (

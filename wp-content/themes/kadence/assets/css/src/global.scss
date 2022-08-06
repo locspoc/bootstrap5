@@ -87,6 +87,7 @@
 	#secondary {
 		grid-column: 2;
 		grid-row: 1;
+		min-width: 0;
 	}
 	.has-left-sidebar .content-container {
 		grid-template-columns: 2fr 5fr;
@@ -99,7 +100,7 @@
 		grid-column: 1;
 		grid-row: 1;
 	}
-	.has-sidebar .site .content-container .alignwide, .has-sidebar .site .content-container .alignfull {
+	.has-sidebar .wp-site-blocks .content-container .alignwide, .has-sidebar .wp-site-blocks .content-container .alignfull {
 		width: unset;
 		max-width: unset;
 		margin-left: 0;
@@ -208,8 +209,14 @@ were hidden (via .neverending) before. */
 // Maybe CSS option for mobile animate in.
 #wrapper {
 	overflow: hidden;
+	overflow: clip;
 }
-
+.kadence-scrollbar-fixer {
+    margin-right: var( --scrollbar-offset, unset );
+	.item-is-fixed {
+		right: var(--scrollbar-offset, 0 );
+	}
+}
 // Align.
 .alignleft {
 	float: left;

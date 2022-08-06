@@ -91,44 +91,9 @@ $settings = array(
 		'live_method'     => array(
 			array(
 				'type'     => 'css',
-				'selector' => '#colophon .site-footer-wrap .footer-social-wrap .social-button',
-				'property' => 'margin-top',
+				'selector' => '#colophon .site-footer-wrap .footer-social-wrap .footer-social-inner-wrap',
+				'property' => 'gap',
 				'pattern'  => '$',
-				'key'      => 'size',
-			),
-			array(
-				'type'     => 'css',
-				'selector' => '#colophon .site-footer-wrap .footer-social-wrap .social-button',
-				'property' => 'margin-left',
-				'pattern'  => 'calc($ / 2)',
-				'key'      => 'size',
-			),
-			array(
-				'type'     => 'css',
-				'selector' => '#colophon .site-footer-wrap .footer-social-wrap .social-button',
-				'property' => 'margin-right',
-				'pattern'  => 'calc($ / 2)',
-				'key'      => 'size',
-			),
-			array(
-				'type'     => 'css',
-				'selector' => '.footer-social-wrap .footer-social-inner-wrap',
-				'property' => 'margin-top',
-				'pattern'  => '-$',
-				'key'      => 'size',
-			),
-			array(
-				'type'     => 'css',
-				'selector' => '.footer-social-wrap .footer-social-inner-wrap',
-				'property' => 'margin-left',
-				'pattern'  => 'calc(-$ / 2)',
-				'key'      => 'size',
-			),
-			array(
-				'type'     => 'css',
-				'selector' => '.footer-social-wrap .footer-social-inner-wrap',
-				'property' => 'margin-right',
-				'pattern'  => 'calc(-$ / 2)',
 				'key'      => 'size',
 			),
 		),
@@ -315,14 +280,14 @@ $settings = array(
 		'live_method'     => array(
 			array(
 				'type'     => 'css',
-				'selector' => '.site .site-footer .site-footer-wrap .footer-social-wrap a.social-button',
+				'selector' => '.wp-site-blocks .site-footer .site-footer-wrap .footer-social-wrap a.social-button',
 				'property' => 'color',
 				'pattern'  => '$',
 				'key'      => 'color',
 			),
 			array(
 				'type'     => 'css',
-				'selector' => '.site .site-footer .site-footer-wrap .site-footer-section .footer-social-wrap .footer-social-inner-wrap .social-button:hover',
+				'selector' => '.wp-site-blocks .site-footer .site-footer-wrap .site-footer-section .footer-social-wrap .footer-social-inner-wrap .social-button:hover',
 				'property' => 'color',
 				'pattern'  => '$',
 				'key'      => 'hover',
@@ -349,14 +314,14 @@ $settings = array(
 		'live_method'     => array(
 			array(
 				'type'     => 'css',
-				'selector' => '.site .site-footer .site-footer-wrap .footer-social-wrap a.social-button',
+				'selector' => '.wp-site-blocks .site-footer .site-footer-wrap .footer-social-wrap a.social-button',
 				'property' => 'background',
 				'pattern'  => '$',
 				'key'      => 'color',
 			),
 			array(
 				'type'     => 'css',
-				'selector' => '.site .site-footer .site-footer-wrap .footer-social-wrap a.social-button:hover',
+				'selector' => '.wp-site-blocks .site-footer .site-footer-wrap .footer-social-wrap a.social-button:hover',
 				'property' => 'background',
 				'pattern'  => '$',
 				'key'      => 'hover',
@@ -424,7 +389,7 @@ $settings = array(
 		'live_method'     => array(
 			array(
 				'type'     => 'css_border',
-				'selector' => '.site .site-footer .site-footer-wrap .footer-social-wrap a.social-button',
+				'selector' => '.wp-site-blocks .site-footer .site-footer-wrap .footer-social-wrap a.social-button',
 				'property' => 'border',
 				'pattern'  => '$',
 				'key'      => 'border',
@@ -442,7 +407,7 @@ $settings = array(
 		'live_method'     => array(
 			array(
 				'type'     => 'css',
-				'selector' => '.site .site-footer .site-footer-wrap .footer-social-wrap a.social-button',
+				'selector' => '.wp-site-blocks .site-footer .site-footer-wrap .footer-social-wrap a.social-button',
 				'property' => 'border-radius',
 				'pattern'  => '$',
 				'key'      => 'size',

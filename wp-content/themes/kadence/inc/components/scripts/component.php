@@ -81,19 +81,19 @@ class Component implements Component_Interface {
 		}
 		// Enqueue the slide script.
 		wp_register_script(
-			'kadence-slide',
-			get_theme_file_uri( '/assets/js/tiny-slider.min.js' ),
+			'kadence-splide',
+			get_theme_file_uri( '/assets/js/splide.min.js' ),
 			array(),
 			KADENCE_VERSION,
 			true
 		);
-		wp_script_add_data( 'kadence-slide', 'async', true );
-		wp_script_add_data( 'kadence-slide', 'precache', true );
+		wp_script_add_data( 'kadence-splide', 'async', true );
+		wp_script_add_data( 'kadence-splide', 'precache', true );
 		// Enqueue the slide script.
 		wp_register_script(
 			'kadence-slide-init',
-			get_theme_file_uri( '/assets/js/slide-init.min.js' ),
-			array( 'kadence-slide', 'kadence-navigation' ),
+			get_theme_file_uri( '/assets/js/splide-init.min.js' ),
+			array( 'kadence-splide', 'kadence-navigation' ),
 			KADENCE_VERSION,
 			true
 		);
@@ -159,6 +159,7 @@ class Component implements Component_Interface {
 					'desktop' => esc_attr( $breakpoint ),
 					'tablet' => 768,
 				),
+				'scrollOffset' => apply_filters( 'kadence_scroll_to_id_additional_offset', 0 ),
 			)
 		);
 	}
