@@ -87,6 +87,47 @@ get_header(); ?>
                 </div><!-- / col-12 -->
             </div><!-- / row -->
         </div><!-- / mb-sm-4 -->
+        <div class="mb-sm-4">
+            <h2 class="text-center mb-sm-4">Our clients</h2>
+            <div class="row">
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+                <div class="col-6 col-sm-4 col-lg-2 mb-3">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/400x300.png" class="img-fluid">
+                </div><!-- / col-6 -->
+            </div><!-- / row -->
+        </div><!-- / mb-sm-4 -->
     </div><!-- / container -->
     <footer class="small bg-light">
         <div class="container py-3 py-sm-5">
