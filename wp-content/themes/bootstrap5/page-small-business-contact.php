@@ -79,6 +79,68 @@ get_header(); ?>
                 </p>
             </div><!-- / col-12 -->
         </div><!-- / row -->
+        <div class="row">
+            <div class="col-12 col-lg-6 mb-3">
+                <h2>Send us a message:</h2>
+                <form>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <input type="text" id="name" class="form-control" name="name" placeholder="Name" required>
+                                </div><!-- / input-group -->
+                            </div><!-- / mb-3 -->
+                        </div><!-- / col-12 -->
+                        <div class="col-12 col-sm-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" id="email" class="form-control" name="email" placeholder="example@email.com" required>
+                                </div><!-- / input-group -->
+                            </div><!-- / mb-3 -->
+                        </div><!-- / col-12 -->
+                    </div><!-- / row -->
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="mb-3">
+                                <label for="telephone" class="form-label">Telephone</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    <input type="tel" id="telephone" class="form-control" name="telephone" placeholder="0123456789">
+                                </div><!-- / input-group -->
+                            </div><!-- / mb-3 -->
+                        </div><!-- / col-12 -->
+                        <div class="col-12 col-sm-6">
+                            <div class="mb-3">
+                                <label for="department" class="form-label">Department:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-home"></i></span>
+                                    <select id="department" class="form-select" name="department" aria-describedby="department-help-block" required>
+                                        <option value="">- select here -</option>
+                                        <option value="business">Business</option>
+                                        <option value="sale">Sale</option>
+                                        <option value="support">Support</option>
+                                    </select>
+                                </div><!-- / input-group -->
+                                <small id="department-help-block" class="form-text">Please select the recipient of your message.</small>
+                            </div><!-- / mb-3 -->
+                        </div><!-- / col-12 -->
+                    </div><!-- / row -->
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                            <textarea id="message" class="form-control" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                        </div><!-- / input-group -->
+                    </div><!-- / mb-3 -->
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                </form>
+            </div><!-- / col-12 -->
+        </div><!-- / row -->
     </div><!-- / container -->
 
     <footer class="small bg-light">
