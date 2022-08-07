@@ -100,6 +100,57 @@ get_header(); ?>
                         <a href="#0" class="btn btn-primary">Read more</a>
                     </div><!-- / col-12 -->
                 </div><!-- / row -->
+
+            </div><!-- / col-12 -->
+        </div><!-- / row -->
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
+                <div class="card">
+                    <div class="card-header small">Published: <time datetime="2020-10-01">01-10-2020</time></div><!-- / card-header -->
+                    <div class="card-body">
+                        <h2 class="card-title">News item</h2>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec ante eros. Phasellus posuere magna in nunc maximus, sed elementum tortor faucibus.</p>
+                    </div><!-- / card-body -->
+                    <div class="card-footer d-grid">
+                        <a href="#0" class="btn btn-primary">Read more</a>
+                    </div><!-- / card-footer -->
+                </div><!-- / card -->
+            </div><!-- / col-12 -->
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
+                <div class="card">
+                    <div class="card-header small">Published: <time datetime="2020-10-01">01-10-2020</time></div><!-- / card-header -->
+                    <div class="card-body">
+                        <h2 class="card-title">News item</h2>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec ante eros. Phasellus posuere magna in nunc maximus, sed elementum tortor faucibus.</p>
+                    </div><!-- / card-body -->
+                    <div class="card-footer d-grid">
+                        <a href="#0" class="btn btn-primary">Read more</a>
+                    </div><!-- / card-footer -->
+                </div><!-- / card -->
+            </div><!-- / col-12 -->
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3 mb-md-0 mb-lg-3 mb-xl-0">
+                <div class="card">
+                    <div class="card-header small">Published: <time datetime="2020-10-01">01-10-2020</time></div><!-- / card-header -->
+                    <div class="card-body">
+                        <h2 class="card-title">News item</h2>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec ante eros. Phasellus posuere magna in nunc maximus, sed elementum tortor faucibus.</p>
+                    </div><!-- / card-body -->
+                    <div class="card-footer d-grid">
+                        <a href="#0" class="btn btn-primary">Read more</a>
+                    </div><!-- / card-footer -->
+                </div><!-- / card -->
+            </div><!-- / col-12 -->
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    <div class="card-header small">Published: <time datetime="2020-10-01">01-10-2020</time></div><!-- / card-header -->
+                    <div class="card-body">
+                        <h2 class="card-title">News item</h2>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec ante eros. Phasellus posuere magna in nunc maximus, sed elementum tortor faucibus.</p>
+                    </div><!-- / card-body -->
+                    <div class="card-footer d-grid">
+                        <a href="#0" class="btn btn-primary">Read more</a>
+                    </div><!-- / card-footer -->
+                </div><!-- / card -->
             </div><!-- / col-12 -->
         </div><!-- / row -->
     </div><!-- / container -->
