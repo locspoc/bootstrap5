@@ -156,6 +156,55 @@ get_header(); ?>
     </div><!-- / container -->
 </body>
 
+<footer class="small bg-light">
+    <div class="container py-3 py-sm-5">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+                <h6>Quick links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="<?= home_url('small-business-home'); ?>">Home</a></li>
+                    <li><a href="<?= home_url('small-business-home/small-business-services'); ?>">Services</a></li>
+                    <li><a href="<?= home_url('small-business-home/small-business-about'); ?>">About</a></li>
+                    <li><a href="<?= home_url('small-business-home/small-business-team'); ?>">Team</a></li>
+                    <li><a href="<?= home_url('small-business-home/small-business-contact'); ?>">Contact</a></li>
+                </ul>
+            </div><!-- / col-12 -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <h6>Information</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#0">Legal information</a></li>
+                    <li><a href="#0">Job opportunities</a></li>
+                    <li><a href="#0">Frequently Asked Questions</a></li>
+                </ul>
+            </div><!-- / col-12 -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <h6>Follow us</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#0"><i class="fab fa-fw fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#0"><i class="fab fa-fw fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#0"><i class="fab fa-fw fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#0"><i class="fab fa-fw fa-youtube"></i> YouTube</a></li>
+                    <li><a href="#0"><i class="fab fa-fw fa-linkedin"></i> LinkedIn</a></li>
+                </ul>
+            </div><!-- / col-12 -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <h6>Our location</h6>
+                <address>
+                    <strong>Company Name</strong><br>
+                    Steet Name<br>
+                    ZIP code and city<br>
+                    <i class="fas fa-fw fa-phone"></i> <a href="tel:+1234567890">(123) 456-7890</a><br>
+                    <i class="fas fa-fw fa-envelope"></i> <a href="mailto:info@domain.com">info@domain.com</a>
+                </address>
+            </div><!-- / col-12 -->
+        </div><!-- / row -->
+        <ul class="list-inline mt-2 mb-0 text-center">
+            <li class="list-inline-item">&copy; 2020 Company Name</li>
+            <li class="list-inline-item">All rights reserved.</li>
+        </ul>
+    </div><!-- / container -->
+</footer>
+
 <?php kadence()->print_styles('kadence-content');
 /**
  * Hook for everything, makes for better elementor theming support.
