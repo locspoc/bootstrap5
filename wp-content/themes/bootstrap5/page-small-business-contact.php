@@ -70,6 +70,14 @@ get_header(); ?>
                     <i class="fas fa-fw fa-envelope"></i> <a href="mailto:info@domain.com">info@domain.com</a>
                 </address>
             </div><!-- / col-12 -->
+            <div class="col-12 col-md-6">
+                <h2>Opening hours:</h2>
+                <p>
+                    Monday-Thursday: <span class="float-end">10 am - 6 pm</span><br>
+                    Friday-Saturday: <span class="float-end">10 am - 10 pm</span><br>
+                    Sunday: <span class="float-end">10 am - 8 pm</span>
+                </p>
+            </div><!-- / col-12 -->
         </div><!-- / row -->
     </div><!-- / container -->
 
