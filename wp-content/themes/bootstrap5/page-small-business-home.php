@@ -76,6 +76,32 @@ get_header(); ?>
             <h2 class="alert-heading">We're hiring!</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec ante eros. Phasellus posuere magna in nunc maximus, sed elementum tortor faucibus. <a href="#0" class="alert-link">Donec scelerisque mi vel efficitur maximus</a>.</p>
         </div><!-- / alert -->
+        <div class="row g-0 bg-light p-4 mb-3 mb-sm-5">
+            <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                <div class="row">
+                    <div class="col-12 col-sm-6 text-center">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/300x300.png" class="img-fluid rounded-circle mb-4 mb-lg-0">
+                    </div><!-- / col-12 -->
+                    <div class="col-12 col-sm-6">
+                        <h2>What we do</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis convallis velit quis sapien sollicitudin ultrices. Ut metus tortor, aliquet non rutrum ac, dapibus vehicula augue. Etiam congue erat sem, vitae gravida nunc pretium vitae. Fusce sed ex tellus.</p>
+                        <a href="#0" class="btn btn-primary">Read more</a>
+                    </div><!-- / col-12 -->
+                </div><!-- / row -->
+            </div><!-- / col-12 -->
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12 col-sm-6 text-center">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/300x300.png" class="img-fluid rounded-circle mb-4 mb-lg-0">
+                    </div><!-- / col-12 -->
+                    <div class="col-12 col-sm-6">
+                        <h2>Who we are</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis convallis velit quis sapien sollicitudin ultrices. Ut metus tortor, aliquet non rutrum ac, dapibus vehicula augue. Etiam congue erat sem, vitae gravida nunc pretium vitae. Fusce sed ex tellus.</p>
+                        <a href="#0" class="btn btn-primary">Read more</a>
+                    </div><!-- / col-12 -->
+                </div><!-- / row -->
+            </div><!-- / col-12 -->
+        </div><!-- / row -->
     </div><!-- / container -->
 </body>
 
