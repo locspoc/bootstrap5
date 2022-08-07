@@ -56,6 +56,8 @@ get_header(); ?>
             </div><!-- / collapse -->
         </div><!-- / container -->
     </nav>
+
+
 </body>
 
 <?php kadence()->print_styles('kadence-content');

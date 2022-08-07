@@ -56,6 +56,21 @@ get_header(); ?>
             </div><!-- / collapse -->
         </div><!-- / container -->
     </nav>
+    <div class="bg-light py-3 py-sm-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/730x400.png" class="img-fluid">
+                </div><!-- / col-12 -->
+                <div class="col-12 col-lg-6">
+                    <h1 class="display-1">Small Business</h1>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec ante eros. Phasellus posuere magna in nunc maximus, sed elementum tortor faucibus.</p>
+                    <a href="#0" class="btn btn-lg btn-primary me-2">Read more</a>
+                    <a href="#0" class="btn btn-lg btn-outline-primary">Contact us</a>
+                </div><!-- / col-12 -->
+            </div><!-- / row -->
+        </div><!-- / container -->
+    </div><!-- / bg-light -->
 </body>
 
 <?php kadence()->print_styles('kadence-content');
